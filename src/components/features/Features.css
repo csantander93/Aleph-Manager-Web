@@ -1,0 +1,497 @@
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=TWK+Everett:wght@500&display=swap');
+
+/* Estilos base */
+.features-section {
+  position: relative;
+  padding: 6rem 0;
+  overflow: hidden;
+}
+
+.features-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.15;
+}
+
+.features-background-gradient-1 {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 33.333333%;
+  height: 100%;
+  background: linear-gradient(to bottom right, rgba(34, 211, 238, 0.3), transparent);
+  border-radius: 9999px;
+  filter: blur(48px);
+}
+
+.features-background-gradient-2 {
+  position: absolute;
+  bottom: 0;
+  right: 25%;
+  width: 33.333333%;
+  height: 100%;
+  background: linear-gradient(to top left, rgba(52, 211, 153, 0.3), transparent);
+  border-radius: 9999px;
+  filter: blur(48px);
+}
+
+/* Partículas de fondo */
+.particles-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: rgba(103, 232, 249, 0.6);
+  border-radius: 50%;
+  left: var(--pos-x);
+  top: var(--pos-y);
+  animation: float-up 8s linear infinite;
+  animation-delay: var(--delay);
+  filter: blur(0.5px);
+}
+
+@keyframes float-up {
+  to { transform: translateY(-100vh); }
+}
+
+/* Contenedor principal */
+.features-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Encabezado */
+.features-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.features-title {
+  font-size: 3rem;
+  line-height: 1.1;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #67e8f9, #6ee7b7, #67e8f9);
+  background-size: 300% 300%;
+  font-family: 'TWK Everett', sans-serif;
+  display: inline-block;
+}
+
+@media (min-width: 768px) {
+  .features-title {
+    font-size: 4.5rem;
+  }
+}
+
+.features-subtitle {
+  font-size: 1.25rem;
+  line-height: 1.75;
+  color: rgba(219, 234, 254, 0.8);
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 500;
+}
+
+/* Lista de características */
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+/* Animaciones de entrada */
+.feature-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--delay);
+}
+
+.feature-item.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature-item {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.feature-item.left {
+  flex-direction: row;
+}
+
+.feature-item.right {
+  flex-direction: row-reverse;
+}
+
+.feature-image-placeholder {
+  flex: 0 0 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 1rem;
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.feature-icon {
+    padding: 0; /* Eliminamos el padding aquí porque lo movimos al icon-container */
+    background: linear-gradient(to bottom right, rgba(34, 211, 238, 0.1), rgba(52, 211, 153, 0.1));
+    border-radius: 0.75rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.feature-content {
+  flex: 1;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #67e8f9;
+  margin-bottom: 1rem;
+  font-family: 'TWK Everett', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.feature-description {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: rgba(219, 234, 254, 0.9);
+  font-family: 'Inter Tight', sans-serif;
+}
+
+/* Efectos hover */
+.feature-item:hover {
+  transform: translateY(-5px) !important;
+}
+
+.feature-item:hover .feature-image-placeholder {
+  transform: rotate(5deg) scale(1.05);
+  filter: drop-shadow(0 5px 15px rgba(103, 232, 249, 0.3));
+  border-color: rgba(34, 211, 238, 0.4);
+}
+
+.feature-item:hover .feature-title {
+  color: #a5f3fc;
+}
+
+/* Estilos para los iconos SVG */
+.feature-icon-svg {
+  width: 3rem;
+  height: 3rem;
+  color: #67e8f9;
+}
+
+.feature-image-placeholder {
+    flex: 0 0 180px; /* Tamaño un poco más pequeño para mejor proporción */
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(30, 41, 59, 0.5);
+    border-radius: 1rem;
+    border: 1px solid rgba(20, 184, 166, 0.2);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    padding: 1rem; /* Espacio interno */
+  }
+
+.icon-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem; /* Espacio interno consistente */
+  }
+
+/* Efectos de iconos */
+.pulse-effect, .glow-effect, .sparkle-effect, .ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+/* Reloj - Animación */
+.clock-hour-hand {
+  transform-origin: 12px 12px;
+  animation: clockHourRotate 12s linear infinite;
+}
+
+.clock-minute-hand {
+  transform-origin: 12px 12px;
+  animation: clockMinuteRotate 4s linear infinite;
+}
+
+.clock-icon .pulse-effect {
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+  border: 1px solid rgba(103, 232, 249, 0.3);
+  animation: pulse 3s infinite;
+}
+
+@keyframes clockHourRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes clockMinuteRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  70% { transform: scale(1.2); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Escudo - Animación */
+.shield-lock {
+  animation: shieldBounce 2s ease-in-out infinite;
+}
+
+.shield-keyhole {
+  animation: shieldPulse 1.5s ease-in-out infinite;
+}
+
+.shield-icon .glow-effect {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(110, 231, 183, 0.4) 0%, transparent 70%);
+  animation: glow 4s infinite alternate;
+}
+
+@keyframes shieldBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes shieldPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes glow {
+  from { opacity: 0.3; }
+  to { opacity: 0.7; }
+}
+
+/* Dinero - Animación */
+.money-line {
+  animation: moneyShine 3s ease-in-out infinite;
+}
+
+.money-glow {
+  animation: moneyPulse 2s ease-in-out infinite alternate;
+}
+
+.money-icon .sparkle-effect {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+  animation: sparkle 2s infinite alternate;
+}
+
+@keyframes moneyShine {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; stroke-width: 2px; }
+  100% { opacity: 0.8; }
+}
+
+@keyframes moneyPulse {
+  from { transform: scale(1); opacity: 0.3; }
+  to { transform: scale(1.2); opacity: 0.5; }
+}
+
+@keyframes sparkle {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1.1); opacity: 0.4; }
+}
+
+/* Gráfico - Animación */
+.graph-line {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: graphDraw 2s ease-out forwards;
+}
+
+.graph-dot {
+  opacity: 0;
+  animation: graphDotAppear 0.5s ease-out forwards;
+  animation-delay: 1s;
+}
+
+.graph-arrow {
+  opacity: 0;
+  animation: graphArrowAppear 0.5s ease-out forwards;
+  animation-delay: 1.5s;
+}
+
+.graph-icon .ripple-effect {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(103, 232, 249, 0.3);
+  animation: ripple 3s infinite;
+}
+
+@keyframes graphDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes graphDotAppear {
+  to { opacity: 1; }
+}
+
+@keyframes graphArrowAppear {
+  to { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateX(-5px); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .feature-item {
+    flex-direction: column !important;
+  }
+  
+  .feature-image-placeholder {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  
+  .features-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Estilos para los elementos SVG */
+.clock-face {
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+  }
+  
+  .clock-mark {
+    stroke: currentColor;
+    stroke-width: 1;
+  }
+  
+  .clock-hour-hand, .clock-minute-hand {
+    stroke: currentColor;
+    stroke-linecap: round;
+  }
+  
+  .clock-hour-hand {
+    stroke-width: 2;
+  }
+  
+  .clock-minute-hand {
+    stroke-width: 1.5;
+  }
+  
+  .clock-center {
+    fill: currentColor;
+  }
+  
+  .shield-body {
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+  }
+  
+  .shield-lock {
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+  }
+  
+  .shield-keyhole {
+    fill: currentColor;
+  }
+  
+  .money-circle {
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+  }
+  
+  .money-line {
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+  }
+  
+  .money-symbol {
+    fill: currentColor;
+  }
+  
+  .graph-axis, .graph-line, .graph-arrow {
+    stroke: currentColor;
+    stroke-linecap: round;
+  }
+  
+  .graph-axis {
+    stroke-width: 1.5;
+  }
+  
+  .graph-line {
+    stroke-width: 2;
+    fill: none;
+  }
+  
+  .graph-arrow {
+    stroke-width: 1.5;
+    fill: none;
+  }
+  
+  .graph-dot {
+    fill: currentColor;
+  }
+  
+  /* Color base para los iconos */
+  .feature-icon-svg {
+    width: 80px; /* Tamaño más grande */
+    height: 80px;
+    color: #67e8f9;
+    flex-shrink: 0; /* Evita que se reduzca */
+  }
