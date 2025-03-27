@@ -58,7 +58,7 @@
 
 .about-title {
   font-size: 3rem;
-  line-height: 1;
+  line-height: 1.1; /* Aumentado de 1 a 1.1 */
   font-weight: 500;
   margin-bottom: 1.5rem;
   background-clip: text;
@@ -67,11 +67,14 @@
   background-image: linear-gradient(to right, #67e8f9, #6ee7b7, #67e8f9);
   background-size: 300% 300%;
   font-family: 'TWK Everett', sans-serif;
+  padding-bottom: 0.1em; /* Espacio extra para descenders */
+  display: inline-block; /* Mejor manejo del background-clip */
 }
 
 @media (min-width: 768px) {
   .about-title {
     font-size: 4.5rem;
+    line-height: 1.1; /* Mantener consistencia en desktop */
   }
 }
 

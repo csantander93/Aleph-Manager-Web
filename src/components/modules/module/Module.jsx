@@ -28,7 +28,7 @@ const Module = ({ title, fullDescription, features }) => {
           <div className="module-content">
             <p className="module-description">{fullDescription}</p>
             {features?.length > 0 && (
-              <ul className="module-features">
+              <ul className="module-features">  
                 {features.map((feature, index) => (
                   <li key={index}>{feature}</li>
                 ))}

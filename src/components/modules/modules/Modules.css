@@ -1,4 +1,4 @@
-/* modules.css - Versión optimizada para móviles y desktop */
+/* modules.css - Versión optimizada para 14 tarjetas */
 
 /* Contenedor principal */
 .modules-container {
@@ -74,15 +74,40 @@
   padding: 0 1.5rem;
 }
 
-/* Grilla de módulos optimizada */
+/* Grilla de módulos optimizada - VERSIÓN MODIFICADA */
 .modules-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
   padding: 0 1.5rem;
   position: relative;
   z-index: 1;
   justify-items: center;
+}
+
+/* Solución para pantallas grandes (4 columnas) */
+@media (min-width: 1200px) {
+  .modules-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  /* Hace que las últimas 2 tarjetas ocupen más espacio */
+  .module-card:nth-last-child(-n+2) {
+    grid-column: span 2;
+    max-width: 100%;
+  }
+}
+
+/* Solución para pantallas medianas (3 columnas) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .modules-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  /* Ajuste para la última fila */
+  .module-card:nth-last-child(2):nth-child(3n+1) {
+    grid-column: span 2;
+  }
 }
 
 /* Efectos de hover SOLO para desktop */
@@ -107,26 +132,16 @@
   backface-visibility: visible;
 }
 
-/* Ajustes responsivos */
-@media (min-width: 640px) {
+/* Ajustes responsivos adicionales */
+@media (min-width: 640px) and (max-width: 767px) {
   .modules-grid {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.75rem;
-    padding: 0 2rem;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
   .modules-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
     padding: 0 3rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .modules-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 }
 
