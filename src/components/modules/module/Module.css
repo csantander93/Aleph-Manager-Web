@@ -1,0 +1,163 @@
+/* Module.css - Versión con mensaje en cada tarjeta */
+
+/* Contenedor principal de la tarjeta */
+.module-card {
+  perspective: 1000px;
+  height: 160px;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Contenedor interno para el efecto 3D */
+.module-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto de giro */
+.module-card.flipped .module-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Estilos comunes para frente y reverso */
+.module-card-front,
+.module-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  padding: 1rem;
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid rgba(20, 184, 166, 0.25);
+  border-radius: 0.75rem;
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Estilo específico para el reverso */
+.module-card-back {
+  transform: rotateY(180deg);
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+/* Estilos para el título */
+.module-title {
+  font-family: 'TWK Everett', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-align: center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #67e8f9, #6ee7b7);
+  margin: 0.5rem 0;
+}
+
+/* Mensaje interactivo */
+.interaction-hint {
+  text-align: center;
+  color: rgba(148, 163, 184, 0.9);
+  font-size: 0.8rem;
+  font-family: 'Inter Tight', sans-serif;
+  margin-top: auto;
+  padding: 0.5rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.interaction-hint .desktop-visible {
+  display: inline;
+}
+
+.interaction-hint .mobile-visible {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Contenedor del contenido (reverso) */
+.module-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+}
+
+/* Descripción del módulo */
+.module-description {
+  font-family: 'Inter Tight', sans-serif;
+  color: rgba(219, 234, 254, 0.9);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+/* Lista de características */
+.module-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.module-features li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  color: rgba(219, 234, 254, 0.85);
+  line-height: 1.4;
+}
+
+.module-features li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #67e8f9;
+}
+
+/* Scrollbar personalizada */
+.module-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.module-content::-webkit-scrollbar-thumb {
+  background: rgba(103, 232, 249, 0.5);
+  border-radius: 3px;
+}
+
+.module-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(103, 232, 249, 0.7);
+}
+
+/* Estilos para móviles */
+@media (max-width: 768px) {
+  .module-card {
+    height: 140px;
+  }
+  
+  .interaction-hint .desktop-visible {
+    display: none;
+  }
+  
+  .interaction-hint .mobile-visible {
+    display: inline;
+  }
+  
+  .module-title {
+    font-size: 1.1rem;
+  }
+  
+  .interaction-hint {
+    font-size: 0.75rem;
+    padding: 0.3rem;
+  }
+}

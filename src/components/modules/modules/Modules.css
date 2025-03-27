@@ -1,0 +1,169 @@
+/* modules.css - Versión optimizada para móviles y desktop */
+
+/* Contenedor principal */
+.modules-container {
+  position: relative;
+  padding: 6rem 0;
+  overflow: visible;
+  min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+  isolation: isolate;
+}
+
+/* Fondos gradientes */
+.modules-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.modules-background-gradient-1 {
+  position: absolute;
+  top: -20%;
+  left: 10%;
+  width: 40%;
+  height: 140%;
+  background: linear-gradient(
+    to bottom right, 
+    rgba(34, 211, 238, 0.15),
+    transparent 60%
+  );
+  border-radius: 9999px;
+  filter: blur(72px);
+  opacity: 0.7;
+}
+
+.modules-background-gradient-2 {
+  position: absolute;
+  bottom: -20%;
+  right: 10%;
+  width: 40%;
+  height: 140%;
+  background: linear-gradient(
+    to top left, 
+    rgba(52, 211, 153, 0.15),
+    transparent 60%
+  );
+  border-radius: 9999px;
+  filter: blur(72px);
+  opacity: 0.7;
+}
+
+/* Título de sección */
+.section-title {
+  font-family: 'TWK Everett', sans-serif;
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  line-height: 1.1;
+  font-weight: 500;
+  margin-bottom: 3.5rem;
+  text-align: center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(
+    to right, 
+    #67e8f9, 
+    #6ee7b7, 
+    #67e8f9
+  );
+  background-size: 300% 300%;
+  animation: gradientShift 8s ease infinite;
+  letter-spacing: -0.025em;
+  padding: 0 1.5rem;
+}
+
+/* Grilla de módulos optimizada */
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+  justify-items: center;
+}
+
+/* Efectos de hover SOLO para desktop */
+@media (hover: hover) {
+  .modules-grid:hover .module-card:not(:hover) {
+    opacity: 0.85;
+    transform: scale(0.97);
+  }
+  
+  .module-card:hover {
+    transform: scale(1.03);
+    z-index: 2;
+  }
+}
+
+/* Estilos base de las tarjetas */
+.module-card {
+  transition: all 0.3s ease, transform 0.6s ease;
+  width: 100%;
+  max-width: 320px;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+}
+
+/* Ajustes responsivos */
+@media (min-width: 640px) {
+  .modules-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.75rem;
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .modules-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 0 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .modules-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+/* Estilos específicos para móviles */
+@media (max-width: 639px) {
+  .modules-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 0 1rem;
+  }
+  
+  .module-card {
+    max-width: 100%;
+    transform: none !important;
+  }
+  
+  .section-title {
+    margin-bottom: 2rem;
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+  
+  .modules-container {
+    padding: 4rem 0;
+  }
+}
+
+/* Animación de gradiente */
+@keyframes gradientShift {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+/* Fix para SectionWrapper en móviles */
+@media (max-width: 768px) {
+  #modulos {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+}

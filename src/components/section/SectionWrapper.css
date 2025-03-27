@@ -1,0 +1,15 @@
+.section-wrapper {
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-wrapper.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+  
+  /* Asegura que el scroll sea suave */
+  html {
+    scroll-behavior: smooth;
+  }

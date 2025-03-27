@@ -1,0 +1,244 @@
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=TWK+Everett:wght@500&display=swap');
+
+/* Estilos base */
+.about-section {
+  position: relative;
+  padding: 6rem 0;
+  overflow: hidden;
+}
+
+.about-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.15;
+}
+
+.about-background-gradient-1 {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 33.333333%;
+  height: 100%;
+  background: linear-gradient(to bottom right, rgba(34, 211, 238, 0.3), transparent);
+  border-radius: 9999px;
+  filter: blur(48px);
+}
+
+.about-background-gradient-2 {
+  position: absolute;
+  bottom: 0;
+  right: 25%;
+  width: 33.333333%;
+  height: 100%;
+  background: linear-gradient(to top left, rgba(52, 211, 153, 0.3), transparent);
+  border-radius: 9999px;
+  filter: blur(48px);
+}
+
+.about-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Encabezado */
+.about-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-title {
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #67e8f9, #6ee7b7, #67e8f9);
+  background-size: 300% 300%;
+  font-family: 'TWK Everett', sans-serif;
+}
+
+@media (min-width: 768px) {
+  .about-title {
+    font-size: 4.5rem;
+  }
+}
+
+.about-subtitle {
+  font-size: 1.25rem;
+  line-height: 1.75;
+  color: rgba(219, 234, 254, 0.8);
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 500;
+}
+
+/* Contenido */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .about-content {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.about-text-column {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .about-text-column {
+    width: 50%;
+  }
+}
+
+/* Bloques de texto */
+.about-text-block {
+  padding: 1.5rem;
+  background-color: rgba(30, 41, 59, 0.5);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  backdrop-filter: blur(8px);
+  margin-bottom: 1.5rem;
+}
+
+.about-text-block p {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: rgba(219, 234, 254, 0.9);
+  font-family: 'Inter Tight', sans-serif;
+}
+
+.about-text-block-emerald {
+  border-color: rgba(5, 150, 105, 0.2);
+}
+
+/* Lista de servicios */
+.about-services {
+  margin-top: 2.5rem;
+}
+
+.about-service-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.about-service-icon {
+  flex-shrink: 0;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  background: linear-gradient(to bottom right, rgba(34, 211, 238, 0.1), rgba(52, 211, 153, 0.1));
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.about-service-item:hover .about-service-icon {
+  background: linear-gradient(to bottom right, rgba(34, 211, 238, 0.2), rgba(52, 211, 153, 0.2));
+}
+
+.about-service-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #67e8f9;
+}
+
+.about-service-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #67e8f9;
+  margin-bottom: 0.25rem;
+  font-family: 'TWK Everett', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.about-service-item:hover .about-service-title {
+  color: #a5f3fc;
+}
+
+.about-service-description {
+  color: rgba(219, 234, 254, 0.9);
+  font-family: 'Inter Tight', sans-serif;
+}
+
+/* Columna de imagen */
+.about-image-column {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .about-image-column {
+    width: 50%;
+  }
+}
+
+.about-image-container {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(164, 255, 247, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.about-image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.about-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.3), transparent);
+}
+
+.about-image-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  text-align: center;
+}
+
+.about-image-caption p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  background: linear-gradient(to right, rgba(34, 211, 238, 0.3), rgba(52, 211, 153, 0.3));
+  padding: 1rem;
+  border-radius: 0.5rem;
+  backdrop-filter: blur(8px);
+  font-family: 'TWK Everett', sans-serif;
+}
+
+/* Animaciones */
+@keyframes gradientShift {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+.animate-gradient {
+  animation: gradientShift 8s ease infinite;
+}
