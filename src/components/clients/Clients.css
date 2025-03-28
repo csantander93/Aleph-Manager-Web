@@ -1,0 +1,350 @@
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=TWK+Everett:wght@500&display=swap');
+
+/* Variables CSS */
+:root {
+  --primary-gradient: linear-gradient(135deg, #67e8f9 0%, #6ee7b7 50%, #67e8f9 100%);
+  --glass-bg: rgba(30, 41, 59, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-light: rgba(219, 234, 254, 0.9);
+}
+
+/* Estilos base para la sección de clientes */
+.clients-section {
+  position: relative;
+  padding: 5rem 0;
+  overflow: hidden;
+  background-color: rgba(15, 23, 42, 0.9);
+  isolation: isolate;
+}
+
+.clients-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(34, 211, 238, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(52, 211, 153, 0.1) 0%, transparent 40%);
+  background-blend-mode: overlay;
+}
+
+.clients-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Encabezado mejorado */
+.clients-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.clients-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: var(--primary-gradient);
+  background-size: 300% 300%;
+  font-family: 'TWK Everett', sans-serif;
+  animation: gradientShift 8s ease infinite;
+  position: relative;
+  display: inline-block;
+}
+
+.clients-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--primary-gradient);
+  border-radius: 3px;
+}
+
+.clients-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--text-light);
+  max-width: 56rem;
+  margin: 0 auto;
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 400;
+}
+
+/* Carrusel mejorado con efecto fade */
+.clients-scroller-container {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  margin: 3rem 0;
+  padding-bottom: 20px; /* Espacio adicional */
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+/* Modificamos las clases de las filas para un scroll perfecto */
+.clients-track {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: 80px;
+  will-change: transform;
+  gap: 40px; /* Aumentamos el gap para mejor visibilidad */
+}
+
+/* Efecto de tarjeta de vidrio moderno */
+.client-item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem; /* Más espacio interno */
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  /* Aseguramos tamaño consistente */
+  width: 160px;
+  height: 70px;
+  margin: 5px 0; /* Añade espacio vertical extra alrededor de cada item */
+}
+
+.client-item:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(6, 182, 212, 0.2);
+  background: rgba(30, 41, 59, 0.6);
+}
+
+.client-logo {
+  max-width: 140px;
+  max-height: 60px;
+  object-fit: contain;
+  filter: grayscale(100%) contrast(0.8);
+  opacity: 0.9;
+  transition: all 0.4s ease;
+}
+
+.client-item:hover .client-logo {
+  filter: grayscale(0) contrast(1);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Animaciones mejoradas con efecto continuo */
+/* Nueva técnica para scroll infinito sin saltos */
+@keyframes smoothScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 40px)); /* Compensa el gap */
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .clients-track {
+    animation-play-state: running;
+  }
+  .clients-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Modifica las clases de las filas */
+.clients-row-1 {
+  top: 10px;
+  animation: smoothScroll 40s linear infinite;
+  width: 200%; /* Duplica el ancho */
+}
+
+.clients-row-2 {
+  top: 110px;
+  animation: smoothScroll 45s linear infinite reverse;
+  width: 200%; /* Duplica el ancho */
+}
+
+.clients-row-3 {
+  top: 210px;
+  animation: smoothScroll 50s linear infinite;
+  width: 200%; /* Duplica el ancho */
+}
+
+/* Tablet (768px en adelante) */
+@media (min-width: 768px) {
+  .clients-scroller-container {
+    height: 280px;
+  }
+  
+  .clients-track {
+    gap: 30px;
+  }
+  
+  .client-item {
+    padding: 1rem 1.5rem;
+    width: 150px;
+    height: 75px;
+  }
+  
+  .client-logo {
+    max-width: 120px;
+    max-height: 50px;
+  }
+  
+  /* Ajuste de separación entre filas */
+  .clients-row-1 {
+    top: 10px;
+  }
+  
+  .clients-row-2 {
+    top: 110px; /* 100px de separación */
+  }
+  
+  .clients-row-3 {
+    top: 210px; /* 100px de separación */
+  }
+}
+
+/* Desktop (992px en adelante) */
+@media (min-width: 992px) {
+  .clients-scroller-container {
+    height: 260px;
+  }
+  
+  .clients-track {
+    gap: 40px;
+  }
+  
+  .client-item {
+    padding: 1rem 2rem;
+    width: 160px;
+    height: 80px;
+  }
+  
+  .client-logo {
+    max-width: 140px;
+    max-height: 60px;
+  }
+  
+  /* Ajuste final de separación entre filas */
+  .clients-row-1 {
+    top: 0;
+  }
+  
+  .clients-row-2 {
+    top: 100px;
+  }
+  
+  .clients-row-3 {
+    top: 200px;
+  }
+}
+
+/* Pantallas grandes (1200px en adelante) */
+@media (min-width: 1200px) {
+  .clients-scroller-container {
+    height: 300px;
+  }
+  
+  /* Velocidades de animación más rápidas en pantallas grandes */
+  .clients-row-1 {
+    animation-duration: 40s;
+  }
+  
+  .clients-row-2 {
+    animation-duration: 45s;
+  }
+  
+  .clients-row-3 {
+    animation-duration: 50s;
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas (<576px) */
+@media (max-width: 575px) {
+  .clients-scroller-container {
+    height: 280px;
+  }
+  
+  .clients-track {
+    gap: 15px;
+  }
+  
+  .client-item {
+    padding: 0.6rem 0.8rem;
+    width: 120px;
+    height: 60px;
+  }
+  
+  .client-logo {
+    max-width: 90px;
+    max-height: 35px;
+  }
+  
+  /* Más separación en móviles muy pequeños */
+  .clients-row-1 {
+    top: 5px;
+  }
+  
+  .clients-row-2 {
+    top: 95px; /* 90px de separación */
+  }
+  
+  .clients-row-3 {
+    top: 185px; /* 90px de separación */
+  }
+}
+
+/* Animación unificada para mejor rendimiento */
+@keyframes smoothScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 20px)); /* Compensa el gap */
+  }
+}
+
+/* Efectos hover optimizados para mobile */
+@media (hover: hover) and (pointer: fine) {
+  .client-item:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(6, 182, 212, 0.3);
+  }
+  
+  .client-item:hover .client-logo {
+    filter: grayscale(0) contrast(1);
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .clients-track {
+    animation: none !important;
+  }
+}

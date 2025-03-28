@@ -1,0 +1,317 @@
+/* Variables CSS actualizadas */
+:root {
+    --primary-gradient: linear-gradient(135deg, #67e8f9 0%, #6ee7b7 50%, #67e8f9 100%);
+    --glass-bg: rgba(30, 41, 59, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --text-light: rgba(219, 234, 254, 0.95);
+    --highlight-color: rgba(6, 182, 212, 0.5);
+    --glow-effect: 0 0 15px rgba(103, 232, 249, 0.7);
+  }
+  
+  /* Estilos base con fondo negro sólido */
+  .awards-section {
+    position: relative;
+    padding: 6rem 0;
+    overflow: hidden;
+    background-color: #000;
+    isolation: isolate;
+  }
+  
+  .awards-background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(34, 211, 238, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(52, 211, 153, 0.08) 0%, transparent 40%);
+    background-blend-mode: overlay;
+  }
+  
+  /* Efecto de partículas sutiles */
+  .awards-background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.5;
+  }
+  
+  .awards-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Encabezado con efecto neón mejorado */
+  .awards-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .awards-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: var(--primary-gradient);
+    background-size: 300% 300%;
+    font-family: 'TWK Everett', sans-serif;
+    animation: gradientShift 8s ease infinite;
+    text-shadow: 0 0 10px rgba(103, 232, 249, 0.5), 
+                 0 0 20px rgba(103, 232, 249, 0.3);
+  }
+  
+  .awards-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--text-light);
+    max-width: 56rem;
+    margin: 0 auto;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 400;
+  }
+  
+  /* Grid de premios con efecto de profundidad */
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+    perspective: 1000px;
+  }
+  
+  .award-card {
+    position: relative;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transform-style: preserve-3d;
+  }
+  
+/* Contenedor de imagen optimizado */
+.award-image-container {
+    position: relative;
+    height: 220px; /* Reducido de 280px */
+    width: 100%;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem; /* Espacio interno para evitar que las imágenes toquen los bordes */
+  }
+  
+/* Estilo base para todas las imágenes */
+.award-image {
+    object-fit: contain;
+    transition: all 0.6s ease;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+    width: auto;
+    height: auto;
+  }
+  
+  /* Estilo específico para la imagen de Patagonia */
+  .award-image.bpemprende {
+    max-width: 350px;  /* Ajusta según necesidad */
+    max-height: 300px;
+  }
+  
+  /* Estilo específico para la imagen de BIND */
+  .award-image.programa-de-innovación {
+    max-width: 600px;  /* Ajusta según necesidad */
+    max-height: 300px;
+  }
+  
+  /* Efecto de brillo (común) */
+  .award-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, 
+      rgba(103, 232, 249, 0.1) 0%, 
+      transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  /* Contenido mejorado */
+  .award-content {
+    padding: 2rem;
+    position: relative;
+  }
+  
+  .award-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .award-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--primary-gradient);
+    transition: width 0.4s ease;
+  }
+  
+  .award-subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+  }
+  
+  /* Efecto año con gradiente */
+  .award-year {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.8) 0%, rgba(52, 211, 153, 0.8) 100%);
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+  }
+  
+  /* Efectos hover mejorados */
+  .award-card:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 15px 50px rgba(6, 182, 212, 0.4);
+    border-color: rgba(6, 182, 212, 0.5);
+  }
+  
+  .award-card:hover .award-image {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+  }
+  
+  .award-card:hover .award-image-container::before {
+    opacity: 1;
+  }
+  
+  .award-card:hover .award-title::after {
+    width: 100%;
+  }
+  
+  /* Efecto de luz de borde */
+  .award-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, #67e8f9, #6ee7b7);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); /* Standard mask */
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  
+  .award-card:hover::before {
+    opacity: 0.5;
+  }
+  
+  /* Animación del gradiente */
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .awards-section {
+      padding: 5rem 0;
+    }
+    
+    .awards-grid {
+      gap: 2.5rem;
+    }
+    
+    .award-image-container {
+      height: 240px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .awards-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .award-image-container {
+      height: 220px;
+    }
+    
+    .award-image {
+      max-width: 70%;
+      max-height: 70%;
+    }
+    
+    .award-content {
+      padding: 1.5rem;
+    }
+    
+    .award-title {
+      font-size: 1.3rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .awards-section {
+      padding: 4rem 0;
+    }
+    
+    .award-image-container {
+      height: 200px;
+    }
+    
+    .award-content {
+      padding: 1.2rem;
+    }
+    
+    .awards-title {
+      font-size: clamp(2rem, 8vw, 2.5rem);
+    }
+  }
+  
+  /* Fallback para propiedades no soportadas */
+  @supports not (backdrop-filter: blur(12px)) {
+    .award-card {
+      background: rgba(30, 41, 59, 0.9);
+    }
+  }
+  
+  @supports not ((-webkit-mask-composite: xor) or (mask-composite: exclude)) {
+    .award-card::before {
+      display: none;
+    }
+  }
