@@ -34,7 +34,7 @@ const Header = () => {
     { name: "Sobre Nosotros", href: "#sobre-nosotros" },
     { name: "Características", href: "#modulos" },
     { name: "Clientes", href: "#clientes" },
-    { name: "Contáctanos", href: "#contactanos" }
+    { name: "Contáctanos", href: "#contacto" }
   ];
 
   return (
