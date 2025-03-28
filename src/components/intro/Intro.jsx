@@ -4,6 +4,13 @@ import displayImage from '../../assets/display.png';
 import './Intro.css';
 
 const Intro = () => {
+  const scrollToSection = (sectionId) => {
+    const section = document.querySelector(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="inicio" className="intro-section">
       {/* Fondo */}
@@ -27,11 +34,19 @@ const Intro = () => {
           </p>
           
           <div className="buttons-container">
-            <button className="demo-button">
-              Solicitar Contácto
+            <button 
+              className="demo-button"
+              onClick={() => scrollToSection('#contacto')}
+            >
+              Solicitar Contacto
+              <span className="button-underline"></span>
             </button>
-            <button className="more-info-button">
+            <button 
+              className="more-info-button"
+              onClick={() => scrollToSection('#modulos')}
+            >
               Conocer más
+              <span className="button-underline"></span>
             </button>
           </div>
         </div>

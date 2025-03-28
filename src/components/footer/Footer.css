@@ -74,12 +74,52 @@
   .social-icon {
     color: rgba(255, 255, 255, 0.7);
     font-size: 1.5rem;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
   }
   
   .social-icon:hover {
-    color: #67e8f9;
     transform: translateY(-3px);
+    animation: shake 0.5s ease;
+  }
+  
+  /* Colores específicos para cada red social */
+  .social-icon:nth-child(1):hover { /* Facebook */
+    color: #1877f2;
+    text-shadow: 0 0 10px #1877f2, 0 0 20px #1877f2;
+  }
+  
+  .social-icon:nth-child(2):hover { /* Instagram */
+    color: #e4405f;
+    text-shadow: 0 0 10px #e4405f, 0 0 20px #e4405f;
+  }
+  
+  .social-icon:nth-child(3):hover { /* Twitter */
+    color: #1da1f2;
+    text-shadow: 0 0 10px #1da1f2, 0 0 20px #1da1f2;
+  }
+  
+  .social-icon:nth-child(4):hover { /* LinkedIn */
+    color: #0a66c2;
+    text-shadow: 0 0 10px #0a66c2, 0 0 20px #0a66c2;
+  }
+  
+  /* Animación de sacudida */
+  @keyframes shake {
+    0%, 100% {
+      transform: translateY(-3px) rotate(0deg);
+    }
+    20% {
+      transform: translateY(-3px) rotate(-10deg);
+    }
+    40% {
+      transform: translateY(-3px) rotate(10deg);
+    }
+    60% {
+      transform: translateY(-3px) rotate(-5deg);
+    }
+    80% {
+      transform: translateY(-3px) rotate(5deg);
+    }
   }
   
   .footer-bottom {
