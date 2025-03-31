@@ -7,6 +7,8 @@
   --glass-bg: rgba(30, 41, 59, 0.4);
   --glass-border: rgba(255, 255, 255, 0.1);
   --text-light: rgba(219, 234, 254, 0.9);
+  --row-height: 80px;
+  --row-gap: 30px;
 }
 
 /* Estilos base para la sección de clientes */
@@ -83,10 +85,10 @@
 /* Carrusel mejorado con efecto fade */
 .clients-scroller-container {
   position: relative;
-  height: 300px;
+  height: calc(8 * var(--row-height) + 7 * var(--row-gap) + 40px); /* Correcto */
   overflow: hidden;
   margin: 3rem 0;
-  padding-bottom: 20px; /* Espacio adicional */
+  padding-bottom: 20px;
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -108,9 +110,12 @@
   position: absolute;
   display: flex;
   align-items: center;
-  height: 80px;
+  height: var(--row-height);
   will-change: transform;
-  gap: 40px; /* Aumentamos el gap para mejor visibilidad */
+  gap: 40px;
+  width: 200%;
+  animation: smoothScroll var(--duration) linear infinite;
+  top: calc(var(--row-index) * (var(--row-height) + var(--row-gap)));
 }
 
 /* Efecto de tarjeta de vidrio moderno */
@@ -119,7 +124,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 2rem; /* Más espacio interno */
+  padding: 1rem 2rem;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   backdrop-filter: blur(8px);
@@ -127,10 +132,9 @@
   border-radius: 12px;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  /* Aseguramos tamaño consistente */
   width: 160px;
   height: 70px;
-  margin: 5px 0; /* Añade espacio vertical extra alrededor de cada item */
+  margin: 5px 0;
 }
 
 .client-item:hover {
@@ -154,14 +158,139 @@
   transform: scale(1.1);
 }
 
-/* Animaciones mejoradas con efecto continuo */
-/* Nueva técnica para scroll infinito sin saltos */
+/* Animaciones */
 @keyframes smoothScroll {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-100% - 40px)); /* Compensa el gap */
+    transform: translateX(calc(-50% - 20px));
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Configuración de filas */
+.clients-row-1 { top: 10px; --duration: 40s; animation-direction: normal; }
+.clients-row-2 { top: calc(var(--row-height) + var(--row-gap) + 10px); --duration: 45s; animation-direction: reverse; }
+.clients-row-3 { top: calc(2 * (var(--row-height) + var(--row-gap)) + 10px); --duration: 50s; animation-direction: normal; }
+.clients-row-4 { top: calc(3 * (var(--row-height) + var(--row-gap)) + 10px); --duration: 55s; animation-direction: reverse; }
+.clients-row-5 { top: calc(4 * (var(--row-height) + var(--row-gap)) + 10px); --duration: 60s; animation-direction: normal; }
+.clients-row-6 { top: calc(5 * (var(--row-height) + var(--row-gap)) + 10px); --duration: 65s; animation-direction: reverse; }
+.clients-row-7 { top: calc(6 * (var(--row-height) + var(--row-gap)) + 10px); --duration: 70s; animation-direction: normal; }
+.clients-row-8 { top: calc(7 * (var(--row-height) + var(--row-gap)) + 10px); --duration: 75s; animation-direction: reverse; }
+
+/* Media Queries */
+@media (min-width: 768px) {
+  :root {
+    --row-height: 75px;
+    --row-gap: 25px;
+  }
+  
+  .clients-scroller-container {
+    height: calc(8 * var(--row-height) + 7 * var(--row-gap) + 40px);
+  }
+  
+  .clients-track {
+    gap: 30px;
+  }
+  
+  .client-item {
+    padding: 1rem 1.5rem;
+    width: 150px;
+    height: 70px;
+  }
+  
+  .client-logo {
+    max-width: 120px;
+    max-height: 50px;
+  }
+}
+
+@media (min-width: 992px) {
+  :root {
+    --row-height: 80px;
+    --row-gap: 30px;
+  }
+  
+  .clients-track {
+    gap: 40px;
+  }
+  
+  .client-item {
+    padding: 1rem 2rem;
+    width: 160px;
+    height: 75px;
+  }
+  
+  .client-logo {
+    max-width: 140px;
+    max-height: 60px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .clients-scroller-container {
+    height: calc(8 * var(--row-height) + 7 * var(--row-gap) + 40px);
+  }
+}
+
+@media (max-width: 575px) {
+  :root {
+    --row-height: 50px;       /* Más compacto */
+    --row-gap: 10px;          /* Menor espacio entre filas */
+  }
+  
+  .clients-scroller-container {
+    height: calc(8 * var(--row-height) + 7 * var(--row-gap) + 20px);
+    margin: 1.5rem 0;
+  }
+  
+  .clients-track {
+    gap: 10px;                /* Iconos más juntos horizontalmente */
+    animation-duration: calc(var(--duration) * 0.7); /* Animación más rápida */
+  }
+  
+  .client-item {
+    padding: 0.4rem 0.6rem;   /* Padding reducido */
+    width: 90px;              /* Contenedores más estrechos */
+    height: 45px;             /* Contenedores más bajos */
+    min-width: 90px;          /* Evita que se compriman */
+    margin: 2px 0;            /* Menor margen vertical */
+    border-radius: 8px;       /* Bordes ligeramente menos redondeados */
+  }
+  
+  .client-logo {
+    max-width: 80px;          /* Logos más pequeños */
+    max-height: 30px;
+  }
+  
+  /* Ajuste extra para pantallas muy pequeñas */
+  @media (max-width: 400px) {
+    :root {
+      --row-height: 45px;
+      --row-gap: 8px;
+    }
+    
+    .client-item {
+      width: 80px;
+      min-width: 80px;
+      height: 40px;
+    }
+    
+    .client-logo {
+      max-width: 70px;
+    }
   }
 }
 
@@ -174,161 +303,6 @@
   }
 }
 
-/* Modifica las clases de las filas */
-.clients-row-1 {
-  top: 10px;
-  animation: smoothScroll 40s linear infinite;
-  width: 200%; /* Duplica el ancho */
-}
-
-.clients-row-2 {
-  top: 110px;
-  animation: smoothScroll 45s linear infinite reverse;
-  width: 200%; /* Duplica el ancho */
-}
-
-.clients-row-3 {
-  top: 210px;
-  animation: smoothScroll 50s linear infinite;
-  width: 200%; /* Duplica el ancho */
-}
-
-/* Tablet (768px en adelante) */
-@media (min-width: 768px) {
-  .clients-scroller-container {
-    height: 280px;
-  }
-  
-  .clients-track {
-    gap: 30px;
-  }
-  
-  .client-item {
-    padding: 1rem 1.5rem;
-    width: 150px;
-    height: 75px;
-  }
-  
-  .client-logo {
-    max-width: 120px;
-    max-height: 50px;
-  }
-  
-  /* Ajuste de separación entre filas */
-  .clients-row-1 {
-    top: 10px;
-  }
-  
-  .clients-row-2 {
-    top: 110px; /* 100px de separación */
-  }
-  
-  .clients-row-3 {
-    top: 210px; /* 100px de separación */
-  }
-}
-
-/* Desktop (992px en adelante) */
-@media (min-width: 992px) {
-  .clients-scroller-container {
-    height: 260px;
-  }
-  
-  .clients-track {
-    gap: 40px;
-  }
-  
-  .client-item {
-    padding: 1rem 2rem;
-    width: 160px;
-    height: 80px;
-  }
-  
-  .client-logo {
-    max-width: 140px;
-    max-height: 60px;
-  }
-  
-  /* Ajuste final de separación entre filas */
-  .clients-row-1 {
-    top: 0;
-  }
-  
-  .clients-row-2 {
-    top: 100px;
-  }
-  
-  .clients-row-3 {
-    top: 200px;
-  }
-}
-
-/* Pantallas grandes (1200px en adelante) */
-@media (min-width: 1200px) {
-  .clients-scroller-container {
-    height: 300px;
-  }
-  
-  /* Velocidades de animación más rápidas en pantallas grandes */
-  .clients-row-1 {
-    animation-duration: 40s;
-  }
-  
-  .clients-row-2 {
-    animation-duration: 45s;
-  }
-  
-  .clients-row-3 {
-    animation-duration: 50s;
-  }
-}
-
-/* Ajustes para pantallas muy pequeñas (<576px) */
-@media (max-width: 575px) {
-  .clients-scroller-container {
-    height: 280px;
-  }
-  
-  .clients-track {
-    gap: 15px;
-  }
-  
-  .client-item {
-    padding: 0.6rem 0.8rem;
-    width: 120px;
-    height: 60px;
-  }
-  
-  .client-logo {
-    max-width: 90px;
-    max-height: 35px;
-  }
-  
-  /* Más separación en móviles muy pequeños */
-  .clients-row-1 {
-    top: 5px;
-  }
-  
-  .clients-row-2 {
-    top: 95px; /* 90px de separación */
-  }
-  
-  .clients-row-3 {
-    top: 185px; /* 90px de separación */
-  }
-}
-
-/* Animación unificada para mejor rendimiento */
-@keyframes smoothScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-50% - 20px)); /* Compensa el gap */
-  }
-}
-
-/* Efectos hover optimizados para mobile */
 @media (hover: hover) and (pointer: fine) {
   .client-item:hover {
     transform: translateY(-5px) scale(1.05);
@@ -342,7 +316,6 @@
   }
 }
 
-/* Prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   .clients-track {
     animation: none !important;
