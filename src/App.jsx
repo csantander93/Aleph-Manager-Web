@@ -22,10 +22,6 @@ function App() {
           <About />
         </SectionWrapper>
 
-      <SectionWrapper id="modulos">
-        <Modules />
-      </SectionWrapper>
-
       <SectionWrapper id="caracteristicas">
         <Features />
       </SectionWrapper>

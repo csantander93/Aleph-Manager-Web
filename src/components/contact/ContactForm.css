@@ -1,10 +1,10 @@
-/* ContactForm.css */
+/* ContactForm.css - Versión Compacta (80%) */
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=TWK+Everett:wght@500&display=swap');
 
 /* Estilos base */
 .contact-section {
   position: relative;
-  padding: 4rem 0;
+  padding: 3.2rem 0; /* Reducido de 4rem */
   overflow: hidden;
   background-color: rgba(15, 23, 42, 0.9);
 }
@@ -16,32 +16,15 @@
   opacity: 0.15;
 }
 
-.contact-background-gradient-1 {
-  position: absolute;
-  top: 0;
-  left: 25%;
-  width: 33.333333%;
-  height: 100%;
-  background: linear-gradient(to bottom right, rgba(34, 211, 238, 0.3), transparent);
-  border-radius: 9999px;
-  filter: blur(48px);
-}
-
+.contact-background-gradient-1,
 .contact-background-gradient-2 {
-  position: absolute;
-  bottom: 0;
-  right: 25%;
-  width: 33.333333%;
-  height: 100%;
-  background: linear-gradient(to top left, rgba(52, 211, 153, 0.3), transparent);
-  border-radius: 9999px;
-  filter: blur(48px);
+  filter: blur(38.4px); /* Reducido de 48px */
 }
 
 .contact-container {
   max-width: 100%;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.6rem; /* Reducido de 2rem */
   position: relative;
   z-index: 10;
 }
@@ -49,47 +32,47 @@
 .contact-row {
   display: flex;
   width: 100%;
-  max-width: 1200px;
+  max-width: 960px; /* Reducido de 1200px */
   margin: 0 auto;
   background-color: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(8px);
-  border-radius: 8px;
+  backdrop-filter: blur(6.4px); /* Reducido de 8px */
+  border-radius: 6.4px; /* Reducido de 8px */
   overflow: hidden;
 }
 
 .form-container {
   flex: 2;
-  padding: 2rem;
+  padding: 1.6rem; /* Reducido de 2rem */
   border-right: 1px solid rgba(74, 222, 128, 0.1);
 }
 
 .info-container {
   flex: 1;
-  padding: 2rem;
+  padding: 1.6rem; /* Reducido de 2rem */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .info-title {
-  font-size: 1.75rem;
+  font-size: 1.4rem; /* Reducido de 1.75rem */
   line-height: 1.2;
   font-weight: 500;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem; /* Reducido de 1.5rem */
   color: #67e8f9;
   font-family: 'TWK Everett', sans-serif;
 }
 
 .info-text {
-  font-size: 1rem;
+  font-size: 0.8rem; /* Reducido de 1rem */
   line-height: 1.6;
   color: rgba(219, 234, 254, 0.9);
   font-family: 'Inter Tight', sans-serif;
-  margin-bottom: 2rem;
+  margin-bottom: 1.6rem; /* Reducido de 2rem */
 }
 
 .info-email {
-  font-size: 1.1rem;
+  font-size: 0.88rem; /* Reducido de 1.1rem */
   line-height: 1.6;
   color: #6ee7b7;
   font-family: 'Inter Tight', sans-serif;
@@ -110,12 +93,12 @@
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem; /* Reducido de 1.5rem */
 }
 
 .form-row {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem; /* Reducido de 1.5rem */
 }
 
 .form-row .floating-input {
@@ -129,10 +112,10 @@
 .floating-input input,
 .floating-input textarea {
   width: 100%;
-  padding: 1rem 0.5rem 0.5rem;
+  padding: 0.8rem 0.4rem 0.4rem; /* Reducido de 1rem 0.5rem 0.5rem */
   border: none;
   border-bottom: 1px solid rgba(74, 222, 128, 0.3);
-  font-size: 1rem;
+  font-size: 0.8rem; /* Reducido de 1rem */
   color: rgba(219, 234, 254, 0.9);
   background-color: rgba(15, 23, 42, 0.3);
   transition: all 0.3s ease;
@@ -146,20 +129,20 @@
 }
 
 .floating-input.textarea-input textarea {
-  min-height: 100px;
-  max-height: 120px;
+  min-height: 80px; /* Reducido de 100px */
+  max-height: 96px; /* Reducido de 120px */
   resize: none;
   overflow-y: auto;
 }
 
 .floating-input label {
   position: absolute;
-  top: 1rem;
-  left: 0.5rem;
+  top: 0.8rem; /* Reducido de 1rem */
+  left: 0.4rem; /* Reducido de 0.5rem */
   color: rgba(219, 234, 254, 0.6);
   pointer-events: none;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.8rem; /* Reducido de 1rem */
   font-family: 'Inter Tight', sans-serif;
 }
 
@@ -167,8 +150,8 @@
 .floating-input input:not(:placeholder-shown) + label,
 .floating-input textarea:focus + label,
 .floating-input textarea:not(:placeholder-shown) + label {
-  top: 0.25rem;
-  font-size: 0.75rem;
+  top: 0.2rem; /* Reducido de 0.25rem */
+  font-size: 0.6rem; /* Reducido de 0.75rem */
   color: #67e8f9;
 }
 
@@ -176,23 +159,23 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.2rem; /* Reducido de 0.75rem 1.5rem */
   background: linear-gradient(to right, rgba(34, 211, 238, 0.2), rgba(52, 211, 153, 0.2));
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.4rem; /* Reducido de 0.5rem */
   color: #67e8f9;
   font-family: 'TWK Everett', sans-serif;
-  font-size: 1rem;
+  font-size: 0.8rem; /* Reducido de 1rem */
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem; /* Reducido de 0.5rem */
 }
 
 .form-submit:hover {
   background: linear-gradient(to right, rgba(34, 211, 238, 0.3), rgba(52, 211, 153, 0.3));
   color: #a5f3fc;
-  transform: translateY(-2px);
+  transform: translateY(-1.6px); /* Reducido de 2px */
 }
 
 .form-submit.submitting {
@@ -201,20 +184,20 @@
 }
 
 .submit-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-left: 0.5rem;
+  width: 1rem; /* Reducido de 1.25rem */
+  height: 1rem; /* Reducido de 1.25rem */
+  margin-left: 0.4rem; /* Reducido de 0.5rem */
   transition: transform 0.3s ease;
 }
 
 .form-submit:hover .submit-icon {
-  transform: translateX(3px);
+  transform: translateX(2.4px); /* Reducido de 3px */
 }
 
 .spinner {
-  width: 20px;
-  height: 20px;
-  border: 3px solid rgba(103, 232, 249, 0.3);
+  width: 16px; /* Reducido de 20px */
+  height: 16px; /* Reducido de 20px */
+  border: 2.4px solid rgba(103, 232, 249, 0.3); /* Reducido de 3px */
   border-radius: 50%;
   border-top-color: #67e8f9;
   animation: spin 1s ease-in-out infinite;
@@ -229,69 +212,40 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2rem 0;
+  padding: 1.6rem 0; /* Reducido de 2rem */
 }
 
 .success-icon {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 1rem;
+  width: 51.2px; /* Reducido de 64px */
+  height: 51.2px; /* Reducido de 64px */
+  margin-bottom: 0.8rem; /* Reducido de 1rem */
 }
 
 .success-message h4 {
-  font-size: 1.25rem;
+  font-size: 1rem; /* Reducido de 1.25rem */
   color: #6ee7b7;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem; /* Reducido de 0.5rem */
   font-family: 'TWK Everett', sans-serif;
 }
 
 .success-message p {
   color: rgba(219, 234, 254, 0.8);
   font-family: 'Inter Tight', sans-serif;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .contact-row {
-    flex-direction: column;
-  }
-  
-  .form-container {
-    border-right: none;
-    border-bottom: 1px solid rgba(74, 222, 128, 0.1);
-  }
-  
-  .form-row {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .info-container {
-    padding: 2rem;
-  }
-  
-  .info-title {
-    font-size: 1.5rem;
-  }
-  
-  .info-text,
-  .info-email {
-    font-size: 1rem;
-  }
+  font-size: 0.8rem; /* Reducido de 1rem (implícito) */
 }
 
 /* Estilos para el encabezado */
 .contact-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.6rem; /* Reducido de 2rem */
   width: 100%;
 }
 
 .contact-title {
-  font-size: 2.5rem;
+  font-size: 2rem; /* Reducido de 2.5rem */
   line-height: 1.1;
   font-weight: 500;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem; /* Reducido de 1rem */
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -304,12 +258,12 @@
 }
 
 .contact-subtitle {
-  font-size: 1.25rem;
+  font-size: 1rem; /* Reducido de 1.25rem */
   line-height: 1.5;
   color: rgba(219, 234, 254, 0.8);
   font-family: 'Inter Tight', sans-serif;
   font-weight: 500;
-  max-width: 600px;
+  max-width: 480px; /* Reducido de 600px */
   margin: 0 auto;
 }
 
@@ -322,11 +276,38 @@
 
 /* Ajuste responsive */
 @media (max-width: 768px) {
+  .contact-row {
+    flex-direction: column;
+  }
+  
+  .form-container {
+    border-right: none;
+    border-bottom: 1px solid rgba(74, 222, 128, 0.1);
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 1.2rem; /* Reducido de 1.5rem */
+  }
+  
+  .info-container {
+    padding: 1.6rem; /* Reducido de 2rem */
+  }
+  
+  .info-title {
+    font-size: 1.2rem; /* Reducido de 1.5rem */
+  }
+  
+  .info-text,
+  .info-email {
+    font-size: 0.8rem; /* Reducido de 1rem */
+  }
+
   .contact-title {
-    font-size: 2rem;
+    font-size: 1.6rem; /* Reducido de 2rem */
   }
   
   .contact-subtitle {
-    font-size: 1rem;
+    font-size: 0.8rem; /* Reducido de 1rem */
   }
 }

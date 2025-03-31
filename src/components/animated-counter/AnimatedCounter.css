@@ -1,17 +1,17 @@
-/* AnimatedCounter.css */
+/* AnimatedCounter.css - Versión Compacta (80%) */
 .counter-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem;
+  padding: 1rem; /* Reducido de 1.25rem */
   border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border-radius: 14px;
-  min-width: 180px;
+  backdrop-filter: blur(8px); /* Reducido de 10px */
+  border-radius: 11.2px; /* Reducido de 14px */
+  min-width: 144px; /* Reducido de 180px */
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(16px); /* Reducido de 20px */
   animation: fadeInUp 0.6s forwards var(--delay);
   position: relative;
   overflow: hidden;
@@ -29,14 +29,14 @@
   
   /* Sombras estáticas */
   box-shadow: 
-      0 4px 30px rgba(0, 0, 0, 0.25),
-      inset 0 0 20px rgba(255, 255, 255, 0.1),
-      inset 0 0 30px rgba(255, 255, 255, 0.05);
+      0 3.2px 24px rgba(0, 0, 0, 0.25), /* Reducido de 4px 30px */
+      inset 0 0 16px rgba(255, 255, 255, 0.1), /* Reducido de 20px */
+      inset 0 0 24px rgba(255, 255, 255, 0.05); /* Reducido de 30px */
 }
 
-/* Contador mejorado (sin cambios) */
+/* Contador mejorado */
 .counter-value {
-  font-size: 3.75rem;
+  font-size: 3rem; /* Reducido de 3.75rem */
   font-weight: 700;
   font-family: 'TWK Everett', sans-serif;
   background: linear-gradient(135deg, 
@@ -51,31 +51,31 @@
   background-size: 300% 300%;
   animation: gradientShift 6s ease infinite;
   line-height: 1;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 0 10px rgba(103, 232, 249, 0.3);
+  margin-bottom: 0.4rem; /* Reducido de 0.5rem */
+  text-shadow: 0 0 8px rgba(103, 232, 249, 0.3); /* Reducido de 10px */
   position: relative;
   z-index: 2;
 }
 
-/* Etiqueta (sin cambios) */
+/* Etiqueta */
 .counter-label {
-  font-size: 1rem;
+  font-size: 0.8rem; /* Reducido de 1rem */
   font-family: 'Inter Tight', sans-serif;
   color: rgba(219, 234, 254, 0.9);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px; /* Reducido de 1px */
   font-weight: 500;
   position: relative;
   z-index: 2;
 }
 
-/* Descripción (sin cambios) */
+/* Descripción */
 .counter-description {
-  font-size: 0.85rem;
+  font-size: 0.68rem; /* Reducido de 0.85rem */
   font-family: 'Inter Tight', sans-serif;
   color: rgba(219, 234, 254, 0.7);
   text-align: center;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem; /* Reducido de 0.5rem */
   line-height: 1.4;
   font-weight: 400;
   max-width: 90%;
@@ -83,7 +83,7 @@
   z-index: 2;
 }
 
-/* Animaciones (solo mantenemos fadeInUp y gradientShift) */
+/* Animaciones (se mantienen iguales) */
 @keyframes fadeInUp {
   to {
       opacity: 1;
@@ -97,54 +97,54 @@
   100% { background-position: 0% 50%; }
 }
 
-/* Asigna delays escalonados */
+/* Asigna delays escalonados (se mantienen iguales) */
 .counter-item:nth-child(1) { --delay: 0.1s; }
 .counter-item:nth-child(2) { --delay: 0.3s; }
 .counter-item:nth-child(3) { --delay: 0.5s; }
 
-/* Responsividad (sin cambios) */
+/* Responsividad ajustada */
 @media (min-width: 480px) {
   .counter-item {
-      min-width: 190px;
-      padding: 1.5rem;
+      min-width: 152px; /* Reducido de 190px */
+      padding: 1.2rem; /* Reducido de 1.5rem */
   }
   .counter-value {
-      font-size: 3.25rem;
+      font-size: 2.6rem; /* Reducido de 3.25rem */
   }
   .counter-label {
-      font-size: 1rem;
+      font-size: 0.8rem; /* Reducido de 1rem */
   }
   .counter-description {
-      font-size: 0.8rem;
+      font-size: 0.64rem; /* Reducido de 0.8rem */
   }
 }
 
 @media (min-width: 768px) {
   .counter-item {
-      min-width: 210px;
-      padding: 1.75rem;
+      min-width: 168px; /* Reducido de 210px */
+      padding: 1.4rem; /* Reducido de 1.75rem */
   }
   .counter-value {
-      font-size: 3.75rem;
+      font-size: 3rem; /* Reducido de 3.75rem */
   }
   .counter-label {
-      font-size: 1rem;
-      letter-spacing: 1px;
+      font-size: 0.8rem; /* Reducido de 1rem */
+      letter-spacing: 0.8px; /* Reducido de 1px */
   }
   .counter-description {
-      font-size: 0.85rem;
+      font-size: 0.68rem; /* Reducido de 0.85rem */
   }
 }
 
 @media (min-width: 1024px) {
   .counter-item {
-      min-width: 230px;
+      min-width: 184px; /* Reducido de 230px */
   }
   .counter-item:hover {
-      transform: translateY(-8px) scale(1.08);
+      transform: translateY(-6.4px) scale(1.08); /* Reducido de 8px */
       box-shadow: 
-          0 12px 40px rgba(0, 0, 0, 0.3),
-          inset 0 0 25px rgba(255, 255, 255, 0.15),
-          inset 0 0 40px rgba(255, 255, 255, 0.1);
+          0 9.6px 32px rgba(0, 0, 0, 0.3), /* Reducido de 12px 40px */
+          inset 0 0 20px rgba(255, 255, 255, 0.15), /* Reducido de 25px */
+          inset 0 0 32px rgba(255, 255, 255, 0.1); /* Reducido de 40px */
   }
 }

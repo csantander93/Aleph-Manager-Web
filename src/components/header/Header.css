@@ -1,143 +1,132 @@
-/* Estilos base del header */
+/* Estilos base del header - Compacto */
 .header {
-    position: fixed;
-    width: 100%;
-    z-index: 50;
-    transition: all 0.3s ease;
-  }
-  
-  .header-scrolled {
-    background-color: rgba(75, 85, 99, 0.85); /* Gris opaco */
-    backdrop-filter: blur(8px);
-  }
-  
-  .header-transparent {
-    background-color: transparent;
-    backdrop-filter: none;
-  }
-  
-  /* Contenedor principal */
-  .header-container {
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  /* Logo */
-  .header-logo {
-    height: 2.5rem;
-    opacity: 0.95;
-    transition: opacity 0.2s ease;
-  }
-  
-  .header-logo:hover {
-    opacity: 1;
-  }
-  
-  /* Menú desktop */
+  position: fixed;
+  width: 100%;
+  z-index: 50;
+  transition: all 0.3s ease;
+}
+
+.header-scrolled {
+  background-color: rgba(75, 85, 99, 0.85);
+  backdrop-filter: blur(6px); /* Reducido de 8px */
+}
+
+.header-transparent {
+  background-color: transparent;
+  backdrop-filter: none;
+}
+
+/* Contenedor principal - Compacto */
+.header-container {
+  max-width: 1152px; /* Reducido de 1280px */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5rem 0.8rem; /* Compactado (antes 0.75rem 1rem) */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo - Compacto */
+.header-logo {
+  height: 2rem; /* Reducido de 2.5rem */
+  opacity: 0.95;
+  transition: opacity 0.2s ease;
+}
+
+.header-logo:hover {
+  opacity: 1;
+}
+
+/* Menú desktop - Compacto */
+.nav-desktop {
+  display: none;
+  gap: 1.2rem; /* Reducido de 1.5rem */
+}
+
+@media (min-width: 768px) {
   .nav-desktop {
-    display: none;
-    gap: 1.5rem;
-  }
-  
-  @media (min-width: 768px) {
-    .nav-desktop {
-      display: flex;
-    }
-  }
-  
-  .nav-item {
-    position: relative;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-  }
-  
-  .nav-item-scrolled {
-    color: rgb(243, 244, 246);
-  }
-  
-  .nav-item-transparent {
-    color: rgb(229, 231, 235);
-  }
-  
-  .nav-item:hover {
-    color: white;
-  }
-  
-  .nav-underline {
-    position: absolute;
-    left: 0;
-    bottom: -0.25rem;
-    height: 0.125rem;
-    background-color: rgb(34, 211, 238);
-    transition: all 0.3s ease;
-    width: 0;
-  }
-  
-  .nav-item:hover .nav-underline {
-    width: 100%;
-  }
-  
-  /* Menú móvil - Botón */
-  .mobile-menu-button {
-    padding: 0.5rem;
-    transition: color 0.2s ease;
-    display: block;
-  }
-  
-  @media (min-width: 768px) {
-    .mobile-menu-button {
-      display: none;
-    }
-  }
-  
-  .mobile-menu-button-scrolled {
-    color: rgb(243, 244, 246);
-  }
-  
-  .mobile-menu-button-transparent {
-    color: rgb(229, 231, 235);
-  }
-  
-  .mobile-menu-icon {
-    height: 1.5rem;
-    width: 1.5rem;
-  }
-  
-  /* Menú móvil desplegable */
-  .mobile-menu {
-    background-color: rgba(55, 65, 81, 0.95); /* Gris más oscuro para el menú móvil */
-    backdrop-filter: blur(16px);
-  }
-  
-  .mobile-menu-container {
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0.5rem 1rem;
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
   }
-  
-  .mobile-menu-item {
-    display: block;
-    padding: 0.75rem;
-    border-radius: 0.375rem;
-    color: rgb(243, 244, 246);
-    transition: all 0.2s ease;
+}
+
+.nav-item {
+  position: relative;
+  padding: 0.4rem 0.6rem; /* Reducido de 0.5rem 0.75rem */
+  font-size: 0.8125rem; /* ~13px (antes 0.875rem = 14px) */
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-item-scrolled,
+.nav-item-transparent,
+.mobile-menu-button-scrolled,
+.mobile-menu-button-transparent {
+  color: rgb(243, 244, 246);
+}
+
+.nav-item:hover {
+  color: white;
+}
+
+.nav-underline {
+  position: absolute;
+  left: 0;
+  bottom: -0.2rem; /* Reducido de -0.25rem */
+  height: 0.1rem; /* Reducido de 0.125rem */
+  background-color: rgb(34, 211, 238);
+  transition: all 0.3s ease;
+  width: 0;
+}
+
+.nav-item:hover .nav-underline {
+  width: 100%;
+}
+
+/* Menú móvil - Botón Compacto */
+.mobile-menu-button {
+  padding: 0.4rem; /* Reducido de 0.5rem */
+  transition: color 0.2s ease;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .mobile-menu-button {
+    display: none;
   }
-  
-  .mobile-menu-item:hover {
-    color: white;
-    background-color: rgba(30, 58, 138, 0.2);
-  }
+}
+
+.mobile-menu-icon {
+  height: 1.3rem; /* Reducido de 1.5rem */
+  width: 1.3rem; /* Reducido de 1.5rem */
+}
+
+/* Menú móvil desplegable - Compacto */
+.mobile-menu {
+  background-color: rgba(55, 65, 81, 0.95);
+  backdrop-filter: blur(12px); /* Reducido de 16px */
+}
+
+.mobile-menu-container {
+  max-width: 1152px; /* Reducido de 1280px */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.4rem 0.8rem; /* Compactado (antes 0.5rem 1rem) */
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem; /* Reducido de 0.75rem */
+}
+
+.mobile-menu-item {
+  display: block;
+  padding: 0.6rem; /* Reducido de 0.75rem */
+  border-radius: 0.3rem; /* Reducido de 0.375rem */
+  font-size: 0.8125rem; /* ~13px */
+  color: rgb(243, 244, 246);
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-item:hover {
+  color: white;
+  background-color: rgba(30, 58, 138, 0.2);
+}

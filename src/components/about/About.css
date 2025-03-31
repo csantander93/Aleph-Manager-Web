@@ -4,7 +4,7 @@
 /* Estilos base */
 .about-section {
   position: relative;
-  padding: 6rem 0;
+  padding: 4.8rem 0;
   overflow: hidden;
 }
 
@@ -23,7 +23,7 @@
   height: 100%;
   background: linear-gradient(to bottom right, rgba(34, 211, 238, 0.3), transparent);
   border-radius: 9999px;
-  filter: blur(48px);
+  filter: blur(38px);
 }
 
 .about-background-gradient-2 {
@@ -34,15 +34,15 @@
   height: 100%;
   background: linear-gradient(to top left, rgba(52, 211, 153, 0.3), transparent);
   border-radius: 9999px;
-  filter: blur(48px);
+  filter: blur(38px);
 }
 
 .about-container {
-  max-width: 1280px;
+  max-width: 1152px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
   position: relative;
   z-index: 10;
 }
@@ -50,37 +50,37 @@
 /* Encabezado */
 .about-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3.2rem;
   max-width: 56rem;
   margin-left: auto;
   margin-right: auto;
 }
 
 .about-title {
-  font-size: 3rem;
-  line-height: 1.1; /* Aumentado de 1 a 1.1 */
+  font-size: 2.4rem;
+  line-height: 1.1;
   font-weight: 500;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   background-image: linear-gradient(to right, #67e8f9, #6ee7b7, #67e8f9);
   background-size: 300% 300%;
   font-family: 'TWK Everett', sans-serif;
-  padding-bottom: 0.1em; /* Espacio extra para descenders */
-  display: inline-block; /* Mejor manejo del background-clip */
+  padding-bottom: 0.1em;
+  display: inline-block;
 }
 
 @media (min-width: 768px) {
   .about-title {
-    font-size: 4.5rem;
-    line-height: 1.1; /* Mantener consistencia en desktop */
+    font-size: 3.6rem;
+    line-height: 1.1;
   }
 }
 
 .about-subtitle {
-  font-size: 1.25rem;
-  line-height: 1.75;
+  font-size: 1rem;
+  line-height: 1.6;
   color: rgba(219, 234, 254, 0.8);
   max-width: 48rem;
   margin-left: auto;
@@ -93,7 +93,7 @@
 .about-content {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2.4rem;
 }
 
 @media (min-width: 1024px) {
@@ -115,17 +115,17 @@
 
 /* Bloques de texto */
 .about-text-block {
-  padding: 1.5rem;
+  padding: 1.2rem;
   background-color: rgba(30, 41, 59, 0.5);
-  border-radius: 0.75rem;
+  border-radius: 0.6rem;
   border: 1px solid rgba(20, 184, 166, 0.2);
   backdrop-filter: blur(8px);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .about-text-block p {
-  font-size: 1.125rem;
-  line-height: 1.75;
+  font-size: 0.9rem;
+  line-height: 1.6;
   color: rgba(219, 234, 254, 0.9);
   font-family: 'Inter Tight', sans-serif;
 }
@@ -136,21 +136,21 @@
 
 /* Lista de servicios */
 .about-services {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
 }
 
 .about-service-item {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .about-service-icon {
   flex-shrink: 0;
-  padding: 0.5rem;
-  margin-right: 1rem;
+  padding: 0.4rem;
+  margin-right: 0.8rem;
   background: linear-gradient(to bottom right, rgba(34, 211, 238, 0.1), rgba(52, 211, 153, 0.1));
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   transition: all 0.3s ease;
 }
 
@@ -159,13 +159,13 @@
 }
 
 .about-service-icon svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
   color: #67e8f9;
 }
 
 .about-service-title {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 500;
   color: #67e8f9;
   margin-bottom: 0.25rem;
@@ -195,12 +195,12 @@
 
 .about-image-container {
   position: relative;
-  border-radius: 1rem;
+  border-radius: 0.8rem;
   overflow: hidden;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(164, 255, 247, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  box-shadow: 0 6px 26px 0 rgba(31, 38, 135, 0.15);
 }
 
 .about-image-container img {
@@ -220,17 +220,17 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 2rem;
+  padding: 1.6rem;
   text-align: center;
 }
 
 .about-image-caption p {
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: white;
   background: linear-gradient(to right, rgba(34, 211, 238, 0.3), rgba(52, 211, 153, 0.3));
-  padding: 1rem;
-  border-radius: 0.5rem;
+  padding: 0.8rem;
+  border-radius: 0.4rem;
   backdrop-filter: blur(8px);
   font-family: 'TWK Everett', sans-serif;
 }
