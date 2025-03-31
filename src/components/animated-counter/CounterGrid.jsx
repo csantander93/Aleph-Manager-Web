@@ -3,32 +3,24 @@ import AnimatedCounter from './AnimatedCounter';
 import './CounterGrid.css';
 
 const CounterGrid = () => {
-  const counters = [
-    { 
-      value: 56, 
-      label: "Clientes", 
-      description: "Empresas que confían en nuestros servicios" 
-    },
-    { 
-      value: 6, 
-      label: "Países", 
-      description: "Mercados internacionales donde operamos" 
-    },
-    { 
-      value: 10, 
-      label: "Años", 
-      description: "Innovando soluciones a medida" 
-    },
+  const clientsByCountry = [
+    { value: 52, label: "Argentina" },
+    { value: 1, label: "UALÁ - Colombia" },
+    { value: 1, label: "CoopeAnde - Costa Rica" },
+    { value: 1, label: "Ficohsa - Honduras" },
+    { value: 1, label: "Ficohsa - Nicaragua" },
+    { value: 1, label: "Mercantil - Panamá" }
   ];
 
   return (
     <div className="counter-grid">
-      {counters.map((counter, index) => (
+      {clientsByCountry.map((country, index) => (
         <AnimatedCounter 
           key={index}
-          targetValue={counter.value}
-          label={counter.label}
-          description={counter.description}
+          targetValue={country.value}
+          label={country.label}
+          // Eliminamos la descripción ya que no la necesitamos
+          delay={index * 0.15} // Añadimos delay escalonado para animaciones
         />
       ))}
     </div>

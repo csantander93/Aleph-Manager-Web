@@ -1,11 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import './AnimatedCounter.css';
 
-const AnimatedCounter = ({ targetValue, label, description }) => {
+const AnimatedCounter = ({ targetValue, label, delay = 0 }) => {
   const counterRef = useRef(null);
-  // Ajusta estos valores para controlar la velocidad
-  const animationDuration = 3000; // Duración total en milisegundos (3 segundos)
-  const frameRate = 60; // Cuadros por segundo (para smooth animation)
 
   useEffect(() => {
     const animateCounter = () => {
@@ -14,18 +11,14 @@ const AnimatedCounter = ({ targetValue, label, description }) => {
       
       const updateCounter = () => {
         const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / animationDuration, 1);
-        
-        // Función de easing para suavizar (opcional)
-        const easedProgress = Math.sin(progress * Math.PI/2); // Ease-out effect
-        
+        const progress = Math.min(elapsed / 3000, 1);
+        const easedProgress = Math.sin(progress * Math.PI/2);
         const currentValue = Math.floor(easedProgress * targetValue);
-        counterRef.current.innerText = `+${currentValue}`;
+        counterRef.current.innerText = currentValue; // Eliminamos el '+' del inicio
         
         if (progress < 1) {
           requestAnimationFrame(updateCounter);
         } else {
-          // Animación completada
           counterRef.current.classList.add('pop-animation');
         }
       };
@@ -36,7 +29,7 @@ const AnimatedCounter = ({ targetValue, label, description }) => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          counterRef.current.innerText = '+0';
+          counterRef.current.innerText = '0';
           animateCounter();
           observer.unobserve(entries[0].target);
         }
@@ -50,12 +43,18 @@ const AnimatedCounter = ({ targetValue, label, description }) => {
   }, [targetValue]);
 
   return (
-    <div className="counter-item">
-      <span ref={counterRef} className="counter-value">
-        +0
-      </span>
-      <span className="counter-label">{label}</span>
-      <span className="counter-description">{description}</span>
+    <div className="counter-item" style={{ '--delay': `${delay}s` }}>
+      <span ref={counterRef} className="counter-value">0</span>
+      <div className="counter-label">
+        {label.includes('-') ? (
+          <>
+            <span className="country-name">{label.split('-')[1].trim()}</span>
+            <span className="company-name">{label.split('-')[0].trim()}</span>
+          </>
+        ) : (
+          <span className="country-name">{label}</span>
+        )}
+      </div>
     </div>
   );
 };
