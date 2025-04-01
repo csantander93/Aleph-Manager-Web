@@ -7,14 +7,14 @@
   --glass-bg: rgba(30, 41, 59, 0.4);
   --glass-border: rgba(255, 255, 255, 0.1);
   --text-light: rgba(219, 234, 254, 0.9);
-  --row-height: 64px; /* Reducido de 80px */
-  --row-gap: 24px; /* Reducido de 30px */
+  --row-height: 64px;
+  --row-gap: 24px;
 }
 
 /* Estilos base para la sección de clientes */
 .clients-section {
   position: relative;
-  padding: 4rem 0; /* Reducido de 5rem */
+  padding: 4rem 0;
   overflow: hidden;
   background-color: rgba(15, 23, 42, 0.9);
   isolation: isolate;
@@ -31,9 +31,9 @@
 }
 
 .clients-container {
-  max-width: 1280px; /* Reducido de 1440px */
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1.6rem; /* Reducido de 2rem */
+  padding: 0 1.6rem;
   position: relative;
   z-index: 1;
 }
@@ -41,14 +41,14 @@
 /* Encabezado mejorado */
 .clients-header {
   text-align: center;
-  margin-bottom: 3.2rem; /* Reducido de 4rem */
+  margin-bottom: 3.2rem;
 }
 
 .clients-title {
-  font-size: clamp(2rem, 5vw, 3.2rem); /* Reducido de 2.5rem/4rem */
+  font-size: clamp(2rem, 5vw, 3.2rem);
   line-height: 1.1;
   font-weight: 500;
-  margin-bottom: 1.2rem; /* Reducido de 1.5rem */
+  margin-bottom: 1.2rem;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -63,17 +63,17 @@
 .clients-title::after {
   content: '';
   position: absolute;
-  bottom: -8px; /* Reducido de 10px */
+  bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 64px; /* Reducido de 80px */
-  height: 2.4px; /* Reducido de 3px */
+  width: 64px;
+  height: 2.4px;
   background: var(--primary-gradient);
-  border-radius: 2.4px; /* Reducido de 3px */
+  border-radius: 2.4px;
 }
 
 .clients-subtitle {
-  font-size: clamp(0.8rem, 2vw, 1rem); /* Reducido de 1rem/1.25rem */
+  font-size: clamp(0.8rem, 2vw, 1rem);
   line-height: 1.6;
   color: var(--text-light);
   max-width: 56rem;
@@ -82,40 +82,21 @@
   font-weight: 400;
 }
 
-/* Carrusel mejorado con efecto fade */
-.clients-scroller-container {
-  position: relative;
-  height: calc(8 * var(--row-height) + 7 * var(--row-gap) + 32px); /* Ajustado */
-  overflow: hidden;
-  margin: 2.4rem 0; /* Reducido de 3rem */
-  padding-bottom: 16px; /* Reducido de 20px */
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
+/* Grid estático para los logos */
+.clients-static-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--row-gap);
+  margin: 2.4rem 0;
+  padding-bottom: 16px;
 }
 
-/* Modificamos las clases de las filas para un scroll perfecto */
-.clients-track {
-  position: absolute;
+.clients-static-row {
   display: flex;
-  align-items: center;
-  height: var(--row-height);
-  will-change: transform;
-  gap: 32px; /* Reducido de 40px */
-  width: 190%;
-  animation: smoothScroll var(--duration) linear infinite;
-  top: calc(var(--row-index) * (var(--row-height) + var(--row-gap)));
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
 }
 
 /* Efecto de tarjeta de vidrio moderno */
@@ -124,22 +105,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 1.6rem; /* Reducido de 1rem 2rem */
+  padding: 0.8rem 1.6rem;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-radius: 9.6px; /* Reducido de 12px */
+  border-radius: 9.6px;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 3.2px 16px rgba(0, 0, 0, 0.1); /* Reducido de 4px 20px */
-  width: 128px; /* Reducido de 160px */
-  height: 56px; /* Reducido de 70px */
-  margin: 4px 0; /* Reducido de 5px */
+  box-shadow: 0 3.2px 16px rgba(0, 0, 0, 0.1);
+  width: 128px;
+  height: 56px;
+  margin: 4px 0;
 }
 
 .client-item:hover {
-  transform: translateY(-4px) scale(1.05); /* Reducido de 5px */
-  box-shadow: 0 6.4px 24px rgba(6, 182, 212, 0.2); /* Reducido de 8px 30px */
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 6.4px 24px rgba(6, 182, 212, 0.2);
   background: rgba(30, 41, 59, 0.6);
 }
 
@@ -154,19 +135,10 @@
 .client-item:hover .client-logo {
   opacity: 1;
   transform: scale(1.1);
-  filter: brightness(1.1); /* Efecto sutil de brillo al hacer hover */
+  filter: brightness(1.1);
 }
 
-/* Animaciones (se mantienen igual) */
-@keyframes smoothScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-50% - 16px)); /* Ajustado de 20px */
-  }
-}
-
+/* Animación solo para el gradiente del título */
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -178,16 +150,6 @@
     background-position: 0% 50%;
   }
 }
-
-/* Configuración de filas */
-.clients-row-1 { top: 8px; --duration: 40s; animation-direction: normal; } /* Ajustado de 10px */
-.clients-row-2 { top: calc(var(--row-height) + var(--row-gap) + 8px); --duration: 45s; animation-direction: reverse; }
-.clients-row-3 { top: calc(2 * (var(--row-height) + var(--row-gap)) + 8px); --duration: 50s; animation-direction: normal; }
-.clients-row-4 { top: calc(3 * (var(--row-height) + var(--row-gap)) + 8px); --duration: 55s; animation-direction: reverse; }
-.clients-row-5 { top: calc(4 * (var(--row-height) + var(--row-gap)) + 8px); --duration: 60s; animation-direction: normal; }
-.clients-row-6 { top: calc(5 * (var(--row-height) + var(--row-gap)) + 8px); --duration: 65s; animation-direction: reverse; }
-.clients-row-7 { top: calc(6 * (var(--row-height) + var(--row-gap)) + 8px); --duration: 70s; animation-direction: normal; }
-.clients-row-8 { top: calc(7 * (var(--row-height) + var(--row-gap)) + 8px); --duration: 75s; animation-direction: reverse; }
 
 .clients-counter-container {
   display: flex;
@@ -201,22 +163,6 @@
   margin-top: 4rem;
   text-align: center;
   width: 100%;
-}
-
-.additional-counters-title {
-  font-size: clamp(1.5rem, 4vw, 2.2rem);
-  line-height: 1.1;
-  font-weight: 500;
-  margin-bottom: 2.5rem;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  background-image: linear-gradient(135deg, #67e8f9 0%, #6ee7b7 50%, #67e8f9 100%);
-  background-size: 300% 300%;
-  font-family: 'TWK Everett', sans-serif;
-  animation: gradientShift 8s ease infinite;
-  position: relative;
-  display: inline-block;
 }
 
 .additional-counters-grid {
@@ -254,45 +200,21 @@
   filter: brightness(0) invert(1);
 }
 
-/* Responsive */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .additional-counters-grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 2.5rem;
-  }
-  
-  .additional-counter-item {
-    margin-bottom: 1.5rem;
-  }
-}
-
-/* Media Queries */
-@media (min-width: 768px) {
-  :root {
-    --row-height: 60px; /* Reducido de 75px */
-    --row-gap: 20px; /* Reducido de 25px */
-  }
-  
-  .clients-scroller-container {
-    height: calc(8 * var(--row-height) + 7 * var(--row-gap) + 32px);
-  }
-  
-  .clients-track {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(120px, 1fr);
+  .clients-static-row {
+    gap: 16px;
   }
   
   .client-item {
-    padding: 0.8rem 1.2rem; /* Reducido de 1rem 1.5rem */
-    width: 120px; /* Reducido de 150px */
-    height: 56px; /* Reducido de 70px */
+    width: 100px;
+    height: 50px;
+    padding: 0.6rem 1rem;
   }
   
   .client-logo {
-    max-width: 96px; /* Reducido de 120px */
-    max-height: 40px; /* Reducido de 50px */
+    max-width: 90px;
+    max-height: 40px;
   }
 }
 

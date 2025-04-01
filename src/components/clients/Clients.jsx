@@ -72,28 +72,21 @@ const clientImages = [
 ];
 
 const Clients = () => {
-  // Dividimos las imágenes en 8 grupos de 7 (56 imágenes en total)
+  // Dividimos las imágenes en 4 filas para mejor distribución
   const rows = [
-    clientImages.slice(0, 6),
-    clientImages.slice(6, 13),
-    clientImages.slice(13, 19),
-    clientImages.slice(19, 26),
-    clientImages.slice(26, 32),
-    clientImages.slice(32, 39),
-    clientImages.slice(39, 45),
-    clientImages.slice(45, 52)
+    clientImages.slice(0, 13),
+    clientImages.slice(13, 26),
+    clientImages.slice(26, 39),
+    clientImages.slice(39, 52)
   ];
 
-  // Velocidades de animación diferentes para cada fila
-  const animationDurations = [40, 45, 50, 55, 60, 65, 70, 75];
-
-    // Datos para los nuevos contadores
+  // Datos para los nuevos contadores
   const additionalCounters = [
-      { country: "Colombia", image: uala, value: 1 },
-      { country: "Costa Rica", image: coopeande, value: 1 },
-      { country: "Honduras", image: bcoficohsa, value: 1 },
-      { country: "Nicaragua", image: bcoficohsa, value: 1 },
-      { country: "Panamá", image: mercantil, value: 1 }
+    { country: "Colombia", image: uala, value: 1 },
+    { country: "Costa Rica", image: coopeande, value: 1 },
+    { country: "Honduras", image: bcoficohsa, value: 1 },
+    { country: "Nicaragua", image: bcoficohsa, value: 1 },
+    { country: "Panamá", image: mercantil, value: 1 }
   ];
 
   return (
@@ -116,16 +109,10 @@ const Clients = () => {
           />
         </div>
         
-        <div className="clients-scroller-container">
+        <div className="clients-static-grid">
           {rows.map((row, rowIndex) => (
-            <div 
-              key={`row-${rowIndex}`}
-              className={`clients-track clients-row-${rowIndex + 1}`}
-              style={{
-                animationDuration: `${animationDurations[rowIndex]}s`
-              }}
-            >
-              {[...row, ...row].map((image, index) => (
+            <div key={`row-${rowIndex}`} className="clients-static-row">
+              {row.map((image, index) => (
                 <div key={`row-${rowIndex}-${index}`} className="client-item">
                   <img 
                     src={image} 
@@ -143,9 +130,8 @@ const Clients = () => {
           ))}
         </div>
 
-                {/* Nueva sección para los contadores adicionales */}
+        {/* Nueva sección para los contadores adicionales */}
         <div className="additional-counters-container">
-          <h3 className="additional-counters-title">Presencia Internacional</h3>
           <div className="additional-counters-grid">
             {additionalCounters.map((item, index) => (
               <div key={index} className="additional-counter-item">
@@ -154,19 +140,18 @@ const Clients = () => {
                   label={item.country}
                   delay={0.3 + (index * 0.1)}
                 />
-              <div className="client-item"> {/* Usamos la misma clase que en el carrusel */}
+              <div className="client-item">
                 <img 
-                    src={item.image} 
-                    alt={`${item.client} logo`}
-                    className="client-logo" 
-                    loading="lazy"
-                  />
-                </div>
+                  src={item.image} 
+                  alt={`${item.client} logo`}
+                  className="client-logo" 
+                  loading="lazy"
+                />
+              </div>
               </div>
             ))}
           </div>
         </div>
-        
       </div>
     </section>
   );
