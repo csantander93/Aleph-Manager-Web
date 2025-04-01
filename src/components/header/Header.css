@@ -7,8 +7,10 @@
 }
 
 .header-scrolled {
-  background-color: rgba(75, 85, 99, 0.85);
-  backdrop-filter: blur(6px); /* Reducido de 8px */
+  background-color: rgba(55, 65, 81, 0.6); /* Más transparente (antes 0.85) */
+  backdrop-filter: blur(10px) saturate(180%); /* Más blur y saturación */
+  -webkit-backdrop-filter: blur(10px) saturate(180%); /* Soporte para Safari */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
 .header-transparent {

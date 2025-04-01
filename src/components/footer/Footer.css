@@ -82,23 +82,7 @@
   animation: shake 0.5s ease;
 }
 
-/* Colores específicos para cada red social */
-.social-icon:nth-child(1):hover { /* Facebook */
-  color: #1877f2;
-  text-shadow: 0 0 9px #1877f2, 0 0 18px #1877f2; /* 10% menos */
-}
-
-.social-icon:nth-child(2):hover { /* Instagram */
-  color: #e4405f;
-  text-shadow: 0 0 9px #e4405f, 0 0 18px #e4405f;
-}
-
-.social-icon:nth-child(3):hover { /* Twitter */
-  color: #1da1f2;
-  text-shadow: 0 0 9px #1da1f2, 0 0 18px #1da1f2;
-}
-
-.social-icon:nth-child(4):hover { /* LinkedIn */
+.social-icon:nth-child(1):hover { /* LinkedIn */
   color: #0a66c2;
   text-shadow: 0 0 9px #0a66c2, 0 0 18px #0a66c2;
 }

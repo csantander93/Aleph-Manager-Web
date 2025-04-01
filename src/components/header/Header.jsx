@@ -40,13 +40,15 @@ const Header = () => {
   return (
     <header className={`header ${isScrolled ? 'header-scrolled' : 'header-transparent'}`}>
       <div className="header-container">
-        {/* Logo */}
+        {/* Logo  clickable */}
         <div className="flex items-center">
-          <img 
-            src={logo} 
-            alt="Aleph Manager Logo" 
-            className="header-logo"
-          />
+          <a href="#inicio" className="cursor-pointer"> {/* Envuelve el logo en un <a> */}
+            <img 
+              src={logo} 
+              alt="Aleph Manager Logo" 
+              className="header-logo"
+            />
+          </a>
         </div>
 
         {/* Menú desktop */}
