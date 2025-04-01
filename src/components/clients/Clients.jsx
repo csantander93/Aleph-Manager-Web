@@ -58,34 +58,43 @@ import reba from '../../assets/img-clients/reba.png';
 import sancorseguros from '../../assets/img-clients/sancorseguros.png';
 import uala from '../../assets/img-clients/uala.png';
 import uilo from '../../assets/img-clients/uilo.png';
-import CounterGrid from '../animated-counter/CounterGrid';
+import AnimatedCounter from '../animated-counter/AnimatedCounter';
 
 // Mapeo de nombres de clientes a sus imágenes importadas
 const clientImages = [
-  bcosaenz, bcocorp, bcoind, bcopat, bcorioja, bcobica, bcodino, bcobacs, bcoficohsa, bcoentrerios, 
-  bcosanjuan, bcosantacruz, bcosantafe, brubank, uilo, uala, coopeande, bcodelsol, naranjax, bibank, 
+  bcosaenz, bcocorp, bcoind, bcopat, bcorioja, bcobica, bcodino, bcobacs, bcoentrerios, 
+  bcosanjuan, bcosantacruz, bcosantafe, brubank, uilo, uala, bcodelsol, naranjax, bibank, 
   bcocorrientes, bancor, bcovalores, bcomunicipal, bcosantiago, bcoservtrans, bcoroela, bcopiano, 
   bcotoyota, bcocomafi, coelsa, bcogalicia, bcohipotecario, cajadevalores, bcomariva, carrefour, 
   bcoservfin, bcocoinag, reba, bcomeridian, bcocolumbia, bconacion, montemar, bcoicbc, gire, 
   panamericanenergy, bcosucredito, bcojulio, assistcard, creditoregional, balanz, galiciamas, 
-  bcomacro, interbank, mercantil, sancorseguros
+  bcomacro, interbank, sancorseguros
 ];
 
 const Clients = () => {
   // Dividimos las imágenes en 8 grupos de 7 (56 imágenes en total)
   const rows = [
-    clientImages.slice(0, 7),
-    clientImages.slice(7, 14),
-    clientImages.slice(14, 21),
-    clientImages.slice(21, 28),
-    clientImages.slice(28, 35),
-    clientImages.slice(35, 42),
-    clientImages.slice(42, 49),
-    clientImages.slice(49, 56)
+    clientImages.slice(0, 6),
+    clientImages.slice(6, 13),
+    clientImages.slice(13, 19),
+    clientImages.slice(19, 26),
+    clientImages.slice(26, 32),
+    clientImages.slice(32, 39),
+    clientImages.slice(39, 45),
+    clientImages.slice(45, 52)
   ];
 
   // Velocidades de animación diferentes para cada fila
   const animationDurations = [40, 45, 50, 55, 60, 65, 70, 75];
+
+    // Datos para los nuevos contadores
+  const additionalCounters = [
+      { country: "Colombia", image: uala, value: 1 },
+      { country: "Costa Rica", image: coopeande, value: 1 },
+      { country: "Honduras", image: bcoficohsa, value: 1 },
+      { country: "Nicaragua", image: bcoficohsa, value: 1 },
+      { country: "Panamá", image: mercantil, value: 1 }
+  ];
 
   return (
     <section className="clients-section">
@@ -99,7 +108,13 @@ const Clients = () => {
           <p className="clients-subtitle">Empresas que confían en nuestros servicios</p>
         </div>
 
-        <CounterGrid />
+        <div className="clients-counter-container">
+          <AnimatedCounter 
+            targetValue={52} 
+            label="Argentina" 
+            delay={0.3}
+          />
+        </div>
         
         <div className="clients-scroller-container">
           {rows.map((row, rowIndex) => (
@@ -127,6 +142,31 @@ const Clients = () => {
             </div>
           ))}
         </div>
+
+                {/* Nueva sección para los contadores adicionales */}
+        <div className="additional-counters-container">
+          <h3 className="additional-counters-title">Presencia Internacional</h3>
+          <div className="additional-counters-grid">
+            {additionalCounters.map((item, index) => (
+              <div key={index} className="additional-counter-item">
+                <AnimatedCounter 
+                  targetValue={item.value} 
+                  label={item.country}
+                  delay={0.3 + (index * 0.1)}
+                />
+              <div className="client-item"> {/* Usamos la misma clase que en el carrusel */}
+                <img 
+                    src={item.image} 
+                    alt={`${item.client} logo`}
+                    className="client-logo" 
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
       </div>
     </section>
   );

@@ -1,12 +1,11 @@
 import About from "./components/about/About"
 import Awards from "./components/awards/Awards"
-import Clientes from "./components/clients/Clients"
+import Clients from "./components/clients/Clients"
 import ContactForm from "./components/contact/ContactForm"
 import Features from "./components/features/Features"
 import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
 import Intro from "./components/intro/Intro"
-import Modules from "./components/modules/modules/Modules"
 import SectionWrapper from "./components/section/SectionWrapper"
 
 function App() {
@@ -28,7 +27,7 @@ function App() {
 
       
       <SectionWrapper id="clientes">
-        <Clientes />
+        <Clients />
       </SectionWrapper>
 
       <SectionWrapper id="premios">

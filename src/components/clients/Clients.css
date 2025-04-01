@@ -113,7 +113,7 @@
   height: var(--row-height);
   will-change: transform;
   gap: 32px; /* Reducido de 40px */
-  width: 200%;
+  width: 190%;
   animation: smoothScroll var(--duration) linear infinite;
   top: calc(var(--row-index) * (var(--row-height) + var(--row-gap)));
 }
@@ -144,18 +144,17 @@
 }
 
 .client-logo {
-  max-width: 112px; /* Reducido de 140px */
-  max-height: 48px; /* Reducido de 60px */
+  max-width: 112px;
+  max-height: 48px;
   object-fit: contain;
-  filter: grayscale(100%) contrast(0.8);
-  opacity: 0.9;
+  opacity: 0.8;
   transition: all 0.4s ease;
 }
 
 .client-item:hover .client-logo {
-  filter: grayscale(0) contrast(1);
   opacity: 1;
   transform: scale(1.1);
+  filter: brightness(1.1); /* Efecto sutil de brillo al hacer hover */
 }
 
 /* Animaciones (se mantienen igual) */
@@ -190,6 +189,84 @@
 .clients-row-7 { top: calc(6 * (var(--row-height) + var(--row-gap)) + 8px); --duration: 70s; animation-direction: normal; }
 .clients-row-8 { top: calc(7 * (var(--row-height) + var(--row-gap)) + 8px); --duration: 75s; animation-direction: reverse; }
 
+.clients-counter-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+/* Estilos para la nueva sección de contadores adicionales */
+.additional-counters-container {
+  margin-top: 4rem;
+  text-align: center;
+  width: 100%;
+}
+
+.additional-counters-title {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  line-height: 1.1;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(135deg, #67e8f9 0%, #6ee7b7 50%, #67e8f9 100%);
+  background-size: 300% 300%;
+  font-family: 'TWK Everett', sans-serif;
+  animation: gradientShift 8s ease infinite;
+  position: relative;
+  display: inline-block;
+}
+
+.additional-counters-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.additional-counter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 180px;
+}
+
+.client-image-container {
+  margin-top: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.5rem;
+  width: 120px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.additional-client-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .additional-counters-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  
+  .additional-counter-item {
+    margin-bottom: 1.5rem;
+  }
+}
+
 /* Media Queries */
 @media (min-width: 768px) {
   :root {
@@ -202,7 +279,9 @@
   }
   
   .clients-track {
-    gap: 24px; /* Reducido de 30px */
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(120px, 1fr);
   }
   
   .client-item {

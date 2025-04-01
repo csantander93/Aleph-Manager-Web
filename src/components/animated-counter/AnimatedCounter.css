@@ -1,20 +1,23 @@
-/* AnimatedCounter.css - Versión Compacta (80%) */
+/* AnimatedCounter.css - Versión Cuadrada */
 .counter-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem; /* Reducido de 1.25rem */
+  padding: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px); /* Reducido de 10px */
-  border-radius: 11.2px; /* Reducido de 14px */
-  min-width: 144px; /* Reducido de 180px */
+  backdrop-filter: blur(8px);
+  border-radius: 11.2px;
+  width: 120px; /* Tamaño fijo para el cuadrado */
+  height: 120px; /* Mismo valor que width para hacerlo cuadrado */
+  aspect-ratio: 1/1; /* Garantiza relación 1:1 */
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   opacity: 0;
-  transform: translateY(16px); /* Reducido de 20px */
+  transform: translateY(16px);
   animation: fadeInUp 0.6s forwards var(--delay);
   position: relative;
   overflow: hidden;
+  box-sizing: border-box; /* Incluye padding en el tamaño total */
   
   /* Fondo metálico estático */
   background: linear-gradient(
@@ -29,14 +32,14 @@
   
   /* Sombras estáticas */
   box-shadow: 
-      0 3.2px 24px rgba(0, 0, 0, 0.25), /* Reducido de 4px 30px */
-      inset 0 0 16px rgba(255, 255, 255, 0.1), /* Reducido de 20px */
-      inset 0 0 24px rgba(255, 255, 255, 0.05); /* Reducido de 30px */
+      0 3.2px 24px rgba(0, 0, 0, 0.25),
+      inset 0 0 16px rgba(255, 255, 255, 0.1),
+      inset 0 0 24px rgba(255, 255, 255, 0.05);
 }
 
 /* Contador mejorado */
 .counter-value {
-  font-size: 3rem; /* Reducido de 3.75rem */
+  font-size: 2.2rem; /* Reducido para caber mejor */
   font-weight: 700;
   font-family: 'TWK Everett', sans-serif;
   background: linear-gradient(135deg, 
@@ -51,8 +54,8 @@
   background-size: 300% 300%;
   animation: gradientShift 6s ease infinite;
   line-height: 1;
-  margin-bottom: 0.2rem; /* Reducido para acercar al texto */
-  text-shadow: 0 0 8px rgba(103, 232, 249, 0.3); /* Reducido de 10px */
+  margin-bottom: 0.2rem;
+  text-shadow: 0 0 8px rgba(103, 232, 249, 0.3);
   position: relative;
   z-index: 2;
 }
@@ -64,47 +67,43 @@
   align-items: center;
   font-family: 'Inter Tight', sans-serif;
   text-align: center;
-  max-width: 90%;
-  
-  font-size: 0.8rem; /* Reducido de 1rem */
+  width: 100%;
+  font-size: 0.7rem; /* Reducido para caber mejor */
   color: rgba(219, 234, 254, 0.9);
   text-transform: uppercase;
-  letter-spacing: 0.8px; /* Reducido de 1px */
+  letter-spacing: 0.6px;
   font-weight: 500;
   position: relative;
   z-index: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Nombre del país (destacado) */
 .country-name {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.95);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
 }
 
 /* Nombre de la empresa (subtle) */
 .company-name {
-  font-size: 0.65rem;
+  font-size: 0.55rem;
   font-weight: 400;
   color: rgba(219, 234, 254, 0.7);
   font-style: italic;
-  margin-top: -0.1rem; /* Ajuste fino de espaciado */
-}
-
-/* Descripción */
-.counter-description {
-  font-size: 0.68rem; /* Reducido de 0.85rem */
-  font-family: 'Inter Tight', sans-serif;
-  color: rgba(219, 234, 254, 0.7);
-  text-align: center;
-  margin-top: 0.4rem; /* Reducido de 0.5rem */
-  line-height: 1.4;
-  font-weight: 400;
-  max-width: 90%;
-  position: relative;
-  z-index: 2;
+  margin-top: -0.1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
 }
 
 /* Animaciones (se mantienen iguales) */
@@ -121,58 +120,37 @@
   100% { background-position: 0% 50%; }
 }
 
-/* Asigna delays escalonados (se mantienen iguales) */
-/* Añade esto al final de AnimatedCounter.css */
-.counter-item:nth-child(1) { --delay: 0.1s; }
-.counter-item:nth-child(2) { --delay: 0.2s; }
-.counter-item:nth-child(3) { --delay: 0.3s; }
-.counter-item:nth-child(4) { --delay: 0.4s; }
-.counter-item:nth-child(5) { --delay: 0.5s; }
-.counter-item:nth-child(6) { --delay: 0.6s; }
-
-/* Responsividad ajustada */
+/* Media queries ajustados para el diseño cuadrado */
 @media (min-width: 480px) {
   .counter-item {
-      min-width: 152px; /* Reducido de 190px */
-      padding: 1.2rem; /* Reducido de 1.5rem */
+      width: 140px;
+      height: 140px;
   }
   .counter-value {
-      font-size: 2.6rem; /* Reducido de 3.25rem */
-  }
-  .counter-label {
-      font-size: 0.8rem; /* Reducido de 1rem */
-  }
-  .counter-description {
-      font-size: 0.64rem; /* Reducido de 0.8rem */
+      font-size: 2.4rem;
   }
 }
 
 @media (min-width: 768px) {
   .counter-item {
-      min-width: 168px; /* Reducido de 210px */
-      padding: 1.4rem; /* Reducido de 1.75rem */
+      width: 160px;
+      height: 160px;
   }
   .counter-value {
-      font-size: 3rem; /* Reducido de 3.75rem */
-  }
-  .counter-label {
-      font-size: 0.8rem; /* Reducido de 1rem */
-      letter-spacing: 0.8px; /* Reducido de 1px */
-  }
-  .counter-description {
-      font-size: 0.68rem; /* Reducido de 0.85rem */
+      font-size: 2.8rem;
   }
 }
 
 @media (min-width: 1024px) {
   .counter-item {
-      min-width: 184px; /* Reducido de 230px */
+      width: 180px;
+      height: 180px;
   }
   .counter-item:hover {
-      transform: translateY(-6.4px) scale(1.08); /* Reducido de 8px */
+      transform: translateY(-6.4px) scale(1.08);
       box-shadow: 
-          0 9.6px 32px rgba(0, 0, 0, 0.3), /* Reducido de 12px 40px */
-          inset 0 0 20px rgba(255, 255, 255, 0.15), /* Reducido de 25px */
-          inset 0 0 32px rgba(255, 255, 255, 0.1); /* Reducido de 40px */
+          0 9.6px 32px rgba(0, 0, 0, 0.3),
+          inset 0 0 20px rgba(255, 255, 255, 0.15),
+          inset 0 0 32px rgba(255, 255, 255, 0.1);
   }
 }
