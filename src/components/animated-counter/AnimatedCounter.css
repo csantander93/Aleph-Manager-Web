@@ -4,19 +4,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8px);
   border-radius: 11.2px;
   width: 120px; /* Tamaño fijo para el cuadrado */
-  height: 120px; /* Mismo valor que width para hacerlo cuadrado */
+  height: 90px !important; /* Local scoped */
   aspect-ratio: 1/1; /* Garantiza relación 1:1 */
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   opacity: 0;
   transform: translateY(16px);
   animation: fadeInUp 0.6s forwards var(--delay);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   box-sizing: border-box; /* Incluye padding en el tamaño total */
   
   /* Fondo metálico estático */
@@ -75,35 +74,25 @@
   font-weight: 500;
   position: relative;
   z-index: 2;
-  overflow: hidden;
+  overflow: visible;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 /* Nombre del país (destacado) */
 .country-name {
-  font-size: 0.7rem;
+  font-size: 1.1rem; /* Aumentado de 0.7rem (≈43% más grande) */
   font-weight: 600;
   color: rgba(255, 255, 255, 0.95);
   text-transform: uppercase;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.8px; /* Más espaciado */
+  line-height: 1.2; /* Mejor interlineado */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
-}
-
-/* Nombre de la empresa (subtle) */
-.company-name {
-  font-size: 0.55rem;
-  font-weight: 400;
-  color: rgba(219, 234, 254, 0.7);
-  font-style: italic;
-  margin-top: -0.1rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 100%;
+  padding: 0 2px;
+  margin-top: 0.2rem; /* Espacio ajustado */
 }
 
 /* Animaciones (se mantienen iguales) */

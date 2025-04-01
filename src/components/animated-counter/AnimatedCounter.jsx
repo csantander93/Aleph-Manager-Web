@@ -49,7 +49,6 @@ const AnimatedCounter = ({ targetValue, label, delay = 0 }) => {
         {label.includes('-') ? (
           <>
             <span className="country-name">{label.split('-')[1].trim()}</span>
-            <span className="company-name">{label.split('-')[0].trim()}</span>
           </>
         ) : (
           <span className="country-name">{label}</span>
