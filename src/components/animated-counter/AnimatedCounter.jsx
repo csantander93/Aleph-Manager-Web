@@ -6,6 +6,13 @@ const AnimatedCounter = ({ targetValue, label, delay = 0 }) => {
 
   useEffect(() => {
     const animateCounter = () => {
+      // Si el valor es 1, mostrarlo directamente sin animación
+      if (targetValue === 1) {
+        counterRef.current.innerText = '1';
+        counterRef.current.classList.add('pop-animation');
+        return;
+      }
+
       const startTime = Date.now();
       const startValue = 0;
       
@@ -14,7 +21,7 @@ const AnimatedCounter = ({ targetValue, label, delay = 0 }) => {
         const progress = Math.min(elapsed / 3000, 1);
         const easedProgress = Math.sin(progress * Math.PI/2);
         const currentValue = Math.floor(easedProgress * targetValue);
-        counterRef.current.innerText = currentValue; // Eliminamos el '+' del inicio
+        counterRef.current.innerText = currentValue;
         
         if (progress < 1) {
           requestAnimationFrame(updateCounter);
@@ -29,7 +36,7 @@ const AnimatedCounter = ({ targetValue, label, delay = 0 }) => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          counterRef.current.innerText = '0';
+          counterRef.current.innerText = targetValue === 1 ? '1' : '0';
           animateCounter();
           observer.unobserve(entries[0].target);
         }

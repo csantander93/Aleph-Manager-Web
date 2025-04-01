@@ -294,31 +294,3 @@
     }
   }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .clients-track {
-    animation-play-state: running;
-  }
-  .clients-track:hover {
-    animation-play-state: paused;
-  }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .client-item:hover {
-    transform: translateY(-4px) scale(1.05); /* Reducido de 5px */
-    box-shadow: 0 6.4px 24px rgba(6, 182, 212, 0.3); /* Ajustado */
-  }
-  
-  .client-item:hover .client-logo {
-    filter: grayscale(0) contrast(1);
-    opacity: 1;
-    transform: scale(1.1);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .clients-track {
-    animation: none !important;
-  }
-}
