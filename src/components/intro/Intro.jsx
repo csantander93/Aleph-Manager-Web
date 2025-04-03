@@ -30,7 +30,7 @@ const Intro = () => {
           </div>
           
           <p className="description-text">
-            Solución software para los sistemas de gestión de normas ISO, Gobierno, Riesgo y cumplimiento (GRC), Seguridad y Continuidad
+          Soluciones de software para los sistemas de gestión de normas ISO, Gobierno, Riesgo y cumplimiento (GRC), Seguridad, Continuidad, Pérdida Crediticia Esperada y PLAFT
           </p>
           
           <div className="buttons-container">
