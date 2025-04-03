@@ -44,15 +44,39 @@ const Modules = () => {
 
       <div className={`modulos-container ${animate ? 'animate-in' : ''}`}>
         <div className="modulos-header">
-          <h2 className="modulos-title">Plataforma Integral de Módulos</h2>
+          <h2 className="modulos-title">Soluciones de Software</h2>
           <p className="modulos-subtitle">
-            Soluciones especializadas para cada área de cumplimiento y gestión de riesgos
+            Modulos especializados para cada una de las Soluciones de Software
           </p>
+        </div>
+
+        <div className="breadcrumbs">
+          <span className="breadcrumb">
+          {activeCategory ? 'SOLUCIONES DE SOFTWARE' : 'SELECCIONE UNA SOLUCIÓN'}
+          </span>
+          {activeCategory && (
+            <>
+              <span className="breadcrumb-divider">/</span>
+              <span className="breadcrumb">
+                {activeCategory.includes('(') ? activeCategory.split('(')[0].trim() : activeCategory}
+              </span>
+            </>
+          )}
+          {selectedModule && (
+            <>
+              <span className="breadcrumb-divider">/</span>
+              <span className="breadcrumb active">{selectedModule}</span>
+            </>
+          )}
         </div>
 
         <div className="modulos-content">
           {/* Panel de categorías */}
           <div className="categories-panel">
+            <div className="panel-header">
+              <h3>Soluciones de Software</h3>
+              <p>Seleccione una categoría</p>
+            </div>
             {Object.keys(modulesData).map((category, index) => (
               <div 
                 key={category}
@@ -75,8 +99,9 @@ const Modules = () => {
           {/* Panel de módulos */}
           {activeCategory && (
             <div className="modules-panel">
-              <div className="modules-header">
-                <h3>{activeCategory.includes('(') ? activeCategory.split('(')[0].trim() : activeCategory}</h3>
+              <div className="panel-header">
+                <h3>Módulos</h3>
+                <p>Seleccione un módulo para ver detalles</p>
               </div>
               <div className="modules-list">
                 {Object.keys(modulesData[activeCategory]).map((moduleName, index) => (
@@ -102,6 +127,10 @@ const Modules = () => {
           {/* Detalle del módulo seleccionado */}
           {selectedModule && activeCategory && (
             <div className="module-detail-panel">
+              <div className="panel-header">
+                <h3>Descripción</h3>
+                <p>Detalles del módulo seleccionado</p>
+              </div>
               <div className="module-detail-header">
                 <h3>{selectedModule}</h3>
                 <div className="module-category-badge">
@@ -135,6 +164,10 @@ const Modules = () => {
           {/* Estado vacío cuando no hay selección */}
           {!selectedModule && activeCategory && (
             <div className="module-detail-panel empty-state">
+              <div className="panel-header">
+                <h3>Descripción</h3>
+                <p>Detalles del módulo seleccionado</p>
+              </div>
               <div className="empty-state-content">
                 <div className="empty-state-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
