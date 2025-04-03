@@ -32,7 +32,7 @@ const Header = () => {
   const menuItems = [
     { name: "Inicio", href: "#inicio" },
     { name: "Sobre Nosotros", href: "#sobre-nosotros" },
-    { name: "Características", href: "#caracteristicas" },
+    { name: "Características", href: "#modulos" },
     { name: "Clientes", href: "#clientes" },
     { name: "Contáctanos", href: "#contacto" }
   ];

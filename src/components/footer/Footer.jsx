@@ -12,7 +12,13 @@ const Footer = () => {
             Soluciones innovadoras para la gestión empresarial.
           </p>
           <div className="social-icons">
-            <a href="https://linkedin.com" aria-label="LinkedIn" className="social-icon">
+            <a 
+              href="https://www.linkedin.com/showcase/aleph-manager/about/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="LinkedIn" 
+              className="social-icon"
+            >
               <FaLinkedin />
             </a>
           </div>
@@ -23,7 +29,7 @@ const Footer = () => {
           <ul className="footer-links">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
-            <li><a href="#caracteristicas">Características</a></li>
+            <li><a href="#modulos">Características</a></li>
             <li><a href="#clientes">Clientes</a></li>
           </ul>
         </div>
