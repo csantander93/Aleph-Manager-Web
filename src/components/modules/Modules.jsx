@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './Modulos.css';
+import { modulesData } from './data/modulesData';
+import './Modules.css';
 
-const Modulos = () => {
+const Modules = () => {
   const [activeCategory, setActiveCategory] = useState(null);
   const [selectedModule, setSelectedModule] = useState(null);
   const [animate, setAnimate] = useState(false);
@@ -9,41 +10,6 @@ const Modulos = () => {
   useEffect(() => {
     setAnimate(true);
   }, []);
-
-  const categories = {
-    "Net Discovery": {
-      "Endpoint y Servidores": "Descubrimiento automatizado de dispositivos finales y servidores en la red corporativa.",
-      "Networking": "Inventario dinámico de equipos de red (routers, switches) y análisis de topología."
-    },
-    "GRC (Gobierno, Riesgo y Cumplimiento)": {
-      "CMDB": "Base de datos de gestión de configuración conforme a ISO 20000. Inventario de activos tecnológicos con relaciones y dependencias.",
-      "Clasificación de Activos de Información": "Categorización de activos según criticidad y sensibilidad (ISO 27001).",
-      "Análisis de Riesgos Operacionales": "Evaluación de riesgos en procesos de negocio basado en ISO 31000.",
-      "Análisis de Riesgos Tecnológicos": "Gestión de riesgos relacionados con tecnología informática y sistemas de información.",
-      "Árbol de Dependencias": "Visualización de relaciones entre activos/procesos para análisis de criticidad.",
-      "Base de datos sobre eventos de Riesgo Operacional": "Registro histórico de eventos para análisis de tendencias y patrones.",
-      "Análisis de Servicios Financieros Digitales": "Evaluación de riesgos específicos en fintech y digital banking.",
-      "Análisis de Delegación en Terceras Partes": "Gestión de riesgos en outsourcing y proveedores externos.",
-      "Análisis de Servicios descentralizados": "Control de riesgos en infraestructuras distribuidas.",
-      "Compliance": "Seguimiento de cumplimiento normativo para múltiples regulaciones.",
-      "Base de Incidentes": "Gestión de incidentes de seguridad conforme a ISO 27002.",
-      "Vulnerability Management IA": "Detección, priorización y remediación de vulnerabilidades."
-    },
-    "Continuidad de Negocio": {
-      "BIAs": "Análisis de impacto al negocio según ISO 22317. Estimación de impacto operacional/financiero.",
-      "Escenarios": "Modelado de situaciones disruptivas para evaluación de preparación.",
-      "Estrategias": "Desarrollo de planes de mitigación para operaciones críticas.",
-      "Planes de Continuidad": "Documentación de procedimientos para mantener operaciones esenciales.",
-      "Planes de Recuperación ante Desastres": "Estrategias para restauración de infraestructura crítica."
-    },
-    "Pérdida Crediticia Esperada": {
-      "Pérdida Crediticia Esperada": "Cálculo de deterioro crediticio según normativa NIIF 9 para carteras de crédito."
-    },
-    "PLAFT (Prevención de Lavado de Activos y Financiamiento del Terrorismo)": {
-      "Matriz de Riesgo": "Identificación y valoración de riesgos de lavado de activos y financiamiento al terrorismo.",
-      "Monitoreo Transaccional": "Detección de patrones sospechosos en transacciones financieras."
-    }
-  };
 
   const handleCategoryClick = (category) => {
     setActiveCategory(activeCategory === category ? null : category);
@@ -87,7 +53,7 @@ const Modulos = () => {
         <div className="modulos-content">
           {/* Panel de categorías */}
           <div className="categories-panel">
-            {Object.keys(categories).map((category, index) => (
+            {Object.keys(modulesData).map((category, index) => (
               <div 
                 key={category}
                 className={`category-item ${activeCategory === category ? 'active' : ''}`}
@@ -113,7 +79,7 @@ const Modulos = () => {
                 <h3>{activeCategory.includes('(') ? activeCategory.split('(')[0].trim() : activeCategory}</h3>
               </div>
               <div className="modules-list">
-                {Object.keys(categories[activeCategory]).map((moduleName, index) => (
+                {Object.keys(modulesData[activeCategory]).map((moduleName, index) => (
                   <div
                     key={moduleName}
                     className={`module-item ${selectedModule === moduleName ? 'selected' : ''}`}
@@ -134,7 +100,7 @@ const Modulos = () => {
           )}
 
           {/* Detalle del módulo seleccionado */}
-          {selectedModule && (
+          {selectedModule && activeCategory && (
             <div className="module-detail-panel">
               <div className="module-detail-header">
                 <h3>{selectedModule}</h3>
@@ -143,7 +109,25 @@ const Modulos = () => {
                 </div>
               </div>
               <div className="module-detail-content">
-                <p>{categories[activeCategory][selectedModule]}</p>
+                <p className="module-description">
+                  {modulesData[activeCategory][selectedModule].description}
+                </p>
+                
+                {modulesData[activeCategory][selectedModule].features && (
+                  <div className="module-features">
+                    <h4>Características principales:</h4>
+                    <ul>
+                      {modulesData[activeCategory][selectedModule].features.map((feature, i) => (
+                        <li key={i}>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M20 6L9 17l-5-5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -170,4 +154,4 @@ const Modulos = () => {
   );
 };
 
-export default Modulos;
+export default Modules;
