@@ -5,19 +5,41 @@ import './Modules.css';
 const Modules = () => {
   const [activeCategory, setActiveCategory] = useState(null);
   const [selectedModule, setSelectedModule] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mobileView, setMobileView] = useState('categories'); // 'categories', 'modules', 'detail'
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     setAnimate(true);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const handleCategoryClick = (category) => {
     setActiveCategory(activeCategory === category ? null : category);
     setSelectedModule(null);
+    if (isMobile) setMobileView('modules');
   };
 
   const handleModuleSelection = (moduleName) => {
     setSelectedModule(selectedModule === moduleName ? null : moduleName);
+    if (isMobile) setMobileView('detail');
+  };
+
+  const handleMobileBack = () => {
+    if (mobileView === 'detail') {
+      setMobileView('modules');
+    } else if (mobileView === 'modules') {
+      setMobileView('categories');
+    }
   };
 
   return (
@@ -72,11 +94,25 @@ const Modules = () => {
 
         <div className="modulos-content">
           {/* Panel de categorías */}
-          <div className="categories-panel">
-            <div className="panel-header">
-              <h3>Soluciones de Software</h3>
-              <p>Seleccione una categoría</p>
-            </div>
+          <div className={`categories-panel ${!isMobile || mobileView === 'categories' ? 'mobile-active' : ''}`}>
+            {isMobile && (
+              <div className="mobile-panel-header">
+                <button className="mobile-back-button" onClick={handleMobileBack}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M15 18l-6-6 6-6" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                </button>
+                <h3 className="mobile-panel-title">Soluciones de Software</h3>
+              </div>
+            )}
+            
+            {!isMobile && (
+              <div className="panel-header">
+                <h3>Soluciones de Software</h3>
+                <p>Seleccione una categoría</p>
+              </div>
+            )}
+            
             {Object.keys(modulesData).map((category, index) => (
               <div 
                 key={category}
@@ -95,14 +131,29 @@ const Modules = () => {
               </div>
             ))}
           </div>
+          
 
           {/* Panel de módulos */}
           {activeCategory && (
-            <div className="modules-panel">
-              <div className="panel-header">
-                <h3>Módulos</h3>
-                <p>Seleccione un módulo para ver detalles</p>
-              </div>
+            <div className={`modules-panel ${!isMobile || mobileView === 'modules' ? 'mobile-active' : ''}`}>
+              {isMobile && (
+                <div className="mobile-panel-header">
+                  <button className="mobile-back-button" onClick={handleMobileBack}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <path d="M15 18l-6-6 6-6" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                  </button>
+                  <h3 className="mobile-panel-title">Módulos</h3>
+                </div>
+              )}
+              
+              {!isMobile && (
+                <div className="panel-header">
+                  <h3>Módulos</h3>
+                  <p>Seleccione un módulo para ver detalles</p>
+                </div>
+              )}
+              
               <div className="modules-list">
                 {Object.keys(modulesData[activeCategory]).map((moduleName, index) => (
                   <div
@@ -126,18 +177,43 @@ const Modules = () => {
 
           {/* Detalle del módulo seleccionado */}
           {selectedModule && activeCategory && (
-            <div className="module-detail-panel">
-              <div className="panel-header">
-                <h3>Descripción</h3>
-                <p>Detalles del módulo seleccionado</p>
-              </div>
-              <div className="module-detail-header">
-                <h3>{selectedModule}</h3>
-                <div className="module-category-badge">
-                  {activeCategory.includes('(') ? activeCategory.split('(')[0].trim() : activeCategory}
+            <div className={`module-detail-panel ${!isMobile || mobileView === 'detail' ? 'mobile-active' : ''}`}>
+              {isMobile && (
+                <div className="mobile-panel-header">
+                  <button className="mobile-back-button" onClick={handleMobileBack}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <path d="M15 18l-6-6 6-6" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                  </button>
+                  <h3 className="mobile-panel-title">Detalles</h3>
                 </div>
-              </div>
+              )}
+              
+              {!isMobile && (
+                <>
+                  <div className="panel-header">
+                    <h3>Descripción</h3>
+                    <p>Detalles del módulo seleccionado</p>
+                  </div>
+                  <div className="module-detail-header">
+                    <h3>{selectedModule}</h3>
+                    <div className="module-category-badge">
+                      {activeCategory.includes('(') ? activeCategory.split('(')[0].trim() : activeCategory}
+                    </div>
+                  </div>
+                </>
+              )}
+              
               <div className="module-detail-content">
+                {isMobile && (
+                  <div className="module-detail-header">
+                    <h3>{selectedModule}</h3>
+                    <div className="module-category-badge">
+                      {activeCategory.includes('(') ? activeCategory.split('(')[0].trim() : activeCategory}
+                    </div>
+                  </div>
+                )}
+                
                 <p className="module-description">
                   {modulesData[activeCategory][selectedModule].description}
                 </p>
@@ -162,7 +238,7 @@ const Modules = () => {
           )}
 
           {/* Estado vacío cuando no hay selección */}
-          {!selectedModule && activeCategory && (
+          {!selectedModule && activeCategory && !isMobile && (
             <div className="module-detail-panel empty-state">
               <div className="panel-header">
                 <h3>Descripción</h3>
@@ -185,6 +261,6 @@ const Modules = () => {
       </div>
     </section>
   );
-};
+}
 
 export default Modules;
