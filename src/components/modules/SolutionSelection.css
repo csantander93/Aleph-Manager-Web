@@ -42,16 +42,16 @@
      min-height: 100vh;
      display: flex;
      align-items: center;
-   }
-   
-   .modulos-selection-section {
+     padding-top: var(--modulos-space-lg); /* Reduce de xl a lg */
+     padding-bottom: var(--modulos-space-xl);
+     min-height: 500px; /* Elimina altura fija si no es necesaria */
      box-sizing: border-box;
      margin: 0;
      padding: 0;
      align-items: center; /* Esto ya lo tienes, está bien */
      overflow: hidden; /* Evita scroll no deseado */
    }
-   
+
    /* ==========================================================================
       Estructura Principal
       ========================================================================== */
