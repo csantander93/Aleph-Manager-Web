@@ -39,23 +39,6 @@
    }
    
    /* ==========================================================================
-      Estilos Base y Reset
-      ========================================================================== */
-   
-   * {
-     box-sizing: border-box;
-     margin: 0;
-     padding: 0;
-   }
-   
-   body {
-     font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
-     line-height: 1.5;
-     color: var(--text-primary);
-     background-color: var(--bg-dark);
-   }
-   
-   /* ==========================================================================
       Componente Principal
       ========================================================================== */
    

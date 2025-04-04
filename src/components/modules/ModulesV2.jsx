@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { modulesData } from './data/modulesData';
-import './Modules.css';
+import './ModulesV2.css';
 
 const ModulesV2 = () => {
   const [currentView, setCurrentView] = useState('selection'); // 'selection' | 'detail'
