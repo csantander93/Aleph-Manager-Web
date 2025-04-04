@@ -65,12 +65,6 @@ const Modules = () => {
       </div>
 
       <div className={`modulos-container ${animate ? 'animate-in' : ''}`}>
-        <div className="modulos-header">
-          <h2 className="modulos-title">Soluciones de Software</h2>
-          <p className="modulos-subtitle">
-            Modulos especializados para cada una de las Soluciones de Software
-          </p>
-        </div>
 
         <div className="breadcrumbs">
           <span className="breadcrumb">

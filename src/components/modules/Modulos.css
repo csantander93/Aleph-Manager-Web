@@ -124,67 +124,86 @@
      to { transform: translateY(-100vh); }
    }
    
-   /* ==========================================================================
-      Encabezado
-      ========================================================================== */
-   
-   .modulos-header {
-     text-align: center;
-     margin-bottom: var(--space-xxl);
-   }
-   
-   .modulos-title {
-     font-size: 2.5rem;
-     line-height: 1.1;
-     font-weight: 500;
-     margin-bottom: var(--space-lg);
-     background-clip: text;
-     -webkit-background-clip: text;
-     color: transparent;
-     background-image: linear-gradient(to right, var(--primary), var(--secondary), var(--primary));
-     background-size: 300% 300%;
-     font-family: 'TWK Everett', sans-serif;
-     display: inline-block;
-     letter-spacing: -0.5px;
-   }
-   
-   .modulos-subtitle {
-     font-size: 1rem;
-     line-height: 1.6;
-     color: rgba(226, 232, 240, 0.8);
-     max-width: 600px;
-     margin: 0 auto;
-     font-weight: 500;
-   }
+   .back-to-solutions {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 8px 16px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+  
+  .back-to-solutions:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .back-to-solutions svg {
+    width: 16px;
+    height: 16px;
+  }
    
    /* ==========================================================================
       Breadcrumbs
       ========================================================================== */
    
-   .breadcrumbs {
-     display: flex;
-     align-items: center;
-     gap: var(--space-sm);
-     margin: var(--space-lg) 0;
-     padding: var(--space-md);
-     background-color: rgba(8, 47, 73, 0.2);
-     border-radius: var(--radius-md);
-     font-size: 0.875rem;
-   }
+      .breadcrumbs {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+        position: relative;
+        flex-wrap: wrap;
+      }
    
    .breadcrumb {
-     transition: color var(--transition-fast);
-     font-weight: 500;
-     text-transform: uppercase;
-   }
-   
-   .breadcrumb.active {
-     color: #a5f3fc;
-   }
-   
-   .breadcrumb-divider {
-     color: #4a7c9a;
-   }
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  
+  .breadcrumb.active {
+    color: white;
+    font-weight: 500;
+  }
+  
+  .breadcrumb-divider {
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 4px;
+  }
+
+  .back-button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-right: 8px;
+  }
+  
+  .back-button:hover {
+    color: white;
+  }
+  
+  .back-button svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+  }
    
    /* ==========================================================================
       Layout de Contenido
@@ -679,15 +698,6 @@
        display: none;
      }
      
-     /* Títulos más pequeños */
-     .modulos-title {
-       font-size: 1.8rem !important;
-     }
-     
-     .modulos-subtitle {
-       font-size: 0.9rem;
-     }
-     
      /* Partículas menos intensas en móvil */
      .particle {
        display: none;
@@ -704,9 +714,6 @@
    
    /* Pequeñas optimizaciones para pantallas muy pequeñas */
    @media (max-width: 480px) {
-     .modulos-title {
-       font-size: 1.5rem !important;
-     }
      
      .category-header,
      .module-item {

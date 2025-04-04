@@ -1,0 +1,24 @@
+/* Contenedor de partículas */
+.particles-container {
+  position: absolute;
+  inset: 0; /* Ocupa todo el espacio del padre */
+  overflow: hidden;
+  z-index: -1; /* ¡Key! Esto lo manda atrás */
+  pointer-events: none; /* Permite hacer clic en el contenido */
+}
+
+/* Partículas individuales */
+.particle {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: rgba(103, 232, 249, 0.6);
+  border-radius: 50%;
+  left: var(--pos-x);
+  top: var(--pos-y);
+  animation: float-up 8s linear infinite;
+  animation-delay: var(--delay);
+  filter: blur(0.5px);
+  will-change: transform;
+  /* No necesita z-index (heredará el -1 del contenedor) */
+}
