@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { modulesData } from './data/modulesData';
-import './ModulesV2.css';
+import './Modulos.css';
 
-const ModulesV2 = () => {
+const Modulos = () => {
   const [currentView, setCurrentView] = useState('selection'); // 'selection' | 'detail'
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedModule, setSelectedModule] = useState(null);
@@ -338,4 +338,4 @@ const ModulesV2 = () => {
   );
 }
 
-export default ModulesV2;
+export default Modulos;
