@@ -6,7 +6,8 @@ import Features from "./components/features/Features"
 import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
 import Intro from "./components/intro/Intro"
-import Modules from "./components/modules/Modules"
+import ModulesV2 from "./components/modules/ModulesV2"
+import SolutionSelection from "./components/modules/SolutionSelection"
 import SectionWrapper from "./components/section/SectionWrapper"
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
       </SectionWrapper>
 
       <SectionWrapper id="modulos">
-        <Modules />
+        <ModulesV2 />
       </SectionWrapper>
 
       <SectionWrapper id="caracteristicas">
