@@ -39,7 +39,6 @@
      color: var(--modulos-text-primary);
      position: relative;
      padding: var(--modulos-space-xl) var(--modulos-space-md);
-     min-height: 100vh;
      display: flex;
      align-items: center;
      padding-top: var(--modulos-space-lg); /* Reduce de xl a lg */

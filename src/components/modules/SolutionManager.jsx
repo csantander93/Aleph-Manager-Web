@@ -18,7 +18,7 @@ const SolutionsManager = () => {
   };
 
   return (
-    <div className="solutions-manager">
+    <div className="solutions-manager"  style={{ paddingTop: '80px' }}>
       <TitleModule />
       {!showModules ? (
         <SolutionSelection onCategorySelect={handleSolutionSelect} />
