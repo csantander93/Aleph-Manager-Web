@@ -96,34 +96,6 @@
      right: -100px;
    }
    
-   /* ==========================================================================
-      Partículas
-      ========================================================================== */
-   
-   .particles-container {
-     position: absolute;
-     inset: 0;
-     overflow: hidden;
-   }
-   
-   .particle {
-     position: absolute;
-     width: var(--size);
-     height: var(--size);
-     background: rgba(103, 232, 249, 0.6);
-     border-radius: 50%;
-     left: var(--pos-x);
-     top: var(--pos-y);
-     animation: float-up 8s linear infinite;
-     animation-delay: var(--delay);
-     filter: blur(0.5px);
-     will-change: transform;
-   }
-   
-   @keyframes float-up {
-     to { transform: translateY(-100vh); }
-   }
-   
    .back-to-solutions {
     position: absolute;
     top: 20px;

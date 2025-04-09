@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { modulesData } from './data/modulesData';
 import './Modulos.css';
 import Particles from './Particles';
+import { Helmet } from 'react-helmet';
 
 const Modulos = ({ initialCategory, onBack }) => {
   const [activeCategory, setActiveCategory] = useState(initialCategory);
@@ -59,6 +60,16 @@ const Modulos = ({ initialCategory, onBack }) => {
   };
 
   return (
+    <>
+
+    <Helmet>
+      <title>Módulos de Software | Aleph Manager</title>
+        <meta name="description" content="..." />
+        <meta name="keywords" content="..." />
+        <script type="application/ld+json">
+              {JSON.stringify({ /* datos estructurados */ })}
+        </script>
+    </Helmet>
     <section id="modulos" className="modulos-section">
       <div className="modulos-background">
         <div className="modulos-background-gradient-1"></div>
@@ -265,6 +276,7 @@ const Modulos = ({ initialCategory, onBack }) => {
         </div>
       </div>
     </section>
+  </>
   );
 }
 

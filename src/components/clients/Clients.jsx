@@ -71,6 +71,20 @@ const clientImages = [
   bcomacro, interbank, sancorseguros
 ];
 
+const clientNames = [
+  "Banco Saenz", "Banco de Córdoba (Corporativo)", "Banco Industrial", "Banco Patagonia",
+  "Banco Rioja", "Banco Bica", "Banco Dino", "Banco BACS", "Banco Entre Ríos",
+  "Banco San Juan", "Banco Santa Cruz", "Banco Santa Fe", "Brubank", "Uilo", "Ualá",
+  "Banco del Sol", "Naranja X", "BIBANK", "Banco de Corrientes", "Bancor", "Banco de Valores",
+  "Banco Municipal", "Banco Santiago del Estero", "Servicios de Transporte", "Banco Roela",
+  "Banco Piano", "Toyota Compañía Financiera", "Banco Comafi", "COELSA", "Banco Galicia",
+  "Banco Hipotecario", "Caja de Valores", "Banco Mariva", "Carrefour Servicios Financieros",
+  "Banco Coinag", "Reba", "Banco Meridian", "Banco Columbia", "Banco Nación", "Montemar",
+  "ICBC", "Gire", "Pan American Energy", "Credicoop Sucrédito", "Banco Julio", "Assist Card",
+  "Crédito Regional", "Balanz", "Galicia Más", "Banco Macro", "Interbank", "Sancor Seguros"
+];
+
+
 const Clients = () => {
   // Dividimos las imágenes en 4 filas para mejor distribución
   const rows = [
@@ -116,7 +130,7 @@ const Clients = () => {
                 <div key={`row-${rowIndex}-${index}`} className="client-item">
                   <img 
                     src={image} 
-                    alt={`Client ${index}`}
+                    alt={`Logo de ${clientNames[rowIndex * 13 + index] || 'cliente'}`}
                     className="client-logo"
                     loading="lazy"
                     onError={(e) => {

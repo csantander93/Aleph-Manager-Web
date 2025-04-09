@@ -6,16 +6,26 @@ import Features from "./components/features/Features"
 import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
 import Intro from "./components/intro/Intro"
-import Modulos from "./components/modules/Modulos"
 import SolutionsManager from "./components/modules/SolutionManager"
-import SolutionSelection from "./components/modules/SolutionSelection"
-import TitleModule from "./components/modules/TitleModule"
 import SectionWrapper from "./components/section/SectionWrapper"
+import { HelmetProvider } from 'react-helmet-async'
+import SEO from "./components/seo/SEO"
+
 
 function App() {
 
   return (
     <>
+    <HelmetProvider>
+
+      <SEO
+        title="Aleph Manager | Soluciones en Gestión de Normas y Riesgos"
+        description="Soluciones de software para sistemas de gestión ISO, GRC, PLAFT, continuidad, seguridad y pérdida crediticia esperada."
+        keywords="Aleph, software GRC, ISO, gestión de riesgos, cumplimiento, PLAFT, continuidad, seguridad"
+        image="https://alephmanager.com/assets/aleph-about.png"
+        url="https://www.alephmanager.com/"
+      />
+
       <Header />
       <SectionWrapper id="inicio">
         <Intro />
@@ -46,6 +56,7 @@ function App() {
       </SectionWrapper>
 
       <Footer />
+    </HelmetProvider>
     </>
   )
 }

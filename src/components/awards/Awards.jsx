@@ -40,11 +40,15 @@ const Awards = () => {
             <div key={award.id} className="award-card">
                 <div className="award-image-container">
                 <img 
-                    src={award.image} 
-                    alt={award.title}
-                    className={`award-image ${award.subtitle.toLowerCase().replace(/\s+/g, '-')}`} // Ej: "bpemprende" y "programa-de-innovación"
-                    loading="lazy"
-                    decoding="async"
+                  src={award.image} 
+                  alt={`Reconocimiento: ${award.title} - ${award.subtitle}`} 
+                  className={`award-image ${award.subtitle.toLowerCase().replace(/\s+/g, '-')}`} 
+                  loading="lazy"
+                  decoding="async"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    console.error(`Error al cargar imagen del premio: ${award.title}`);
+                  }}
                 />
                 <div className="award-year">{award.year}</div>
                 </div>
