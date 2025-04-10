@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SolutionSelection from './SolutionSelection';
 import Modulos from './Modulos';
 import TitleModule from './TitleModule';
+import Particles from './Particles';
 
 const SolutionsManager = () => {
   const [selectedSolution, setSelectedSolution] = useState(null);
@@ -18,18 +19,28 @@ const SolutionsManager = () => {
   };
 
   return (
-    <div className="solutions-manager"  style={{ paddingTop: '80px' }}>
-      <TitleModule />
-      {!showModules ? (
-        <SolutionSelection onCategorySelect={handleSolutionSelect} />
-      ) : (
-        <Modulos 
-          initialCategory={selectedSolution} 
-          onBack={handleBackToSolutions}
-        />
-      )}
-    </div>
-  );
-};
+    
+      <div className="solutions-manager" style={{ 
+        paddingTop: '80px'
+      }}>
+        <Particles />
+        {/* Efectos de fondo */}
+        <div className="solutions-background-effects">
+          <div className="solutions-gradient-primary"></div>
+          <div className="solutions-gradient-secondary"></div>
+        </div>
+  
+        <TitleModule />
+        {!showModules ? (
+          <SolutionSelection onCategorySelect={handleSolutionSelect} />
+        ) : (
+          <Modulos 
+            initialCategory={selectedSolution} 
+            onBack={handleBackToSolutions}
+          />
+        )}
+      </div>
+    );
+  };
 
 export default SolutionsManager;

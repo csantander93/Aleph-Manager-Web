@@ -8,7 +8,6 @@
 
 .modulos-header {
   text-align: center;
-  margin-bottom: 3.2rem; /* Igual que features-header */
   max-width: 56rem; /* Añadido para coincidir con features */
   margin-left: auto;
   margin-right: auto;
@@ -28,12 +27,6 @@
   display: inline-block;
 }
 
-@media (min-width: 768px) {
-  .modulos-title {
-    font-size: 3.6rem; /* Igual que features-title en media query */
-  }
-}
-
 .modulos-subtitle {
   font-size: 1rem;
   line-height: 1.6;
@@ -42,4 +35,11 @@
   margin: 0 auto;
   font-family: 'Inter Tight', sans-serif; /* Añadida misma fuente */
   font-weight: 500;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .modulos-title {
+    font-size: 3.6rem; /* Igual que features-title en media query */
+  }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import './TitleModule.css'; // Asumiré que los estilos están en este archivo
+import Particles from './Particles';
 
 const TitleModule = () => {
 

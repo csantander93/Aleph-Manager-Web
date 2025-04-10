@@ -71,12 +71,6 @@ const Modulos = ({ initialCategory, onBack }) => {
         </script>
     </Helmet>
     <section id="modulos" className="modulos-section">
-      <div className="modulos-background">
-        <div className="modulos-background-gradient-1"></div>
-        <div className="modulos-background-gradient-2"></div>
-      </div>
-
-      <Particles />
 
       <div className={`modulos-container ${animate ? 'animate-in' : ''}`}>
 

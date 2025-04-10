@@ -43,13 +43,18 @@
      align-items: center;
      padding-top: var(--modulos-space-lg); /* Reduce de xl a lg */
      padding-bottom: var(--modulos-space-xl);
-     min-height: 500px; /* Elimina altura fija si no es necesaria */
+     min-height: 300px; /* Elimina altura fija si no es necesaria */
      box-sizing: border-box;
      margin: 0;
      padding: 0;
      align-items: center; /* Esto ya lo tienes, está bien */
      overflow: hidden; /* Evita scroll no deseado */
+     background: transparent !important;
+     position: relative;
+     z-index: 1; /* Asegúrate de que esté sobre el fondo */
    }
+
+   
 
    /* ==========================================================================
       Estructura Principal
@@ -87,14 +92,15 @@
      height: auto; /* Permite que crezca */
      background: linear-gradient(
       135deg, 
-      rgba(15, 23, 42, 0.9), 
-      rgba(15, 23, 42, 0.95)
-    ), var(--modulos-bg-dark); /* Fondo base */
+      rgba(255, 255, 255, 0.1), 
+      rgba(255, 255, 255, 0.05)
+    ) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
      border-radius: var(--modulos-radius-md);
      padding: var(--modulos-space-md);
      cursor: pointer;
      transition: all var(--modulos-transition-normal);
-     border: 1px solid rgba(255, 255, 255, 0.05);
      position: relative;
      overflow: hidden;
      display: flex;
