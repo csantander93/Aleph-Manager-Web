@@ -253,7 +253,7 @@ const Modulos = ({ initialCategory, onBack }) => {
                     <p>Detalles del módulo seleccionado</p>
                   </div>
                   <div className="module-detail-header">
-                    <h3>{selectedModule}</h3>
+                    <h3 title={selectedModule}  >{selectedModule}</h3>
                     <div className="module-category-badge">
                       {activeCategory.includes('(') ? activeCategory.split('(')[0].trim() : activeCategory}
                     </div>
