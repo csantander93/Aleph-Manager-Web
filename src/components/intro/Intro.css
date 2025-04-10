@@ -59,9 +59,12 @@
 /* Columna de texto */
 .text-column {
   width: 100%;
-  text-align: left;
+  text-align: center; /* Cambiado de left a center */
   order: 1;
   margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos hijos horizontalmente */
 }
 
 .title-container {
@@ -87,14 +90,17 @@
   line-height: 1.75;
   font-weight: 400;
   font-family: 'Inter Tight', sans-serif;
+  max-width: 800px; /* Opcional: para que el texto no sea demasiado ancho */
+  text-align: center; /* Asegura que el texto esté centrado */
 }
-
 /* Botones */
 .buttons-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 0.5rem;
+  align-items: center; /* Centra los botones */
+  width: 100%;
 }
 
 .demo-button, .more-info-button {
@@ -226,12 +232,22 @@
 
 /* Media Queries específicas para el espaciado */
 @media (max-width: 479px) {
+  .text-column {
+    width: 100%; /* Cambiado de 40% a 100% para ocupar todo el ancho */
+    order: initial;
+    margin-bottom: 0;
+  }
   .intro-container {
     padding-top: 5rem; /* Extra espacio para móviles pequeños */
   }
 }
 
 @media (max-width: 767px) {
+  .text-column {
+    width: 100%; /* Cambiado de 40% a 100% para ocupar todo el ancho */
+    order: initial;
+    margin-bottom: 0;
+  }
   .logo-gif {
     margin-top: 1.5rem; /* Espacio adicional arriba del logo en móviles */
   }
@@ -239,6 +255,11 @@
 
 /* Media Queries para tablets */
 @media (min-width: 480px) {
+  .text-column {
+    width: 100%; /* Cambiado de 40% a 100% para ocupar todo el ancho */
+    order: initial;
+    margin-bottom: 0;
+  }
   .display-image {
     max-width: 100%;
   }
@@ -254,12 +275,22 @@
 }
 
 @media (min-width: 640px) {
+  .text-column {
+    width: 100%; /* Cambiado de 40% a 100% para ocupar todo el ancho */
+    order: initial;
+    margin-bottom: 0;
+  }
   .buttons-container {
     flex-direction: row;
   }
 }
 
 @media (min-width: 768px) {
+  .text-column {
+    width: 100%; /* Cambiado de 40% a 100% para ocupar todo el ancho */
+    order: initial;
+    margin-bottom: 0;
+  }
   .logo-gif {
     max-height: 100px;
   }
@@ -271,17 +302,17 @@
 
 /* Media Queries para desktop */
 @media (min-width: 1024px) {
+  .text-column {
+    width: 100%; /* Cambiado de 40% a 100% para ocupar todo el ancho */
+    order: initial;
+    margin-bottom: 0;
+  }
   .intro-container {
     flex-direction: row;
     gap: 3rem;
     padding: 0;
   }
-  
-  .text-column {
-    width: 40%;
-    order: initial;
-    margin-bottom: 0;
-  }
+
    .title-container {
     justify-content: center;
   }
@@ -322,6 +353,11 @@
 }
 
 @media (min-width: 1280px) {
+  .text-column {
+    width: 100%; /* Cambiado de 40% a 100% para ocupar todo el ancho */
+    order: initial;
+    margin-bottom: 0;
+  }
   .main-title {
     font-size: 3.75rem;
   }

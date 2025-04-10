@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { modulesData } from './data/modulesData';
 import './Modulos.css';
-import Particles from './Particles';
 import { Helmet } from 'react-helmet';
 
 const Modulos = ({ initialCategory, onBack }) => {
@@ -58,12 +57,13 @@ const Modulos = ({ initialCategory, onBack }) => {
       onBack();
     }
   };
+  
 
   return (
     <>
 
     <Helmet>
-      <title>Módulos de Software | Aleph Manager</title>
+      <title>Aleph Manager</title>
         <meta name="description" content="..." />
         <meta name="keywords" content="..." />
         <script type="application/ld+json">

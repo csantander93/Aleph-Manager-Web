@@ -1,6 +1,5 @@
 import React from 'react';
 import backgroundImage from '../../assets/intro-bg.jpg';
-import displayImage from '../../assets/mockuper.png';
 import logoGif from '../../assets/Gif-Aleph-una-vez.gif'; // Asegúrate de tener este archivo GIF
 import './Intro.css';
 
@@ -55,16 +54,7 @@ const Intro = () => {
           </div>
         </div>
 
-        {/* Columna de imagen */}
-        <div className="image-column">
-          <div className="image-wrapper">
-            <img 
-              src={displayImage} 
-              alt="Interfaz del software Aleph Manager mostrando funcionalidades"
-              className="display-image"
-            />
-          </div>
-        </div>
+
       </div>
 
       {/* Efectos de luz */}
