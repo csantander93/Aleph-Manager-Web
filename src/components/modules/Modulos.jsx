@@ -134,9 +134,7 @@ const Modulos = ({ initialCategory, onBack }) => {
                   onClick={() => handleCategoryClick(category)}
                 >
                   <span>{category}</span>
-                  <svg className="accordion-icon" viewBox="0 0 24 24">
-                    <path d="M19 9l-7 7-7-7" />
-                  </svg>
+
                 </button>
               </div>
             ))}

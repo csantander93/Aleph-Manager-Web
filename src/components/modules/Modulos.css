@@ -170,7 +170,7 @@
      display: flex;
      flex-direction: column;
      height: 100%;
-     flex: 0 0 260px;
+     flex: 0 0 600px; /* Aumentado de 260px a 320px */
      overflow: hidden;
      z-index: 2;
    }
@@ -265,16 +265,34 @@
       ========================================================================== */
    
    .category-item {
+     flex: 1; /* Hace que cada item ocupe el mismo espacio */
+     min-height: 0; /* Permite que los items se compriman proporcionalmente */
+     margin: var(--space-xs) 0; /* Margen solo arriba y abajo */
      border-radius: var(--radius-md);
      overflow: hidden;
      background-color: rgba(8, 47, 73, 0.3);
      border: 1px solid rgba(56, 182, 255, 0.2);
+     margin: var(--space-xs) var(--space-md);
+     transition: all var(--transition-normal);
      opacity: 0;
      transform: translateX(-20px);
      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.2s ease;
      transition-delay: var(--delay);
-     margin: var(--space-xs) var(--space-md);
+   
    }
+
+   /* Estado hover - aplica a todo el item */
+.category-item:hover {
+  background-color: rgba(56, 182, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(2, 132, 199, 0.2);
+}
+
+/* Estado active/seleccionado - aplica a todo el item */
+.category-item.active {
+  background-color: rgba(56, 182, 255, 0.3);
+  box-shadow: inset 4px 0 0 var(--primary), 0 4px 12px rgba(2, 132, 199, 0.3);
+}
    
    .modulos-container.animate-in .category-item {
      opacity: 1;
@@ -282,10 +300,12 @@
    }
    
    .category-header {
+     flex: 1; /* Ocupa todo el espacio disponible en su contenedor */
+     margin: 0; /* Elimina cualquier margen que pueda interferir */
      width: 100%;
      padding: var(--space-md) var(--space-lg);
      text-align: left;
-     background-color: transparent;
+     background-color: transparent !important;
      border: none;
      color: var(--text-primary);
      font-size: 0.9375rem;
@@ -297,33 +317,7 @@
      transition: all var(--transition-normal);
    }
    
-   .category-header:hover {
-     background-color: rgba(56, 182, 255, 0.1);
-     color: var(--primary);
-     transform: translateY(-2px);
-     box-shadow: 0 4px 8px rgba(2, 132, 199, 0.2);
-   }
-   
-   .category-item.active .category-header {
-     background-color: rgba(56, 182, 255, 0.2);
-     color: var(--primary);
-     font-weight: 600;
-   }
-   
-   .category-item.active {
-     box-shadow: inset 4px 0 0 var(--primary), 0 4px 12px rgba(2, 132, 199, 0.3);
-   }
-   
-   .accordion-icon {
-     width: 1rem;
-     height: 1rem;
-     transition: transform var(--transition-normal);
-     stroke: currentColor;
-   }
-   
-   .category-item.active .accordion-icon {
-     transform: rotate(180deg);
-   }
+
    
    /* ==========================================================================
       Panel de Módulos
@@ -412,6 +406,8 @@
      align-items: center;
      padding: var(--space-md);
      border-bottom: 1px solid rgba(56, 182, 255, 0.1);
+     flex-shrink: 0;
+
    }
    
    .module-detail-header h3 {
@@ -431,10 +427,12 @@
    }
    
    .module-detail-content {
-     padding: var(--space-lg);
-     color: var(--text-primary);
-     line-height: 1.6;
-   }
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-lg);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
    
    .module-description {
      font-size: 0.9375rem;
@@ -572,6 +570,14 @@
      background: rgba(103, 232, 249, 0.6);
    }
    
+   .categories-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-sm) var(--space-md);
+    overflow-y: auto;
+  }
+   
    /* ==========================================================================
       Estilos Responsivos
       ========================================================================== */
@@ -609,6 +615,8 @@
      .modules-panel.mobile-active,
      .module-detail-panel.mobile-active {
        display: flex;
+       flex-direction: column;
+       height: 100%;
      }
      
      /* Mobile header con botón de retroceso */
