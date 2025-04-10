@@ -302,6 +302,12 @@ const Modulos = ({ initialCategory, onBack }) => {
                 <p>Detalles del módulo seleccionado</p>
               </div>
               <div className="empty-state-content">
+                <div className="empty-state-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M3 12a9 9 0 1018 0 9 9 0 10-18 0" strokeWidth="1.5" strokeLinecap="round"/>
+                    <path d="M12 8v4M12 16h.01" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                </div>
                 <h4>Selecciona un módulo</h4>
                 <p>Haz clic en cualquiera de los módulos de la izquierda para ver su descripción detallada.</p>
               </div>
