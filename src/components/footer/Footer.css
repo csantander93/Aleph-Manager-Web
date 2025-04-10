@@ -1,21 +1,29 @@
 .footer-container {
   background-color: #000;
   color: #fff;
-  padding: 2.7rem 1.8rem 0; /* 10% menos que 3rem 2rem 0 */
+  padding: 2.7rem 1.8rem 0;
   font-family: 'Inter Tight', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra todo el contenido horizontalmente */
 }
 
 .footer-content {
-  max-width: 1080px; /* 10% menos que 1200px */
+  max-width: 1080px;
+  width: 100%; /* Asegura que ocupe todo el ancho disponible hasta el máximo */
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* 10% menos que 200px */
-  gap: 1.8rem; /* 10% menos que 2rem */
-  padding-bottom: 1.8rem; /* 10% menos que 2rem */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.8rem;
+  padding-bottom: 1.8rem;
 }
 
 .footer-section {
-  margin-bottom: 1.35rem; /* 10% menos que 1.5rem */
+  margin-bottom: 1.35rem;
+  text-align: center; /* Centra el texto en todas las secciones */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos hijos horizontalmente */
 }
 
 .footer-title {
@@ -95,8 +103,22 @@
   justify-content: center;
 }
 
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.35rem 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.81rem;
+  width: 100%; /* Asegura que ocupe todo el ancho */
+}
 
-
+/* Asegúrate que las listas también estén centradas */
+.footer-links, .footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
 
 /* Animación de sacudida */
 @keyframes shake {
@@ -115,14 +137,6 @@
   80% {
       transform: translateY(-2.7px) rotate(5deg);
   }
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1.35rem 0; /* 10% menos que 1.5rem */
-  text-align: center;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.81rem; /* 10% menos que 0.9rem */
 }
 
 @media (max-width: 768px) {

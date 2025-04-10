@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import { FaLinkedin } from 'react-icons/fa';
-import logoAleph from '../../assets/Gif-Aleph-una-vez.gif'; // Asegúrate de que esta ruta sea correcta
+import logoAleph from '../../assets/Gif-Aleph-una-vez.gif';
 
 const Footer = () => {
   return (
