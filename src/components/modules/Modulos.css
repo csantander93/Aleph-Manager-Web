@@ -45,8 +45,8 @@
      position: relative;
      padding: var(--space-xxl) var(--space-md);
      overflow: hidden;
-     background-color: transparent; /* Fondo transparente */
-     z-index: 1; /* Asegura que esté sobre cualquier elemento padre */
+     background-color: transparent;
+     z-index: 1;
    }
    
    .modulos-container {
@@ -64,87 +64,86 @@
      transform: translateY(0);
    }
    
-   
    .back-to-solutions {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
-    padding: 8px 16px;
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-  }
-  
-  .back-to-solutions:hover {
-    background: rgba(255, 255, 255, 0.2);
-  }
-  
-  .back-to-solutions svg {
-    width: 16px;
-    height: 16px;
-  }
+     position: absolute;
+     top: 20px;
+     left: 20px;
+     display: flex;
+     align-items: center;
+     gap: 8px;
+     background: rgba(255, 255, 255, 0.1);
+     backdrop-filter: blur(10px);
+     border: 1px solid rgba(255, 255, 255, 0.2);
+     border-radius: 50px;
+     padding: 8px 16px;
+     color: white;
+     font-size: 14px;
+     cursor: pointer;
+     transition: all 0.3s ease;
+     z-index: 10;
+   }
+   
+   .back-to-solutions:hover {
+     background: rgba(255, 255, 255, 0.2);
+   }
+   
+   .back-to-solutions svg {
+     width: 16px;
+     height: 16px;
+   }
    
    /* ==========================================================================
       Breadcrumbs
       ========================================================================== */
    
-      .breadcrumbs {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 20px;
-        position: relative;
-        flex-wrap: wrap;
-      }
+   .breadcrumbs {
+     display: flex;
+     align-items: center;
+     gap: 8px;
+     margin-bottom: 20px;
+     position: relative;
+     flex-wrap: wrap;
+   }
    
    .breadcrumb {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 14px;
-    text-transform: uppercase;
-  }
-  
-  .breadcrumb.active {
-    color: white;
-    font-weight: 500;
-  }
-  
-  .breadcrumb-divider {
-    color: rgba(255, 255, 255, 0.4);
-    margin: 0 4px;
-  }
-
-  .back-button {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 14px;
-    padding: 4px 8px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    margin-right: 8px;
-  }
-  
-  .back-button:hover {
-    color: white;
-  }
-  
-  .back-button svg {
-    width: 16px;
-    height: 16px;
-    stroke: currentColor;
-  }
+     color: rgba(255, 255, 255, 0.7);
+     font-size: 14px;
+     text-transform: uppercase;
+   }
+   
+   .breadcrumb.active {
+     color: white;
+     font-weight: 500;
+   }
+   
+   .breadcrumb-divider {
+     color: rgba(255, 255, 255, 0.4);
+     margin: 0 4px;
+   }
+   
+   .back-button {
+     display: flex;
+     align-items: center;
+     gap: 4px;
+     background: none;
+     border: none;
+     color: rgba(255, 255, 255, 0.7);
+     font-size: 14px;
+     padding: 4px 8px;
+     cursor: pointer;
+     transition: color 0.3s ease;
+     margin-right: 8px;
+   }
+   
+   .back-button:hover {
+     color: white;
+   }
+   
+   .back-button svg {
+     width: 16px;
+     height: 16px;
+     stroke: currentColor;
+   }
    
    /* ==========================================================================
       Layout de Contenido
@@ -158,15 +157,29 @@
    }
    
    /* ==========================================================================
-      Sistema de Paneles (Compatibles con tu JSX)
+      Sistema de Paneles
       ========================================================================== */
    
-   .categories-panel,
+   .categories-panel {
+     position: relative;
+     border-radius: var(--radius-md);
+     background: linear-gradient(160deg, rgba(8, 47, 73, 0.6), rgba(8, 47, 73, 0.4));
+     border: 1px solid rgba(56, 182, 255, 0.3);
+     backdrop-filter: blur(8px);
+     box-shadow: 0 8px 32px rgba(2, 132, 199, 0.2);
+     display: flex;
+     flex-direction: column;
+     height: 100%;
+     flex: 0 0 260px;
+     overflow: hidden;
+     z-index: 2;
+   }
+   
    .modules-panel,
    .module-detail-panel {
      position: relative;
      border-radius: var(--radius-md);
-     background-color: var(--bg-light);
+     background-color: rgba(15, 23, 42, 0.5);
      border: 1px solid rgba(56, 182, 255, 0.1);
      backdrop-filter: blur(8px);
      box-shadow: var(--shadow-md);
@@ -176,7 +189,17 @@
    }
    
    /* Bordes laterales */
-   .categories-panel::after,
+   .categories-panel::after {
+     content: '';
+     position: absolute;
+     left: 0;
+     top: 0;
+     bottom: 0;
+     width: 4px;
+     z-index: 1;
+     background: linear-gradient(to bottom, var(--primary), #38bdf8);
+   }
+   
    .modules-panel::after,
    .module-detail-panel::after {
      content: '';
@@ -184,19 +207,27 @@
      left: 0;
      top: 0;
      bottom: 0;
-     width: 3px;
+     width: 2px;
      z-index: 1;
    }
    
-   .categories-panel::after { background-color: var(--primary); }
    .modules-panel::after { background-color: var(--secondary); }
    .module-detail-panel::after { background-color: var(--tertiary); }
    
    /* Headers de panel */
-   .panel-header {
+   .categories-panel .panel-header {
+     padding: var(--space-md) var(--space-lg);
+     border-bottom: 1px solid rgba(56, 182, 255, 0.3);
+     background: linear-gradient(to right, rgba(8, 47, 73, 0.7), rgba(8, 47, 73, 0.5));
+     margin-bottom: 0;
+     flex-shrink: 0;
+   }
+   
+   .modules-panel .panel-header,
+   .module-detail-panel .panel-header {
      padding: var(--space-md) var(--space-lg);
      border-bottom: 1px solid rgba(56, 182, 255, 0.2);
-     background: linear-gradient(to right, rgba(8, 47, 73, 0.5), rgba(8, 47, 73, 0.3));
+     background: linear-gradient(to right, rgba(8, 47, 73, 0.4), rgba(8, 47, 73, 0.2));
      margin-bottom: 0;
      flex-shrink: 0;
    }
@@ -230,22 +261,17 @@
    }
    
    /* ==========================================================================
-      Panel de Categorías (Compatibilidad Total con JSX)
+      Panel de Categorías
       ========================================================================== */
-   
-   .categories-panel {
-     flex: 0 0 260px;
-     overflow: hidden;
-   }
    
    .category-item {
      border-radius: var(--radius-md);
      overflow: hidden;
-     background-color: var(--bg-light);
-     border: 1px solid rgba(56, 182, 255, 0.1);
+     background-color: rgba(8, 47, 73, 0.3);
+     border: 1px solid rgba(56, 182, 255, 0.2);
      opacity: 0;
      transform: translateX(-20px);
-     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.2s ease;
      transition-delay: var(--delay);
      margin: var(--space-xs) var(--space-md);
    }
@@ -274,6 +300,8 @@
    .category-header:hover {
      background-color: rgba(56, 182, 255, 0.1);
      color: var(--primary);
+     transform: translateY(-2px);
+     box-shadow: 0 4px 8px rgba(2, 132, 199, 0.2);
    }
    
    .category-item.active .category-header {
@@ -283,7 +311,7 @@
    }
    
    .category-item.active {
-     box-shadow: inset 3px 0 0 var(--primary);
+     box-shadow: inset 4px 0 0 var(--primary), 0 4px 12px rgba(2, 132, 199, 0.3);
    }
    
    .accordion-icon {
@@ -298,7 +326,7 @@
    }
    
    /* ==========================================================================
-      Panel de Módulos (Ajustado para tu JSX)
+      Panel de Módulos
       ========================================================================== */
    
    .modules-panel {
@@ -369,7 +397,7 @@
    }
    
    /* ==========================================================================
-      Panel de Detalles (Compatibilidad Total con JSX)
+      Panel de Detalles
       ========================================================================== */
    
    .module-detail-panel {
@@ -453,7 +481,7 @@
    }
    
    /* ==========================================================================
-      Estado Vacío (Compatibilidad Total con JSX)
+      Estado Vacío
       ========================================================================== */
    
    .empty-state {
@@ -545,7 +573,7 @@
    }
    
    /* ==========================================================================
-      Estilos Responsivos (Compatibilidad Total con JSX Mobile)
+      Estilos Responsivos
       ========================================================================== */
    
    @media (max-width: 1023px) {
@@ -655,7 +683,6 @@
    
    /* Pequeñas optimizaciones para pantallas muy pequeñas */
    @media (max-width: 480px) {
-     
      .category-header,
      .module-item {
        padding: var(--space-md);

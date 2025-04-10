@@ -35,13 +35,6 @@ const SolutionSelection = ({ onCategorySelect }) => {
   return (
     
     <section id="modulos" className="modulos-selection-section">
-      <div className="modulos-background">
-        <div className="modulos-background-gradient-1"></div>
-        <div className="modulos-background-gradient-2"></div>
-      </div>
-
-      <Particles />
-
 
       <div className={`modulos-selection-container ${animate ? 'modulos-animate-in' : ''} ${isTransitioning ? 'modulos-transition-out' : ''}`}>
         <div className={`modulos-categories-container ${selectedCategory ? 'modulos-fade-out' : ''}`}>

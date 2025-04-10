@@ -48,10 +48,12 @@
 
 .info-container {
   flex: 1;
-  padding: 1.6rem; /* Reducido de 2rem */
+  padding: 1.6rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center; /* <- Añade esto */
+  text-align: center;  /* <- Esto asegura que el texto también quede centrado */
 }
 
 .info-title {
@@ -265,6 +267,15 @@
   font-weight: 500;
   max-width: 480px; /* Reducido de 600px */
   margin: 0 auto;
+}
+
+.info-logo {
+  width: 100%;
+  max-width: 160px;
+  height: auto;
+  margin-bottom: 1.2rem;
+  align-self: center;
+  object-fit: contain;
 }
 
 /* Asegúrate que esta animación esté en tu CSS */

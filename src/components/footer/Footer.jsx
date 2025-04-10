@@ -1,13 +1,14 @@
 import React from 'react';
 import './Footer.css';
 import { FaLinkedin } from 'react-icons/fa';
+import logoAleph from '../../assets/Gif-Aleph-una-vez.gif'; // Asegúrate de que esta ruta sea correcta
 
 const Footer = () => {
   return (
     <footer className="footer-container">
       <div className="footer-content">
-        <div className="footer-section">
-          <h3 className="footer-title">Aleph Manager</h3>
+        <div className="footer-section footer-logo-section">
+          <img src={logoAleph} alt="Logo Aleph Manager" className="info-logo" />
           <p className="footer-text">
             Soluciones innovadoras para la gestión empresarial.
           </p>
@@ -38,13 +39,6 @@ const Footer = () => {
           <h4 className="footer-subtitle">Contacto</h4>
           <ul className="footer-contact">
             <li>gerencia@alephmanager.com</li>
-          </ul>
-        </div>
-
-        <div className="footer-section">
-          <h4 className="footer-subtitle">Acceso</h4>
-          <ul className="footer-links">
-            <li><a href="#inicio">Home</a></li>
           </ul>
         </div>
       </div>

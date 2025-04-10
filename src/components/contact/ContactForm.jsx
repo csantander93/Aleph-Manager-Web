@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ContactForm.css';
+import logoAleph from '../../assets/LOGO ALEPH FIJO v02.png'; // Asegúrate de que esta ruta sea correcta
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +25,6 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simular envío
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
@@ -34,8 +34,7 @@ const ContactForm = () => {
         subject: '',
         message: ''
       });
-      
-      // Resetear mensaje de éxito después de 5 segundos
+
       setTimeout(() => setSubmitSuccess(false), 5000);
     }, 1500);
   };
@@ -48,7 +47,6 @@ const ContactForm = () => {
       </div>
       
       <div className="contact-container">
-
         <div className="contact-header">
             <h2 className="contact-title">Contacto</h2>
             <p className="contact-subtitle">Completa el formulario y nos pondremos en contacto contigo</p>
@@ -78,7 +76,7 @@ const ContactForm = () => {
                       placeholder=" "
                       required 
                     />
-                    <label htmlFor="name">Nombre</label>
+                    <label htmlFor="name">Nombre y Apellido</label>
                   </div>
                   
                   <div className="floating-input">
@@ -142,7 +140,11 @@ const ContactForm = () => {
           </div>
           
           <div className="info-container">
-            <h3 className="info-title">Aleph Manager</h3>
+            <img 
+              src={logoAleph} 
+              alt="Aleph Manager Logo" 
+              className="info-logo"
+            />
             <p className="info-text">
               Estamos a disposición para responder cualquier duda o consulta que pueda surgirle.
             </p>

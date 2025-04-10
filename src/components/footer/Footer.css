@@ -87,6 +87,17 @@
   text-shadow: 0 0 9px #0a66c2, 0 0 18px #0a66c2;
 }
 
+/* Reutiliza el mismo estilo del logo de contacto */
+.footer-logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
 /* Animación de sacudida */
 @keyframes shake {
   0%, 100% {
