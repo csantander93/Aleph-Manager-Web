@@ -60,20 +60,17 @@ const Modulos = ({ initialCategory, onBack }) => {
   
 
   return (
-    <>
-
+  <>
     <Helmet>
       <title>Aleph Manager</title>
-        <meta name="description" content="..." />
-        <meta name="keywords" content="..." />
-        <script type="application/ld+json">
-              {JSON.stringify({ /* datos estructurados */ })}
-        </script>
+      <meta name="description" content="..." />
+      <meta name="keywords" content="..." />
+      <script type="application/ld+json">
+        {JSON.stringify({ /* datos estructurados */ })}
+      </script>
     </Helmet>
     <section id="modulos" className="modulos-section">
-
       <div className={`modulos-container ${animate ? 'animate-in' : ''}`}>
-
         <div className="breadcrumbs">
           {!isMobile && (
             <button className="back-button" onClick={handleBackToSolutions}>
@@ -128,54 +125,64 @@ const Modulos = ({ initialCategory, onBack }) => {
                 key={category}
                 className={`category-item ${activeCategory === category ? 'active' : ''}`}
                 style={{ '--delay': `${index * 0.05}s` }}
-                onClick={() => handleCategoryClick(category)}
               >
                 <button 
                   className="category-header"
+                  onClick={() => handleCategoryClick(category)}
                 >
                   <span>{category}</span>
-
                 </button>
               </div>
             ))}
           </div>
-          
-
-          {/* Panel de módulos */}
 
           {/* Estado vacío cuando no hay categoría seleccionada */}
-{!activeCategory && (
-  <div className={`modules-panel empty-state ${!isMobile || mobileView === 'modules' ? 'mobile-active' : ''}`}>
-    {isMobile && (
-      <div className="mobile-panel-header">
-        <button className="mobile-back-button" onClick={handleBackToSolutions}>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M15 18l-6-6 6-6" strokeWidth="2" strokeLinecap="round"/>
-          </svg>
-        </button>
-        <h3 className="mobile-panel-title">Módulos</h3>
-      </div>
-    )}
+          {!activeCategory && (
+            <div className={`modules-panel empty-state ${!isMobile || mobileView === 'modules' ? 'mobile-active' : ''}`}>
+              {isMobile && (
+                <div className="mobile-panel-header">
+                  <button className="mobile-back-button" onClick={handleBackToSolutions}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <path d="M15 18l-6-6 6-6" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                  </button>
+                  <h3 className="mobile-panel-title">Módulos</h3>
+                  {activeCategory && (
+                    <span className="modulos-count">
+                      {Object.keys(modulesData[activeCategory]).length} módulos
+                    </span>
+                  )}
+                </div>
+              )}
     
-        {!isMobile && (
-          <div className="panel-header">
-            <h3>Módulos</h3>
-            <p>Seleccione un módulo para ver detalles</p>
-          </div>
-        )}
+              {!isMobile && (
+                <div className="panel-header modulos-header-container">
+                  <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                    <h3>Módulos</h3>
+                  </div>
+                  {activeCategory && (
+                    <span className="modulos-count">
+                      {Object.keys(modulesData[activeCategory]).length} módulos
+                    </span>
+                  )}
+                  <p>Seleccione un módulo para ver detalles</p>
+                </div>
+              )}
         
-        <div className="empty-state-content">
-          <div className="empty-state-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M3 12a9 9 0 1018 0 9 9 0 10-18 0" strokeWidth="1.5" strokeLinecap="round"/>
-              <path d="M12 8v4M12 16h.01" strokeWidth="1.5" strokeLinecap="round"/>
-            </svg>
-          </div>
-          <h4>Selecciona una categoría</h4>
-          <p>Por favor, elige una categoría de soluciones de la lista a la izquierda para ver los módulos disponibles.</p>
-        </div>
-      </div>
-    )}
+              <div className="empty-state-content">
+                <div className="empty-state-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M3 12a9 9 0 1018 0 9 9 0 10-18 0" strokeWidth="1.5" strokeLinecap="round"/>
+                    <path d="M12 8v4M12 16h.01" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                <h4>Selecciona una categoría</h4>
+                <p>Por favor, elige una categoría de soluciones de la lista a la izquierda para ver los módulos disponibles.</p>
+              </div>
+            </div>
+          )}
+
+          {/* Panel de módulos cuando hay categoría seleccionada */}
           {activeCategory && (
             <div className={`modules-panel ${!isMobile || mobileView === 'modules' ? 'mobile-active' : ''}`}>
               {isMobile && (
@@ -186,12 +193,20 @@ const Modulos = ({ initialCategory, onBack }) => {
                     </svg>
                   </button>
                   <h3 className="mobile-panel-title">Módulos</h3>
+                  <span className="modulos-count">
+                    {Object.keys(modulesData[activeCategory]).length} módulos
+                  </span>
                 </div>
               )}
               
               {!isMobile && (
-                <div className="panel-header">
-                  <h3>Módulos</h3>
+                <div className="panel-header modulos-header-container">
+                  <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                    <h3>Módulos</h3>
+                  </div>
+                  <span className="modulos-count">
+                    {Object.keys(modulesData[activeCategory]).length} módulos
+                  </span>
                   <p>Seleccione un módulo para ver detalles</p>
                 </div>
               )}
@@ -279,7 +294,7 @@ const Modulos = ({ initialCategory, onBack }) => {
             </div>
           )}
 
-          {/* Estado vacío cuando no hay selección */}
+          {/* Estado vacío cuando no hay selección (solo escritorio) */}
           {!selectedModule && activeCategory && !isMobile && (
             <div className="module-detail-panel empty-state">
               <div className="panel-header">
@@ -296,7 +311,6 @@ const Modulos = ({ initialCategory, onBack }) => {
       </div>
     </section>
   </>
-  );
-}
+);}
 
 export default Modulos;

@@ -632,6 +632,23 @@
     line-height: 1.5;
     font-size: 0.9rem;
   }
+
+  .modulos-header-container {
+    position: relative;
+  }
+  
+  .modulos-count {
+    position: absolute;
+    top: 0.5rem;    /* 8px de espacio superior */
+    right: 0.75rem;  /* 12px de espacio derecho */
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    background-color: rgba(56, 182, 255, 0.2);
+    color: #a5f3fc;
+    border-radius: 9999px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
    
    /* ==========================================================================
       Animaciones
