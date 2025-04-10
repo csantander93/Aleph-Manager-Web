@@ -400,31 +400,42 @@
      overflow: hidden;
    }
    
-   .module-detail-header {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     padding: var(--space-md);
-     border-bottom: 1px solid rgba(56, 182, 255, 0.1);
-     flex-shrink: 0;
-
-   }
-   
-   .module-detail-header h3 {
-     font-size: 1.125rem;
-     font-weight: 600;
-     color: var(--primary);
-     margin: 0;
-   }
-   
    .module-category-badge {
-     font-size: 0.75rem;
-     padding: var(--space-xs) var(--space-sm);
-     background-color: rgba(56, 182, 255, 0.2);
-     color: #a5f3fc;
-     border-radius: 9999px;
-     font-weight: 500;
-   }
+    font-size: 0.75rem;
+    padding: var(--space-xs) var(--space-sm);
+    background-color: rgba(56, 182, 255, 0.2);
+    color: #a5f3fc;
+    border-radius: 9999px;
+    font-weight: 300;
+    /* Solución flexible: */
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+    flex-shrink: 0;
+  }
+  
+  /* Asegurar que el header maneje bien el espacio */
+  .module-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md);
+    border-bottom: 1px solid rgba(56, 182, 255, 0.1);
+    flex-shrink: 0;
+    gap: var(--space-sm); /* Añade espacio entre elementos */
+  }
+  
+  .module-detail-header h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1; /* Permite que el título ocupe el espacio disponible */
+  }
    
    .module-detail-content {
     flex: 1;
