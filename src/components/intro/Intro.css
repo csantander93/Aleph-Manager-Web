@@ -53,7 +53,7 @@
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  padding: 3rem 0;
+  padding: 4rem 0 3rem 0; /* Añadido más espacio arriba */
 }
 
 /* Columna de texto */
@@ -66,20 +66,18 @@
 
 .title-container {
   margin-bottom: 2rem;
+  display: flex;
+  justify-content: center; /* Centrado horizontal */
+  width: 100%;
 }
 
-.main-title {
-  font-size: 1.75rem;
-  font-weight: 500;
-  padding-bottom: 0.5rem;
-  line-height: 1.2;
-  letter-spacing: 0.03em;
-  background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-medium), var(--color-primary-dark));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: var(--shadow-light);
-  font-family: 'TWK Everett', sans-serif;
+.logo-gif {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 1.5rem auto; /* Centrado horizontal con margen inferior */
+  max-height: 80px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 .description-text {
@@ -147,14 +145,47 @@
 }
 
 .display-image {
-  width: 100%;
+  width: 80%;
   height: auto;
   object-fit: cover;
   clip-path: inset(0 round 0);
-  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.25));
+  filter: 
+  drop-shadow(0 10px 15px rgba(0,0,0,0.25))
+  brightness(105%) 
+  contrast(110%);
+  transition: filter 0.5s ease;
   max-width: 85%;
   margin: 0 auto;
   animation: float 6s ease-in-out infinite;
+}
+
+.gif-column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  order: 1;
+  margin-bottom: 2.5rem;
+}
+
+.gif-wrapper {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+.intro-gif {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 
+    0 15px 30px rgba(74, 141, 255, 0.2),
+    0 10px 20px rgba(160, 254, 184, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.intro-gif:hover {
+  transform: scale(1.02);
 }
 
 @keyframes float {
@@ -194,6 +225,19 @@
   filter: blur(70px);
 }
 
+/* Media Queries específicas para el espaciado */
+@media (max-width: 479px) {
+  .intro-container {
+    padding-top: 5rem; /* Extra espacio para móviles pequeños */
+  }
+}
+
+@media (max-width: 767px) {
+  .logo-gif {
+    margin-top: 1.5rem; /* Espacio adicional arriba del logo en móviles */
+  }
+}
+
 /* Media Queries para tablets */
 @media (min-width: 480px) {
   .display-image {
@@ -217,8 +261,8 @@
 }
 
 @media (min-width: 768px) {
-  .main-title {
-    font-size: 2.25rem;
+  .logo-gif {
+    max-height: 100px;
   }
   
   .description-text {
@@ -239,6 +283,13 @@
     order: initial;
     margin-bottom: 0;
   }
+   .title-container {
+    justify-content: center;
+  }
+  
+  .buttons-container {
+    justify-content: center;
+  }
   
   .image-column {
     width: 60%;
@@ -247,8 +298,9 @@
     justify-content: flex-end;
   }
   
-  .main-title {
-    font-size: 3rem;
+  .logo-gif {
+    max-height: 120px;
+    margin-bottom: 2rem;
   }
   
   .description-text {

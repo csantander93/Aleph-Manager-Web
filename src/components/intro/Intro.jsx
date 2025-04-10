@@ -1,6 +1,7 @@
 import React from 'react';
 import backgroundImage from '../../assets/intro-bg.jpg';
-import displayImage from '../../assets/display.png';
+import displayImage from '../../assets/mockuper.png';
+import logoGif from '../../assets/Gif-Aleph-una-vez.gif'; // Asegúrate de tener este archivo GIF
 import './Intro.css';
 
 const Intro = () => {
@@ -21,12 +22,15 @@ const Intro = () => {
       
       {/* Contenedor principal */}
       <div className="intro-container">
-        {/* Columna de texto */}
+        {/* Columna de texto (modificada) */}
         <div className="text-column">
           <div className="title-container">
-            <h1 className="main-title">
-              Bienvenido a Aleph Manager
-            </h1>
+            {/* Reemplazamos el h1 por el GIF del logo */}
+            <img 
+              src={logoGif} 
+              alt="Logo animado de Aleph Manager" 
+              className="logo-gif"
+            />
           </div>
           
           <p className="description-text">
