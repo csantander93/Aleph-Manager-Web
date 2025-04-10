@@ -128,10 +128,10 @@ const Modulos = ({ initialCategory, onBack }) => {
                 key={category}
                 className={`category-item ${activeCategory === category ? 'active' : ''}`}
                 style={{ '--delay': `${index * 0.05}s` }}
+                onClick={() => handleCategoryClick(category)}
               >
                 <button 
                   className="category-header"
-                  onClick={() => handleCategoryClick(category)}
                 >
                   <span>{category}</span>
 
@@ -142,6 +142,40 @@ const Modulos = ({ initialCategory, onBack }) => {
           
 
           {/* Panel de módulos */}
+
+          {/* Estado vacío cuando no hay categoría seleccionada */}
+{!activeCategory && (
+  <div className={`modules-panel empty-state ${!isMobile || mobileView === 'modules' ? 'mobile-active' : ''}`}>
+    {isMobile && (
+      <div className="mobile-panel-header">
+        <button className="mobile-back-button" onClick={handleBackToSolutions}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M15 18l-6-6 6-6" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        </button>
+        <h3 className="mobile-panel-title">Módulos</h3>
+      </div>
+    )}
+    
+        {!isMobile && (
+          <div className="panel-header">
+            <h3>Módulos</h3>
+            <p>Seleccione un módulo para ver detalles</p>
+          </div>
+        )}
+        
+        <div className="empty-state-content">
+          <div className="empty-state-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M3 12a9 9 0 1018 0 9 9 0 10-18 0" strokeWidth="1.5" strokeLinecap="round"/>
+              <path d="M12 8v4M12 16h.01" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          </div>
+          <h4>Selecciona una categoría</h4>
+          <p>Por favor, elige una categoría de soluciones de la lista a la izquierda para ver los módulos disponibles.</p>
+        </div>
+      </div>
+    )}
           {activeCategory && (
             <div className={`modules-panel ${!isMobile || mobileView === 'modules' ? 'mobile-active' : ''}`}>
               {isMobile && (
@@ -253,13 +287,6 @@ const Modulos = ({ initialCategory, onBack }) => {
                 <p>Detalles del módulo seleccionado</p>
               </div>
               <div className="empty-state-content">
-                <div className="empty-state-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                  </svg>
-                  <div className="glow-effect"></div>
-                </div>
                 <h4>Selecciona un módulo</h4>
                 <p>Haz clic en cualquiera de los módulos de la izquierda para ver su descripción detallada.</p>
               </div>
