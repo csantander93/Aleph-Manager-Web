@@ -35,6 +35,7 @@
      --transition-fast: 0.15s ease;
      --transition-normal: 0.3s ease;
      --transition-slow: 0.5s ease;
+     
    }
    
    /* ==========================================================================
@@ -163,10 +164,16 @@
    .categories-panel {
      position: relative;
      border-radius: var(--radius-md);
-     background: linear-gradient(160deg, rgba(8, 47, 73, 0.6), rgba(8, 47, 73, 0.4));
-     border: 1px solid rgba(56, 182, 255, 0.3);
-     backdrop-filter: blur(8px);
-     box-shadow: 0 8px 32px rgba(2, 132, 199, 0.2);
+     background: linear-gradient(
+      160deg, 
+      rgba(10, 80, 120, 0.7),  /* Azul más saturado */
+      rgba(5, 50, 90, 0.5)     /* Tonos más profundos */
+    );
+     border: 1px solid rgba(100, 220, 255, 0.5); /* Cian brillante pero difuminado */     
+     backdrop-filter: blur(12px) brightness(1.1); /* Más desenfoque y ligero brillo */
+     box-shadow: 
+     0 8px 32px rgba(0, 180, 255, 0.3),  /* Sombra exterior azul */
+     inset 0 0 12px rgba(100, 220, 255, 0.2); /* Sombra interior para efecto glow */     
      display: flex;
      flex-direction: column;
      height: 100%;
