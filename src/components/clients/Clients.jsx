@@ -103,16 +103,40 @@ const Clients = () => {
     { country: "Panamá", image: mercantil, value: 1 }
   ];
 
+  const clientsStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Aleph Manager",
+    "client": clientNames.map((name, index) => ({
+      "@type": "Organization",
+      "name": name,
+      "image": clientImages[index]
+    }))
+  };
+
   return (
-    <section className="clients-section">
-      <div className="clients-background">
+    <section 
+      id="clientes" 
+      className="clients-section"
+      aria-labelledby="clients-heading"
+    >
+      {/* Datos estructurados para clientes */}
+      <script type="application/ld+json">
+        {JSON.stringify(clientsStructuredData)}
+      </script>
+
+      <div className="clients-background" aria-hidden="true">
         <div className="clients-background-gradient"></div>
       </div>
       
       <div className="clients-container">
         <div className="clients-header">
-          <h2 className="clients-title">Nuestros Clientes</h2>
-          <p className="clients-subtitle">Empresas que confían en nuestros servicios</p>
+          <h2 id="clients-heading" className="clients-title">
+            Nuestros Clientes
+          </h2>
+          <p className="clients-subtitle">
+            Empresas que confían en nuestros servicios
+          </p>
         </div>
 
         <div className="clients-counter-container">
@@ -120,48 +144,76 @@ const Clients = () => {
             targetValue={52} 
             label="Argentina" 
             delay={0.3}
+            aria-label="52 clientes en Argentina"
           />
         </div>
         
-        <div className="clients-static-grid">
+        <div className="clients-static-grid" role="list" aria-label="Lista de clientes">
           {rows.map((row, rowIndex) => (
-            <div key={`row-${rowIndex}`} className="clients-static-row">
-              {row.map((image, index) => (
-                <div key={`row-${rowIndex}-${index}`} className="client-item">
-                  <img 
-                    src={image} 
-                    alt={`Logo de ${clientNames[rowIndex * 13 + index] || 'cliente'}`}
-                    className="client-logo"
-                    loading="lazy"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      console.error(`Error al cargar imagen: ${index}`);
-                    }}
-                  />
-                </div>
-              ))}
+            <div 
+              key={`row-${rowIndex}`} 
+              className="clients-static-row"
+              role="listitem"
+            >
+              {row.map((image, index) => {
+                const clientIndex = rowIndex * 13 + index;
+                const clientName = clientNames[clientIndex] || 'cliente';
+                return (
+                  <div 
+                    key={`row-${rowIndex}-${index}`} 
+                    className="client-item"
+                    itemScope
+                    itemType="https://schema.org/Organization"
+                  >
+                    <img 
+                      src={image} 
+                      alt={`Logo de ${clientName}`}
+                      className="client-logo"
+                      loading="lazy"
+                      itemProp="logo"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        console.error(`Error al cargar imagen: ${clientName}`);
+                      }}
+                    />
+                    <meta itemProp="name" content={clientName} />
+                  </div>
+                );
+              })}
             </div>
           ))}
         </div>
 
-        {/* Nueva sección para los contadores adicionales */}
-        <div className="additional-counters-container">
-          <div className="additional-counters-grid">
+        {/* Sección de contadores adicionales */}
+        <div 
+          className="additional-counters-container"
+          aria-label="Clientes internacionales"
+        >
+          <div className="additional-counters-grid" role="list">
             {additionalCounters.map((item, index) => (
-              <div key={index} className="additional-counter-item">
+              <div 
+                key={index} 
+                className="additional-counter-item"
+                role="listitem"
+                itemScope
+                itemType="https://schema.org/Country"
+              >
                 <AnimatedCounter 
                   targetValue={item.value} 
                   label={item.country}
                   delay={0.3 + (index * 0.1)}
+                  aria-label={`${item.value} cliente en ${item.country}`}
                 />
-              <div className="client-item">
-                <img 
-                  src={item.image} 
-                  alt={`${item.client} logo`}
-                  className="client-logo" 
-                  loading="lazy"
-                />
-              </div>
+                <div className="client-item">
+                  <img 
+                    src={item.image} 
+                    alt={`Logo de cliente en ${item.country}`}
+                    className="client-logo" 
+                    loading="lazy"
+                    itemProp="image"
+                  />
+                  <meta itemProp="name" content={item.country} />
+                </div>
               </div>
             ))}
           </div>

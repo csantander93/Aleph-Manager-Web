@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import './Features.css';
 
-// Componentes de iconos con animaciones mejoradas
+// Componentes de iconos con animaciones mejoradas (añadido aria-hidden)
 const ClockIcon = () => (
-  <div className="icon-container clock-icon">
-    <svg className="feature-icon-svg" viewBox="0 0 24 24">
+  <div className="icon-container clock-icon" aria-hidden="true">
+    <svg className="feature-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
       <circle cx="12" cy="12" r="10" className="clock-face" />
       {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((angle, i) => (
         <line 
@@ -32,8 +32,8 @@ const ClockIcon = () => (
 );
 
 const ShieldIcon = () => (
-  <div className="icon-container shield-icon">
-    <svg className="feature-icon-svg" viewBox="0 0 24 24">
+  <div className="icon-container shield-icon" aria-hidden="true">
+    <svg className="feature-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
       <path 
         d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" 
         className="shield-body"
@@ -61,8 +61,8 @@ const ShieldIcon = () => (
 );
 
 const MoneyIcon = () => (
-  <div className="icon-container money-icon">
-    <svg className="feature-icon-svg" viewBox="0 0 24 24">
+  <div className="icon-container money-icon" aria-hidden="true">
+    <svg className="feature-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
       <circle 
         cx="12" 
         cy="12" 
@@ -92,8 +92,8 @@ const MoneyIcon = () => (
 );
 
 const GraphIcon = () => (
-  <div className="icon-container graph-icon">
-    <svg className="feature-icon-svg" viewBox="0 0 24 24">
+  <div className="icon-container graph-icon" aria-hidden="true">
+    <svg className="feature-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
       <line x1="4" y1="20" x2="20" y2="20" className="graph-axis" />
       <line x1="4" y1="20" x2="4" y2="4" className="graph-axis" />
       <polyline 
@@ -174,12 +174,34 @@ const Features = () => {
     }
   ];
 
+  // Datos estructurados para SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": features.map((feature, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": feature.title,
+      "description": feature.description
+    }))
+  };
+
   return (
-    <section id="caracteristicas" className="features-section" ref={sectionRef}>
+    <section 
+      id="caracteristicas" 
+      className="features-section" 
+      ref={sectionRef}
+      aria-labelledby="features-heading"
+    >
+      {/* Datos estructurados para SEO */}
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </script>
+
       <div className="features-background">
         <div className="features-background-gradient-1"></div>
         <div className="features-background-gradient-2"></div>
-        <div className="particles-container">
+        <div className="particles-container" aria-hidden="true">
           {[...Array(15)].map((_, i) => (
             <div key={i} className="particle" style={{
               '--delay': `${Math.random() * 2}s`,
@@ -193,7 +215,7 @@ const Features = () => {
 
       <div className="features-container">
         <div className="features-header">
-          <h2 className="features-title animate-gradient">
+          <h2 id="features-heading" className="features-title animate-gradient">
             Características
           </h2>
           <p className="features-subtitle">
@@ -208,15 +230,17 @@ const Features = () => {
               className={`feature-item ${feature.align}`}
               ref={el => featureRefs.current[index] = el}
               style={{ '--delay': `${feature.delay}s` }}
+              itemScope
+              itemType="https://schema.org/ListItem"
             >
-              <div className="feature-image-placeholder">
+              <div className="feature-image-placeholder" aria-hidden="true">
                 <div className="feature-icon">
                   {feature.icon}
                 </div>
               </div>
               <div className="feature-content">
-                <h3 className="feature-title">{feature.title}</h3>
-                <p className="feature-description">{feature.description}</p>
+                <h3 className="feature-title" itemProp="name">{feature.title}</h3>
+                <p className="feature-description" itemProp="description">{feature.description}</p>
               </div>
             </div>
           ))}
