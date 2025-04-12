@@ -17,7 +17,28 @@ const About = () => {
   }, []);
 
   return (
-    <section id="sobre-nosotros" className="about-section">
+    <section id="sobre-nosotros" className="about-section" itemScope itemType="https://schema.org/AboutPage">
+      {/* Datos estructurados */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "description": "Equipo especializado en sistemas financieros complejos y gestión de compliance",
+          "mainEntity": [
+            {
+              "@type": "Service",
+              "serviceType": "Consultoría financiera",
+              "description": "Método de trabajo basado en metodologías testeadas y verificadas en el mercado"
+            },
+            {
+              "@type": "SoftwareApplication",
+              "name": "Aleph Manager",
+              "description": "Plataforma para gestión integrada de normas internacionales"
+            }
+          ]
+        })}
+      </script>
+
       <div className="about-background">
         <div className="about-background-gradient-1"></div>
         <div className="about-background-gradient-2"></div>
@@ -25,10 +46,10 @@ const About = () => {
 
       <div className="about-container">
         <div className="about-header">
-          <h2 className="about-title animate-gradient">
+          <h2 className="about-title animate-gradient" itemProp="headline">
             Transformamos la gestión de compliance con tecnología de vanguardia
           </h2>
-          <p className="about-subtitle">
+          <p className="about-subtitle" itemProp="description">
             Expertos en sistemas financieros complejos donde la precisión y adaptabilidad son clave
           </p>
         </div>
@@ -36,14 +57,14 @@ const About = () => {
         <div className="about-content">
           <div className="about-text-column">
             <div className="space-y-6">
-              <div className="about-text-block">
+              <div className="about-text-block" itemProp="description">
                 <p>
                   Somos profesionales calificados y especializados en la Industria financiera caracterizada por su complejidad y competitividad.
                 </p>
               </div>
               
               <div className="about-text-block about-text-block-emerald">
-                <p>
+                <p itemProp="description">
                   Nuestro diferencial es brindar un servicio personalizado, flexible, profesional y adecuado a cada necesidad.
                 </p>
               </div>
@@ -67,17 +88,17 @@ const About = () => {
                   icon: "M5 13l4 4L19 7"
                 }
               ].map((item, index) => (
-                <div key={index} className="about-service-item">
+                <div key={index} className="about-service-item" itemScope itemType="https://schema.org/Service">
                   <div className="about-service-icon">
                     <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={item.icon} />
                     </svg>
                   </div>
                   <div>
-                    <h4 className="about-service-title">
+                    <h4 className="about-service-title" itemProp="name">
                       {item.title}
                     </h4>
-                    <p className="about-service-description">{item.description}</p>
+                    <p className="about-service-description" itemProp="description">{item.description}</p>
                   </div>
                 </div>
               ))}
@@ -88,11 +109,12 @@ const About = () => {
             <div className="about-image-container">
               <img 
                 src={teamImage} 
-                alt="Equipo Aleph Manager" 
+                alt="Equipo de consultores financieros de Aleph Manager trabajando en sistemas de compliance" 
+                itemProp="image"
               />
               <div className="about-image-overlay"></div>
               <div className="about-image-caption">
-                <p>
+                <p itemProp="slogan">
                   "Somos especialistas en la implementación e integración de procesos de mejora organizacional basados en estándares internacionales"
                 </p>
               </div>

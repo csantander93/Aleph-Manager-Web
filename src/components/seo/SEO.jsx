@@ -26,7 +26,9 @@ const SEO = ({ title, description, keywords, image, url }) => {
       <meta property="og:image" content={image} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content="website" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="twitter:card" content="summary_large_image" />
+      <link rel="icon" href="/Favicon Aleph 2020.png" />
       <link rel="canonical" href={url} />
       <script type="application/ld+json">
         {JSON.stringify(structuredData)}

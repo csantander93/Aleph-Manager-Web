@@ -40,23 +40,24 @@ const Header = () => {
   return (
     <header className={`header ${isScrolled ? 'header-scrolled' : 'header-transparent'}`}>
       <div className="header-container">
-        {/* Logo  clickable */}
+        {/* Logo clickable */}
         <div className="flex items-center">
-          <a href="#inicio" className="cursor-pointer"> {/* Envuelve el logo en un <a> */}
+          <a href="#inicio" className="cursor-pointer" aria-label="Ir al inicio">
             <img 
               src={logo} 
-              alt="Aleph Manager Logo" 
+              alt="Aleph Manager - Software especializado en gestión ISO, GRC y PLAFT" 
               className="header-logo"
             />
           </a>
         </div>
 
         {/* Menú desktop */}
-        <nav className="nav-desktop">
+        <nav className="nav-desktop" aria-label="Navegación principal">
           {menuItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
+              aria-current={activeSection === item.href ? "page" : undefined}
               className={`nav-item ${isScrolled ? 'nav-item-scrolled' : 'nav-item-transparent'} ${
                 activeSection === item.href ? 'text-cyan-300' : ''
               }`}
@@ -71,10 +72,12 @@ const Header = () => {
 
         {/* Menú móvil */}
         <button
+          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={menuOpen}
           onClick={() => setMenuOpen(!menuOpen)}
           className={`mobile-menu-button ${isScrolled ? 'mobile-menu-button-scrolled' : 'mobile-menu-button-transparent'}`}
         >
-          <svg className="mobile-menu-icon" fill="none" viewBox="0 0 24 24">
+          <svg className="mobile-menu-icon" fill="none" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke="currentColor" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
         </button>
@@ -82,12 +85,13 @@ const Header = () => {
 
       {/* Menú móvil desplegable */}
       {menuOpen && (
-        <div className="mobile-menu">
+        <div className="mobile-menu" role="navigation">
           <div className="mobile-menu-container">
             {menuItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
+                aria-current={activeSection === item.href ? "page" : undefined}
                 className={`mobile-menu-item ${
                   activeSection === item.href ? 'text-cyan-300' : ''
                 }`}
