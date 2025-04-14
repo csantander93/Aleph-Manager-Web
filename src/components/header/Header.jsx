@@ -31,8 +31,8 @@ const Header = () => {
 
   const menuItems = [
     { name: "Inicio", href: "#inicio" },
-    { name: "Sobre Nosotros", href: "#sobre-nosotros" },
-    { name: "Características", href: "#modulos" },
+    { name: "Soluciones de software", href: "#modulos" },
+    { name: "Características", href: "#caracteristicas" },
     { name: "Clientes", href: "#clientes" },
     { name: "Contáctanos", href: "#contacto" }
   ];

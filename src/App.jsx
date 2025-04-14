@@ -1,4 +1,3 @@
-import About from "./components/about/About"
 import Awards from "./components/awards/Awards"
 import Clients from "./components/clients/Clients"
 import ContactForm from "./components/contact/ContactForm"
@@ -29,10 +28,6 @@ function App() {
       <Header />
       <SectionWrapper id="inicio">
         <Intro />
-      </SectionWrapper>
-        
-      <SectionWrapper id="sobre-nosotros">
-        <About />
       </SectionWrapper>
 
       <SectionWrapper id="modulos">
