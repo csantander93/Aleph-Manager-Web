@@ -48,7 +48,7 @@ const ContactForm = () => {
       
       <div className="contact-container">
         <div className="contact-header">
-            <h2 className="contact-title">Contacto</h2>
+            <h2 className="contact-title">CONTACTO</h2>
             <p className="contact-subtitle">Completa el formulario y nos pondremos en contacto contigo</p>
         </div>
 

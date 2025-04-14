@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import { FaLinkedin } from 'react-icons/fa';
-import logoAleph from '../../assets/Gif-Aleph-una-vez.gif';
+import logoYafo from '../../assets/Logo Yafo JPG_grises 150dpi.jpg';
 
 const Footer = () => {
   // Datos estructurados para el footer
@@ -31,16 +31,16 @@ const Footer = () => {
 
       <div className="footer-content">
         <div className="footer-section footer-logo-section" itemScope itemType="https://schema.org/Organization">
+          <p className="footer-text" itemProp="description">
+            Propiedad intelectual de
+          </p>
           <img 
-            src={logoAleph} 
+            src={logoYafo} 
             alt="Logo Aleph Manager" 
             className="info-logo" 
             itemProp="logo"
             loading="lazy"
           />
-          <p className="footer-text" itemProp="description">
-            Soluciones innovadoras para la gestión empresarial.
-          </p>
           <div className="social-icons">
             <a 
               href="https://www.linkedin.com/showcase/aleph-manager/about/" 

@@ -56,7 +56,7 @@ const Awards = () => {
       
       <div className="awards-container">
         <div className="awards-header">
-          <h2 id="awards-heading" className="awards-title">Reconocimientos</h2>
+          <h2 id="awards-heading" className="awards-title">RECONOCIMIENTOS</h2>
           <p className="awards-subtitle">Premios y distinciones que validan nuestro compromiso con la excelencia</p>
         </div>
         

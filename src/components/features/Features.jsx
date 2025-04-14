@@ -216,7 +216,7 @@ const Features = () => {
       <div className="features-container">
         <div className="features-header">
           <h2 id="features-heading" className="features-title animate-gradient">
-            Características
+            CARACTERÍSTICAS
           </h2>
           <p className="features-subtitle">
             El enfoque integrado de Aleph Manager permite crecer con las distintas herramientas que componen la plataforma, y de esa manera tomar ventajas administrativas, ahorro de costos y tiempo.

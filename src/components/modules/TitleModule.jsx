@@ -25,7 +25,7 @@ const TitleModule = () => {
         className="modulos-title" 
         itemProp="name"
       >
-        Soluciones de Software
+        SOLUCIONES DE SOFTWARE
       </h2>
       <p 
         className="modulos-subtitle" 

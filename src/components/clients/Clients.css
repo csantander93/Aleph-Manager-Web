@@ -54,8 +54,8 @@
   color: transparent;
   background-image: var(--primary-gradient);
   background-size: 300% 300%;
-  font-family: 'TWK Everett', sans-serif;
-  animation: gradientShift 8s ease infinite;
+  font-family: 'Corbel', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
+  'Lucida Sans Unicode', Geneva, Verdana, sans-serif;  animation: gradientShift 8s ease infinite;
   position: relative;
   display: inline-block;
 }

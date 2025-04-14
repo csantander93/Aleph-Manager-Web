@@ -132,7 +132,7 @@ const Clients = () => {
       <div className="clients-container">
         <div className="clients-header">
           <h2 id="clients-heading" className="clients-title">
-            Nuestros Clientes
+            NUESTROS CLIENTES
           </h2>
           <p className="clients-subtitle">
             Empresas que confían en nuestros servicios
