@@ -34,13 +34,20 @@ const Footer = () => {
           <p className="footer-text" itemProp="description">
             Propiedad intelectual de
           </p>
-          <img 
-            src={logoYafo} 
-            alt="Logo Aleph Manager" 
-            className="info-logo" 
-            itemProp="logo"
-            loading="lazy"
-          />
+          <a 
+            href="https://yafoconsultora.com/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="Visitar sitio de Yafo Consultora"
+          >
+            <img 
+              src={logoYafo} 
+              alt="Logo Yafo Consultora" 
+              className="info-logo" 
+              itemProp="logo"
+              loading="lazy"
+            />
+          </a>
           <div className="social-icons">
             <a 
               href="https://www.linkedin.com/showcase/aleph-manager/about/" 

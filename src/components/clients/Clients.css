@@ -97,6 +97,16 @@
   justify-content: center;
   gap: 32px;
   width: 100%;
+  margin: 0; /* Eliminar cualquier margen que pueda causar inconsistencia */
+  padding: 8px 0; /* Padding uniforme arriba y abajo */
+}
+
+.desktop-version {
+  display: block;
+}
+
+.mobile-version {
+  display: none;
 }
 
 /* Efecto de tarjeta de vidrio moderno */
@@ -217,20 +227,46 @@
 }
 
 /* Responsive adjustments */
+/* Media Queries para móviles */
+/* Media Queries para móviles - Versión 60% más grande */
 @media (max-width: 768px) {
+  .desktop-version {
+    display: none;
+  }
+  
+  .mobile-version {
+    display: block;
+  }
+  
   .clients-static-row {
-    gap: 16px;
+    justify-content: space-around;
+    gap: 20px; /* Aumentado para acomodar logos más grandes */
   }
   
   .client-item {
-    width: 100px;
-    height: 50px;
-    padding: 0.6rem 1rem;
+    width: calc(25% - 16px);
+    height: 96px; /* 60px (original) + 60% = 96px */
+    padding: 0.8rem; /* 0.5rem (original) + 60% */
+    margin: 6px 0; /* Aumentado para espacio vertical */
+    transform: scale(1.6); /* Escala total: 60% más grande */
+    transform-origin: center;
+    border-radius: 12px; /* Aumentado para proporción */
   }
   
   .client-logo {
-    max-width: 90px;
-    max-height: 40px;
+    max-width: 100%;
+    max-height: 100%; /* Ocupa todo el espacio disponible */
+    opacity: 0.9; /* Mejor visibilidad */
+  }
+  
+  /* Ajustes para pantallas muy pequeñas (480px) */
+  @media (max-width: 480px) {
+    .client-item {
+      width: calc(25% - 8px);
+      height: 80px; /* 50px (original) + 60% = 80px */
+      padding: 0.6rem;
+      transform: scale(1.4); /* Escala reducida para móviles pequeños */
+    }
   }
 }
 
@@ -246,13 +282,13 @@
   
   .client-item {
     padding: 0.8rem 1.6rem; /* Reducido de 1rem 2rem */
-    width: 128px; /* Reducido de 160px */
+    width: 130px; /* Reducido de 160px */
     height: 60px; /* Reducido de 75px */
   }
   
   .client-logo {
-    max-width: 112px; /* Reducido de 140px */
-    max-height: 48px; /* Reducido de 60px */
+    max-width: 130px; /* Reducido de 140px */
+    max-height: 45px; /* Reducido de 60px */
   }
 }
 

@@ -86,13 +86,19 @@ const clientNames = [
 
 
 const Clients = () => {
-  // Dividimos las imágenes en 4 filas para mejor distribución
-  const rows = [
+  // Dividimos las imágenes en filas según el dispositivo
+  const desktopRows = [
     clientImages.slice(0, 13),
     clientImages.slice(13, 26),
     clientImages.slice(26, 39),
-    clientImages.slice(39, 52)
+    clientImages.slice(39, 53)
   ];
+
+  // Para móviles: creamos filas de exactamente 3 imágenes
+  const mobileRows = [];
+  for (let i = 0; i < clientImages.length; i += 3) {
+    mobileRows.push(clientImages.slice(i, i + 3));
+  }
 
   // Datos para los nuevos contadores
   const additionalCounters = [
@@ -141,26 +147,22 @@ const Clients = () => {
 
         <div className="clients-counter-container">
           <AnimatedCounter 
-            targetValue={52} 
+            targetValue={53} 
             label="Argentina" 
             delay={0.3}
-            aria-label="52 clientes en Argentina"
+            aria-label="53 clientes en Argentina"
           />
         </div>
         
-        <div className="clients-static-grid" role="list" aria-label="Lista de clientes">
-          {rows.map((row, rowIndex) => (
-            <div 
-              key={`row-${rowIndex}`} 
-              className="clients-static-row"
-              role="listitem"
-            >
+        <div className="clients-static-grid desktop-version" role="list" aria-label="Lista de clientes">
+          {desktopRows.map((row, rowIndex) => (
+            <div key={`desktop-row-${rowIndex}`} className="clients-static-row" role="listitem">
               {row.map((image, index) => {
                 const clientIndex = rowIndex * 13 + index;
                 const clientName = clientNames[clientIndex] || 'cliente';
                 return (
                   <div 
-                    key={`row-${rowIndex}-${index}`} 
+                    key={`desktop-row-${rowIndex}-${index}`} 
                     className="client-item"
                     itemScope
                     itemType="https://schema.org/Organization"
@@ -183,6 +185,40 @@ const Clients = () => {
             </div>
           ))}
         </div>
+
+        {/* Versión para móvil */}
+        <div className="clients-static-grid mobile-version" role="list" aria-label="Lista de clientes">
+          {mobileRows.map((row, rowIndex) => (
+            <div key={`mobile-row-${rowIndex}`} className="clients-static-row" role="listitem">
+              {row.map((image, index) => {
+                const clientIndex = rowIndex * 4 + index;
+                const clientName = clientNames[clientIndex] || 'cliente';
+                return (
+                  <div 
+                    key={`mobile-row-${rowIndex}-${index}`} 
+                    className="client-item"
+                    itemScope
+                    itemType="https://schema.org/Organization"
+                  >
+                    <img 
+                      src={image} 
+                      alt={`Logo de ${clientName}`}
+                      className="client-logo"
+                      loading="lazy"
+                      itemProp="logo"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        console.error(`Error al cargar imagen: ${clientName}`);
+                      }}
+                    />
+                    <meta itemProp="name" content={clientName} />
+                  </div>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+          
 
         {/* Sección de contadores adicionales */}
         <div 

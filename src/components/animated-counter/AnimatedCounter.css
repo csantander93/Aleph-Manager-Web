@@ -17,6 +17,7 @@
   position: relative;
   overflow: visible;
   box-sizing: border-box; /* Incluye padding en el tamaño total */
+  margin-bottom: 10px;
   
   /* Fondo metálico estático */
   background: linear-gradient(
