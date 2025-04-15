@@ -59,7 +59,7 @@ const Modulos = ({ initialCategory, onBack }) => {
   };
   
 
-  return (
+return (
   <>
     <Helmet>
       <title>Aleph Manager</title>
@@ -130,7 +130,12 @@ const Modulos = ({ initialCategory, onBack }) => {
                   className="category-header"
                   onClick={() => handleCategoryClick(category)}
                 >
-                  <span>{category}</span>
+                  <span>{category.includes('(') ? category.split('(')[0].trim() : category}</span>
+                  {isMobile && (
+                    <span className="modulos-count">
+                      {Object.keys(modulesData[category]).length} módulos
+                    </span>
+                  )}
                 </button>
               </div>
             ))}
@@ -253,7 +258,7 @@ const Modulos = ({ initialCategory, onBack }) => {
                     <p>Detalles del módulo seleccionado</p>
                   </div>
                   <div className="module-detail-header">
-                    <h3 title={selectedModule}  >{selectedModule}</h3>
+                    <h3 title={selectedModule}>{selectedModule}</h3>
                     <div className="module-category-badge">
                       {activeCategory.includes('(') ? activeCategory.split('(')[0].trim() : activeCategory}
                     </div>

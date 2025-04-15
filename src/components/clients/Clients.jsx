@@ -91,7 +91,7 @@ const Clients = () => {
     clientImages.slice(0, 13),
     clientImages.slice(13, 26),
     clientImages.slice(26, 39),
-    clientImages.slice(39, 53)
+    clientImages.slice(39, 53),
   ];
 
   // Para móviles: creamos filas de exactamente 3 imágenes
