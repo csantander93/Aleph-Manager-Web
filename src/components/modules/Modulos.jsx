@@ -104,11 +104,11 @@ return (
           <div className={`categories-panel ${!isMobile || mobileView === 'categories' ? 'mobile-active' : ''}`}>
             {isMobile && (
               <div className="mobile-panel-header">
-                <button className="mobile-back-button" onClick={handleBackToSolutions}>
+                {/*<button className="mobile-back-button" onClick={handleBackToSolutions}>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path d="M15 18l-6-6 6-6" strokeWidth="2" strokeLinecap="round"/>
                   </svg>
-                </button>
+                </button> este boton es para volver pero no se usara*/}
                 <h3 className="mobile-panel-title">Soluciones de Software</h3>
               </div>
             )}
