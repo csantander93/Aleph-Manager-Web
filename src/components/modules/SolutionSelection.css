@@ -54,8 +54,6 @@
      z-index: 1; /* Asegúrate de que esté sobre el fondo */
    }
 
-   
-
    /* ==========================================================================
       Estructura Principal
       ========================================================================== */
@@ -75,6 +73,8 @@
      display: flex;
      gap: var(--modulos-space-md);
      padding: var(--modulos-space-sm) 0;
+     padding-top: 50px;
+     padding-bottom: 30px;
      overflow-x: auto;
      scrollbar-width: none;
      -ms-overflow-style: none;
@@ -92,7 +92,8 @@
      height: auto; /* Permite que crezca */
      background: linear-gradient(
       135deg, 
-      rgba(15, 23, 42, 0.9), 
+      #1973b8,
+      #205b88,
       rgba(15, 23, 42, 0.95)
     ), var(--modulos-bg-dark) !important;
     backdrop-filter: blur(10px);
@@ -159,25 +160,104 @@
      flex-grow: 1;
    }
    
-   .modulos-card-arrow {
-     display: flex;
-     justify-content: flex-end;
-     margin-top: auto;
-   }
-   
-   .modulos-card-arrow svg {
-     width: 16px;
-     height: 16px;
-     stroke-width: 2;
-     color: rgba(255, 255, 255, 0.5);
-     transition: all var(--modulos-transition-normal);
-   }
-   
-   .modulos-category-card:hover .modulos-card-arrow svg {
-     transform: translateX(3px);
-     color: #fff;
-   }
-   
+   /* ==========================================================================
+   Tarjeta Seleccionada - Efectos Especiales
+   ========================================================================== */
+
+.modulos-category-card.modulos-selected {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.1),
+              0 0 20px 5px rgba(103, 232, 249, 0.3);
+  border: 1px solid rgba(103, 232, 249, 0.5);
+  z-index: 10;
+  animation: cardGlow 2s infinite alternate;
+  background: linear-gradient(
+    135deg, 
+    rgba(25, 115, 184, 0.9),
+    rgba(32, 91, 136, 0.9),
+    rgba(15, 23, 42, 0.95)
+  ), var(--modulos-bg-dark) !important;
+}
+
+.modulos-category-card.modulos-selected::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.2) 60%,
+    transparent 100%
+  );
+  transform: rotate(0deg);
+  animation: metallicShine 2.5s infinite linear;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: var(--modulos-radius-md);
+  opacity: 0.8;
+}
+
+@keyframes metallicShine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(25deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(25deg);
+  }
+}
+
+
+@keyframes cardGlow {
+  0% {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.1),
+                0 0 20px 5px rgba(103, 232, 249, 0.3);
+  }
+  100% {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.1),
+                0 0 30px 10px rgba(103, 232, 249, 0.4);
+  }
+}
+
+.modulos-category-card.modulos-selected .modulos-card-highlight {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(103, 232, 249, 0.1),
+    rgba(103, 232, 249, 0.05),
+    transparent
+  );
+  pointer-events: none;
+  border-radius: var(--modulos-radius-md);
+}
+
+.modulos-category-card.modulos-selected h4 {
+  color: var(--modulos-primary);
+  text-shadow: 0 0 5px rgba(103, 232, 249, 0.5);
+}
+
+.modulos-category-card.modulos-selected .modulos-module-count {
+  background-color: rgba(56, 182, 255, 0.4);
+  color: #ffffff;
+}
+
+/* Ajuste para hover cuando ya está seleccionado */
+.modulos-category-card.modulos-selected:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
    /* ==========================================================================
       Estilos Responsivos
       ========================================================================== */

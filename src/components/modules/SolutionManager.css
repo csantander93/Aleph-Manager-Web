@@ -1,135 +1,109 @@
-/* ==========================================================================
-   Efectos de Fondo tipo Atardecer para Solutions Manager
-   ========================================================================== */
+.back-button-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--modulos-space-sm);
+  padding: 0.75rem 1.5rem;
+  margin: 1.5rem auto;
+  background: linear-gradient(
+    135deg, 
+    rgba(25, 115, 184, 0.85),
+    rgba(8, 47, 73, 0.95)
+  );
+  color: var(--modulos-text-primary);
+  border: 1px solid rgba(103, 232, 249, 0.4);
+  border-radius: var(--modulos-radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--modulos-transition-normal) cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 6px rgba(0, 180, 255, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  width: 90%;
+  max-width: 320px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  z-index: 2;
+}
 
-   .solutions-manager {
-    position: relative;
-    /* Gradiente principal vertical - azul claro abajo, oscuro arriba */
-    background: linear-gradient(
-      to top,
-      #0c1a2f 0%,       /* Azul muy oscuro arriba */
-      #1a365d 40%,      /* Azul oscuro */
-      #2c5282 70%,      /* Azul medio */
-      #4299e1 100%      /* Azul claro abajo */
-    );
-    z-index: 0;
-    overflow: hidden;
+.back-button-mobile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(103, 232, 249, 0.1),
+    rgba(103, 232, 249, 0.05),
+    transparent
+  );
+  pointer-events: none;
+  border-radius: var(--modulos-radius-md);
+}
+
+.back-button-mobile:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 12px rgba(0, 180, 255, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  border-color: rgba(103, 232, 249, 0.6);
+  color: #ffffff;
+}
+
+.back-button-mobile:active {
+  transform: translateY(0);
+}
+
+.back-button-mobile .icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--modulos-primary);
+  transition: transform var(--modulos-transition-fast);
+}
+
+.back-button-mobile:hover .icon {
+  transform: translateX(-3px);
+  color: #a5f3fc;
+}
+
+/* Efecto de brillo dinámico */
+.back-button-mobile::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 30%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.15) 70%,
+    transparent 100%
+  );
+  animation: buttonShine 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  z-index: 1;
+  transform: skewX(-20deg);
+  opacity: 0.7;
+}
+
+@keyframes buttonShine {
+  0% { left: -50%; opacity: 0; }
+  20% { opacity: 0.7; }
+  80% { opacity: 0.7; }
+  100% { left: 150%; opacity: 0; }
+}
+
+/* Media Queries Responsive */
+@media (max-width: 768px) {
+  .back-button-mobile {
+    width: calc(100% - 2rem);
+    margin: 1rem auto;
+    padding: 0.75rem 1.25rem;
   }
-  
-  .solutions-background-effects {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
-  
-  /* Efecto "sol" en el horizonte */
-  .solutions-gradient-primary {
-    position: absolute;
-    width: 100%;
-    height: 200px;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(
-      0deg,
-      rgba(254, 240, 138, 0.3) 0%,     /* Amarillo claro (luz solar) */
-      rgba(251, 146, 60, 0.2) 30%,     /* Naranja */
-      rgba(220, 38, 38, 0.1) 60%,      /* Rojo */
-      transparent 100%
-    );
-    filter: blur(20px);
-    animation: sunset-glow 15s ease-in-out infinite alternate;
-  }
-  
-  /* Reflejos de luz en el cielo */
-  .solutions-gradient-secondary {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    filter: blur(80px);
-    background: radial-gradient(
-      circle,
-      rgba(251, 191, 36, 0.15) 0%,    /* Amarillo */
-      rgba(220, 38, 38, 0.1) 50%,     /* Rojo */
-      transparent 70%
-    );
-    top: 20%;
-    right: 15%;
-    animation: float-gradient 25s ease-in-out infinite;
-  }
-  
-  /* Brillo atmosférico */
-  .solutions-gradient-tertiary {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-      circle at center,
-      rgba(56, 182, 255, 0.05) 0%,
-      rgba(30, 58, 138, 0.1) 50%,
-      rgba(15, 23, 42, 0.8) 100%
-    );
-  }
-  
-  .Particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    opacity: 0.7;
-  }
-  
-  /* Animaciones */
-  @keyframes sunset-glow {
-    0%, 100% { 
-      opacity: 0.8;
-      height: 180px;
-    }
-    50% { 
-      opacity: 1;
-      height: 220px;
-      filter: blur(25px);
-    }
-  }
-  
-  @keyframes float-gradient {
-    0%, 100% { 
-      transform: translate(0, 0); 
-    }
-    25% { 
-      transform: translate(20px, -10px);
-    }
-    50% { 
-      transform: translate(-10px, 15px);
-      opacity: 0.7;
-    }
-    75% { 
-      transform: translate(15px, 5px);
-    }
-  }
-  
-  /* Media Queries Responsive */
-  @media (max-width: 768px) {
-    .solutions-gradient-primary {
-      height: 150px;
-      filter: blur(15px);
-    }
-    
-    .solutions-gradient-secondary {
-      width: 200px;
-      height: 200px;
-      filter: blur(60px);
-      top: 15%;
-      right: 10%;
-    }
-    
-    @keyframes sunset-glow {
-      0%, 100% { height: 120px; }
-      50% { height: 160px; }
-    }
-  }
+}

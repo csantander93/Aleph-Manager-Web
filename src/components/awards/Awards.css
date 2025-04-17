@@ -98,6 +98,8 @@
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Reducido de 10px 40px */
   transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Acortamos la duración para que sea más ágil */
+
 }
 
 /* Contenedor de imagen optimizado */
@@ -200,14 +202,15 @@
 
 /* Efectos hover mejorados */
 .award-card:hover {
-  transform: translateY(-8px) rotateX(5deg); /* Reducido de 10px */
-  box-shadow: 0 12px 40px rgba(6, 182, 212, 0.4); /* Reducido de 15px 50px */
+  transform: scale(1.05); /* Escalamos ligeramente la tarjeta */
+  box-shadow: 0 12px 40px rgba(6, 182, 212, 0.4);
   border-color: rgba(6, 182, 212, 0.5);
+  z-index: 2; /* Aseguramos que la tarjeta que crece se muestre por encima de las demás */
 }
 
 .award-card:hover .award-image {
   transform: scale(1.1);
-  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4)); /* Reducido de 15px */
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
 }
 
 .award-card:hover .award-image-container::before {
