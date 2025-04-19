@@ -54,6 +54,77 @@
      z-index: 1; /* Asegúrate de que esté sobre el fondo */
    }
 
+/* ==========================================================================
+   Efecto Metalizado para Tarjetas Seleccionadas
+   ========================================================================== */
+
+   .modulos-category-card.modulos-selected {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .modulos-category-card.modulos-selected::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to bottom right,
+      transparent 0%,
+      transparent 45%,
+      rgba(255, 255, 255, 0.15) 48%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0.15) 52%,
+      transparent 55%,
+      transparent 100%
+    );
+    transform: rotate(30deg);
+    animation: metalGlow 3s ease-in-out infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  @keyframes metalGlow {
+    0% {
+      transform: translateX(-100%) translateY(-100%) rotate(30deg);
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.8;
+    }
+    40% {
+      opacity: 0.8;
+    }
+    60% {
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(100%) translateY(100%) rotate(30deg);
+      opacity: 0;
+    }
+  }
+  
+  /* Refuerzo del efecto de selección */
+  .modulos-category-card.modulos-selected {
+    background: linear-gradient(
+      135deg, 
+      rgba(25, 115, 184, 0.9),
+      rgba(32, 91, 136, 0.9),
+      rgba(15, 23, 42, 0.95)
+    ), var(--modulos-bg-dark) !important;
+    border: 1px solid rgba(103, 232, 249, 0.5);
+    box-shadow: 0 0 30px rgba(103, 232, 249, 0.3),
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Ajuste para el contenido cuando está seleccionado */
+  .modulos-category-card.modulos-selected .modulos-card-content {
+    position: relative;
+    z-index: 2;
+  }
    /* ==========================================================================
       Estructura Principal
       ========================================================================== */
@@ -69,18 +140,18 @@
       Tarjetas de Categorías
       ========================================================================== */
    
-   .modulos-categories-container {
-     display: flex;
-     gap: var(--modulos-space-md);
-     padding: var(--modulos-space-sm) 0;
-     padding-top: 50px;
-     padding-bottom: 30px;
-     overflow-x: auto;
-     scrollbar-width: none;
-     -ms-overflow-style: none;
-     scroll-padding: var(--modulos-space-md);
-     margin: 0 calc(-1 * var(--modulos-space-md));
-   }
+      .modulos-categories-container {
+        display: flex;
+        gap: var(--modulos-space-md);
+        padding: var(--modulos-space-sm) calc(var(--modulos-space-md) + 5%); /* Añade padding lateral para espacio al escalar */
+        padding-top: 50px;
+        padding-bottom: 30px;
+        overflow-x: visible; /* Cambia de auto a visible para permitir el overflow controlado */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        margin: 0 calc(-1 * var(--modulos-space-md));
+        justify-content: center; /* Centra las tarjetas para mejor distribución */
+      }
    
    .modulos-categories-container::-webkit-scrollbar {
      display: none;
@@ -179,39 +250,6 @@
     rgba(15, 23, 42, 0.95)
   ), var(--modulos-bg-dark) !important;
 }
-
-.modulos-category-card.modulos-selected::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.2) 40%,
-    rgba(255, 255, 255, 0.6) 50%,
-    rgba(255, 255, 255, 0.2) 60%,
-    transparent 100%
-  );
-  transform: rotate(0deg);
-  animation: metallicShine 2.5s infinite linear;
-  pointer-events: none;
-  z-index: 1;
-  border-radius: var(--modulos-radius-md);
-  opacity: 0.8;
-}
-
-@keyframes metallicShine {
-  0% {
-    transform: translateX(-100%) translateY(-100%) rotate(25deg);
-  }
-  100% {
-    transform: translateX(100%) translateY(100%) rotate(25deg);
-  }
-}
-
 
 @keyframes cardGlow {
   0% {
