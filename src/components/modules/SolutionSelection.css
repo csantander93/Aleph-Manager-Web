@@ -4,6 +4,29 @@
 
    @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=TWK+Everett:wght@500&display=swap');
 
+
+   :root {
+    /* Azules principales (versión más moderna) */
+    --modulos-primary: #38bdf8;  /* Azul cielo vibrante - reemplaza al #67e8f9 */
+    --modulos-primary-light: rgba(56, 189, 248, 0.1);
+    --modulos-secondary: #22d3ee; /* Cian brillante */
+    --modulos-tertiary: #818cf8; /* Azul lavanda suave */
+    
+    /* Fondos oscuros mejorados */
+    --modulos-bg-dark: #0f172a; /* Mantenemos tu excelente color base */
+    --modulos-bg-darker: #020617; /* Para contrastes más profundos */
+    --modulos-bg-light: rgba(15, 23, 42, 0.7);
+    
+    /* Textos optimizados */
+    --modulos-text-primary: #f8fafc; /* Blanco más puro para mejor contraste */
+    --modulos-text-secondary: #94a3b8; /* Mantenemos este que funciona bien */
+    --modulos-text-tertiary: #64748b; /* Para textos menos importantes */
+    
+    /* Degradados para tarjetas */
+    --card-gradient-primary: #1e40af; /* Azul profundo */
+    --card-gradient-secondary: #1e3a8a; /* Azul marino */
+  }
+
    .modulos-selection-section {
      /* Variables con prefijo específico */
      --modulos-primary: #67e8f9;
@@ -163,13 +186,13 @@
      height: auto; /* Permite que crezca */
      background: linear-gradient(
       135deg, 
-      #1973b8,
-      #205b88,
+      var(--card-gradient-primary),
+      var(--card-gradient-secondary),
       rgba(15, 23, 42, 0.95)
-    ), var(--modulos-bg-dark) !important;
+    ) !important;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-     border-radius: var(--modulos-radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Borde más sutil */
+    border-radius: var(--modulos-radius-md);
      padding: var(--modulos-space-md);
      cursor: pointer;
      transition: all var(--modulos-transition-normal);
@@ -177,8 +200,10 @@
      overflow: hidden;
      display: flex;
      flex-direction: column;
-     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-   }
+     box-shadow: 
+     0 4px 6px rgba(0, 0, 0, 0.1), 
+     inset 0 1px 0 rgba(255, 255, 255, 0.03);
+       }
    
    .modulos-card-content {
      display: flex;
@@ -187,10 +212,12 @@
    }
    
    .modulos-category-card:hover {
-     transform: translateY(-3px);
-     box-shadow: var(--modulos-shadow-md);
-     border-color: rgba(56, 182, 255, 0.3);
-   }
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 
+      0 10px 15px -3px rgba(0, 0, 0, 0.2),
+      0 4px 6px -4px rgba(0, 0, 0, 0.1),
+      inset 0 0 0 1px rgba(56, 189, 248, 0.1);
+  }
    
    .modulos-card-header {
      display: flex;
@@ -198,20 +225,16 @@
      align-items: flex-start;
      margin-bottom: var(--modulos-space-sm);
    }
-   
    .modulos-category-card h4 {
-     font-size: 0.95rem;
-     margin: 0;
-     color: #fff;
-     font-weight: 600;
-     line-height: 1.3;
-   }
+    color: var(--modulos-text-primary);
+    font-weight: 600;
+  }
    
    .modulos-module-count {
      font-size: 0.7rem;
      padding: 0.15rem 0.5rem;
-     background-color: rgba(56, 182, 255, 0.2);
-     color: #a5f3fc;
+     background-color: var(--modulos-primary-light);
+     color: var(--modulos-primary);
      border-radius: 9999px;
      font-weight: 500;
      margin-left: var(--modulos-space-xs);
@@ -225,7 +248,7 @@
      -webkit-box-orient: vertical;
      overflow: hidden;
      font-size: 0.8rem;
-     color: rgba(255, 255, 255, 0.6);
+     color: rgba(248, 250, 252, 0.7); /* Usamos la variable de texto con opacidad */
      line-height: 1.5;
      margin-bottom: var(--modulos-space-sm);
      flex-grow: 1;
@@ -237,18 +260,20 @@
 
 .modulos-category-card.modulos-selected {
   transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 
-              0 10px 10px -5px rgba(0, 0, 0, 0.1),
-              0 0 20px 5px rgba(103, 232, 249, 0.3);
-  border: 1px solid rgba(103, 232, 249, 0.5);
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.3), 
+    0 10px 10px -5px rgba(0, 0, 0, 0.1),
+    0 0 20px 5px rgba(56, 189, 248, 0.3);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+
   z-index: 10;
   animation: cardGlow 2s infinite alternate;
   background: linear-gradient(
     135deg, 
-    rgba(25, 115, 184, 0.9),
-    rgba(32, 91, 136, 0.9),
-    rgba(15, 23, 42, 0.95)
-  ), var(--modulos-bg-dark) !important;
+    rgba(30, 64, 175, 0.9),
+    rgba(30, 58, 138, 0.9),
+    rgba(2, 6, 23, 0.95)
+  ) !important;
 }
 
 @keyframes cardGlow {
