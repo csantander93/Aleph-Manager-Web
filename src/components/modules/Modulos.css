@@ -435,14 +435,18 @@
    }
    
    .module-icon {
-     width: 24px;
-     height: 24px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     color: var(--primary);
-     transition: all var(--transition-normal);
-   }
+    width: 24px; /* o el tamaño que prefieras */
+    height: 24px; /* debe coincidir con el viewBox del SVG */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* evita que se reduzca */
+  }
+  
+  .module-icon svg {
+    width: 100%;
+    height: 100%;
+  }
    
    .module-item.selected .module-icon {
      color: #a5f3fc;
