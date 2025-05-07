@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { modulesData } from './data/modulesData';
 import './Modulos.css';
 import { Helmet } from 'react-helmet';
@@ -7,6 +7,8 @@ const Modulos = ({ initialCategory, selectedModule, onModuleSelect, onBack }) =>
   const [isMobile, setIsMobile] = useState(false);
   const [mobileView, setMobileView] = useState('modules');
   const [animate, setAnimate] = useState(false);
+  const descriptionPanelRef = useRef(null);
+  const [contentKey, setContentKey] = useState(0);
 
   useEffect(() => {
     setAnimate(true);
@@ -24,6 +26,20 @@ const Modulos = ({ initialCategory, selectedModule, onModuleSelect, onBack }) =>
       setMobileView('detail');
     } else {
       setMobileView('modules');
+    }
+  }, [selectedModule]);
+
+  useEffect(() => {
+    if (selectedModule) {
+      setContentKey(prev => prev + 1);
+      requestAnimationFrame(() => {
+        if (descriptionPanelRef.current) {
+          descriptionPanelRef.current.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }
+      });
     }
   }, [selectedModule]);
 
@@ -68,7 +84,6 @@ const Modulos = ({ initialCategory, selectedModule, onModuleSelect, onBack }) =>
           </div>
 
           <div className="modulos-content">
-            {/* Panel de módulos - visible siempre en desktop, condicional en mobile */}
             <div className={`modules-panel ${!isMobile || mobileView === 'modules' ? 'mobile-active' : ''}`}>
               {isMobile && (
                 <div className="mobile-panel-header">
@@ -109,7 +124,6 @@ const Modulos = ({ initialCategory, selectedModule, onModuleSelect, onBack }) =>
               </div>
             </div>
 
-            {/* Panel de descripción - visible siempre en desktop, condicional en mobile */}
             <div className={`module-detail-panel ${!isMobile || mobileView === 'detail' ? 'mobile-active' : ''}`}>
               {selectedModule ? (
                 <>
@@ -139,7 +153,11 @@ const Modulos = ({ initialCategory, selectedModule, onModuleSelect, onBack }) =>
                     </>
                   )}
                   
-                  <div className="module-detail-content">
+                  <div 
+                    className="module-detail-content" 
+                    ref={descriptionPanelRef}
+                    key={`content-${contentKey}`}
+                  >
                     {isMobile && (
                       <div className="module-detail-header">
                         <h3>{selectedModule}</h3>
