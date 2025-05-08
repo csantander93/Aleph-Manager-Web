@@ -158,8 +158,9 @@ Botón de cerrar mejorado (estilo futurista)
 ========================================================================== */
 .close-button {
   position: absolute;
-  top: var(--popup-modules-space-sm);
-  right: var(--popup-modules-space-sm);
+  top: 50%;
+  right: var(--popup-modules-space-md);
+  transform: translateY(-50%);
   width: 32px;
   height: 32px;
   background-color: rgba(255, 68, 68, 0.8);
@@ -179,14 +180,14 @@ Botón de cerrar mejorado (estilo futurista)
 
 .close-button:hover {
   background-color: rgba(255, 0, 0, 0.9);
-  transform: scale(1.12);
+  transform: scale(1.12) translateY(-50%);
   box-shadow:
     0 4px 10px rgba(0, 0, 0, 0.3),
     0 0 12px rgba(255, 0, 0, 0.5);
 }
 
 .close-button:active {
-  transform: scale(0.96);
+  transform: scale(0.96) translateY(-50%);
 }
 
 .close-button svg {
@@ -210,7 +211,7 @@ Contenido principal (estilo futurista)
   flex-direction: column;
 }
 
-/* Animación para el estado inicial (centrado) */
+/* Animación para el estado inicial (centcmds: center; */
 .popup-modulos-popup-content:not(.panel-animated) {
   justify-content: center;
 }
@@ -778,8 +779,9 @@ Media Queries para pantallas grandes (desktop)
   .close-button {
     width: 36px;
     height: 36px;
-    top: var(--popup-modules-space-md);
+    top: 50%;
     right: var(--popup-modules-space-md);
+    transform: translateY(-50%);
   }
   
   .close-button svg {
