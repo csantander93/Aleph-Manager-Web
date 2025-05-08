@@ -39,15 +39,6 @@ const Solutions = () => {
     'PLAFT': 'PLAFT (Prevención de Lavado de Activos y Financiamiento del Terrorismo)'
   };
 
-  // Textos descriptivos basados en los módulos
-  const moduleDescriptions = {
-    'Net Discovery': "Descubrimiento automatizado de dispositivos y redes para un inventario preciso de tu infraestructura tecnológica",
-    'GRC': "Gestión integral de riesgos, cumplimiento normativo y gobierno corporativo para una operación segura y regulada",
-    'Continuidad de Negocio': "Protección y recuperación de procesos críticos ante interrupciones para mantener tu operación ininterrumpida",
-    'Pérdida Crediticia Esperada': "Cálculo y gestión de riesgos crediticios conforme a normativas internacionales para carteras de crédito",
-    'PLAFT': "Sistema integral para la prevención de lavado de activos y financiamiento del terrorismo acorde a regulaciones"
-  };
-
   const handleTabClick = (tab) => {
     const fullTabName = tabMapping[tab] || tab;
     setCurrentPopupTab(fullTabName);
@@ -157,6 +148,8 @@ const Solutions = () => {
       ></canvas>
       
       <div className='hero-container'>
+      <h1 id="main-heading" className="hero-title">SOLUCIONES DE SOFTWARE</h1>
+
         <div className='tabs-container' role="tablist">
           {tabs.map((tab) => (
             <button
@@ -183,17 +176,6 @@ const Solutions = () => {
             height="200"
             decoding="async"
           />
-          <h1 id="main-heading" className="hero-title">Soluciones Integrales de Tecnología</h1>
-          <p className="hero-subtitle">
-            {tabs.map((tab, index) => (
-              <React.Fragment key={tab}>
-                <span className="module-description" onClick={() => handleTabClick(tab)}>
-                  {moduleDescriptions[tab]}
-                </span>
-                {index < tabs.length - 1 && " · "}
-              </React.Fragment>
-            ))}
-          </p>
         </div>
       </div>
 
