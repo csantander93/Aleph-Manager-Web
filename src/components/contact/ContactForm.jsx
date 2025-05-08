@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './ContactForm.css';
-import logoAleph from '../../assets/LOGO ALEPH FIJO v02.png'; // Asegúrate de que esta ruta sea correcta
+import logoAleph from '../../assets/LOGO ALEPH FIJO v02.png';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +12,7 @@ const ContactForm = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,22 +22,65 @@ const ContactForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+  
+    try {
+      const api_key = "f3b28d96-2cf1-4b6c-9c6e-8bcd92b7e77d"; // Tu API key fija
+      const to = "gerencia@alephmanager.com"; // Correo destino
+      const subject = formData.subject;
+      
+      // Construye el contenido del mensaje
+      const content = `
+        <p><strong>Nombre:</strong> ${formData.name}</p>
+        <p><strong>Email:</strong> ${formData.email}</p>
+        <p><strong>Mensaje:</strong></p>
+        <p>${formData.message}</p>
+      `;
+  
+      const postData = {
+        api_key: api_key,
+        to: to,
+        content: content,
+        subject: subject,
+        base_url: window.location.origin // Equivalente a base_url() en PHP
+      };
+  
+      const response = await fetch('https://panel.alephmanager.com/API/send_email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(postData)
       });
-
-      setTimeout(() => setSubmitSuccess(false), 5000);
-    }, 1500);
+  
+      const result = await response.json();
+  
+      if (result && result.status === 1) {
+        setSubmitSuccess(true);
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        // Manejar error
+        console.error('Error al enviar el mensaje:', result?.message || 'Error desconocido');
+        alert('Hubo un error al enviar el mensaje. Por favor intenta nuevamente.');
+      }
+    } catch (error) {
+      console.error('Error en la petición:', error);
+      alert('Hubo un error al conectar con el servidor.');
+    } finally {
+      setIsSubmitting(false);
+      
+      // Ocultar el mensaje de éxito después de 5 segundos
+      if (submitSuccess) {
+        setTimeout(() => setSubmitSuccess(false), 5000);
+      }
+    }
   };
 
   return (
@@ -48,8 +92,8 @@ const ContactForm = () => {
       
       <div className="contact-container">
         <div className="contact-header">
-            <h2 className="contact-title">CONTACTO</h2>
-            <p className="contact-subtitle">Completa el formulario y nos pondremos en contacto contigo</p>
+          <h2 className="contact-title">CONTACTO</h2>
+          <p className="contact-subtitle">Completa el formulario y nos pondremos en contacto contigo</p>
         </div>
 
         <div className="contact-row">
@@ -65,6 +109,11 @@ const ContactForm = () => {
               </div>
             ) : (
               <form className="contact-form" onSubmit={handleSubmit}>
+                {errorMessage && (
+                  <div className="error-message">
+                    <p>{errorMessage}</p>
+                  </div>
+                )}
                 <div className="form-row">
                   <div className="floating-input">
                     <input 

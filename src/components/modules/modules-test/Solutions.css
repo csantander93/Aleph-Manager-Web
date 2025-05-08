@@ -184,149 +184,112 @@
   margin-right: auto;
 }
 
-@media (min-width: 768px) {
-  .hero-title {
-    font-size: 3.6rem;
-  }
-}
-
-.hero-subtitle {
-  color: rgba(230, 247, 255, 0.9);
-  font-size: 1.05rem;
-  max-width: 900px;
-  margin: 0 auto;
-  line-height: 1.6;
-  font-weight: 400;
-}
-
-.module-description {
-  cursor: pointer;
-  transition: color 0.2s ease;
-  white-space: nowrap;
-}
-
-.module-description:hover {
-  color: var(--sol-accent-blue);
-  text-decoration: underline;
-}
-
 /* Media queries para responsividad */
-@media (max-width: 1200px) {
-  .hero-logo {
-    width: 380px;
-  }
-  
-  .hero-title {
-    font-size: 2.5rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .hero-logo {
-    width: 350px;
-  }
-  
-  .hero-title {
-    font-size: 2.3rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 0.95rem;
-    white-space: normal;
-  }
-}
-
+/* Mejoras visuales específicas para dispositivos móviles (max-width: 768px) */
 @media (max-width: 768px) {
-  .hero-container {
-    width: 95%;
+  .hero-section {
+    padding: 10px;
+    min-height: 100dvh; /* Usa altura dinámica para pantallas móviles */
+    background: radial-gradient(ellipse at top, #001529 0%, #000000 80%);
   }
-  
-  .hero-title {
-    font-size: 2rem;
-  }
-  
-  .tabs-container {
-    flex-wrap: wrap;
-    border-radius: var(--sol-border-radius);
-  }
-  
-  .tab-button {
-    flex: 1 0 45%;
-    margin: 5px;
-    border-radius: 8px;
-    padding: 14px 10px;
-    font-size: 0.85rem;
-  }
-  
-  .hero-content {
-    padding: 30px 20px 40px;
-    border-radius: 0 0 var(--sol-border-radius) var(--sol-border-radius);
-  }
-  
-  .hero-logo {
-    width: 320px;
-    margin-bottom: 20px;
-  }
-  
-  .hero-subtitle {
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
-  
-  .module-description {
-    white-space: normal;
-    display: inline-block;
-    margin: 0 3px 5px;
-  }
-}
 
-@media (max-width: 600px) {
-  .hero-logo {
-    width: 280px;
+  .hero-container {
+    width: 100%;
+    padding: 0 10px;
+    gap: 1rem;
   }
-  
+
   .hero-title {
     font-size: 1.8rem;
+    margin-bottom: 3rem;
+    line-height: 1.2;
+    padding: 0 1rem;
+    background-image: linear-gradient(to right, #67e8f9, #6ee7b7);
+    background-size: 200% 200%;
+    animation: gradientShift 5s ease infinite;
   }
-  
-  .hero-subtitle {
-    font-size: 0.85rem;
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .tabs-container {
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(8, 34, 71, 0.85);
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .tab-button {
+    flex: none;
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+  }
+
+  .tab-button:hover {
+    transform: scale(1.02);
+    background-color: rgba(0, 191, 255, 0.2);
+  }
+
+  .tab-button.active {
+    background-color: var(--sol-accent-blue);
+    color: white;
+    transform: scale(1.02);
+  }
+
+  .tab-button::after {
+    display: none; /* Eliminamos la línea inferior para un diseño más limpio */
+  }
+
+  .hero-content {
+    padding: 20px 15px;
+    border-radius: 10px;
+    background-color: rgba(8, 34, 71, 0.9);
+    box-shadow: 0 4 järvis20px rgba(0, 91, 188, 0.4);
+  }
+
+  .hero-logo {
+    width: 280px;
+    height: auto;
+    padding: 20px 0; /* Aumenta el espacio arriba y abajo para un efecto más alargado */
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 12px rgba(0, 191, 255, 0.6));
+    transform: scale(1);
+    transition: transform 0.3s ease;
+  }
+
+  .hero-logo:hover {
+    transform: scale(1.05);
   }
 }
 
 @media (max-width: 480px) {
-  .hero-section {
-    padding: 15px;
-  }
-  
   .hero-title {
-    font-size: 1.7rem;
-    margin-bottom: 15px;
+    font-size: 1.6rem;
+    margin-bottom: 2.5rem;
   }
-  
-  .hero-subtitle {
-    font-size: 0.8rem;
-    display: none; /* Ocultamos el subtítulo en móviles muy pequeños */
-  }
-  
+
   .tab-button {
-    flex: 1 0 100%;
-    margin: 3px 0;
-    padding: 12px 8px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    padding: 10px 12px;
   }
-  
+
   .hero-logo {
-    width: 260px;
-    margin-bottom: 15px;
+    width: 240px;
+    padding: 45px 0; /* Ajusta el padding para pantallas más pequeñas */
   }
-  
+
   .hero-content {
-    padding: 25px 15px 35px;
+    padding: 15px 10px;
   }
 }
 
