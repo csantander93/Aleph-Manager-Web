@@ -26,29 +26,17 @@ function App() {
       />
 
       <Header />
-      <SectionWrapper id="inicio">
-        <Intro />
-      </SectionWrapper>
+        <Intro  id="inicio"/>
 
-      <SectionWrapper id="soluciones">
-        <Solutions />
-      </SectionWrapper>
+        <Solutions id="soluciones"/>
 
-      <SectionWrapper id="caracteristicas">
-        <Features />
-      </SectionWrapper>
+        <Features id="caracteristicas"/>
 
-      <SectionWrapper id="clientes">
-        <Clients />
-      </SectionWrapper>
+        <Clients id="clientes"/>
 
-      <SectionWrapper id="premios">
-        <Awards />
-      </SectionWrapper>
+        <Awards id="premios"/>
 
-      <SectionWrapper id="contacto">
-        <ContactForm />
-      </SectionWrapper>
+        <ContactForm id="contacto"/>
 
       <Footer />
     </HelmetProvider>
