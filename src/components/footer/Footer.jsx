@@ -48,19 +48,6 @@ const Footer = () => {
               loading="lazy"
             />
           </a>
-          <div className="social-icons">
-            <a 
-              href="https://www.linkedin.com/showcase/aleph-manager/about/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="Visitar nuestro perfil de LinkedIn" 
-              className="social-icon"
-              itemProp="sameAs"
-            >
-              <FaLinkedin />
-              <span className="sr-only">LinkedIn de Aleph Manager</span>
-            </a>
-          </div>
         </div>
 
         <div className="footer-section">
