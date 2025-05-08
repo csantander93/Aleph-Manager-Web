@@ -1,14 +1,15 @@
 :root {
-  --primary-gradient: linear-gradient(135deg, #0055CC 0%, #003366 100%);
-  --secondary-gradient: linear-gradient(135deg, #00BFFF 0%, #0080FF 100%);
-  --card-bg: rgba(8, 34, 71, 0.92);
-  --tab-hover: rgba(0, 191, 255, 0.15);
-  --text-light: #E6F7FF;
-  --accent-blue: #00BFFF;
-  --transition-speed: 0.3s;
-  --box-shadow: 0 8px 32px rgba(0, 91, 188, 0.3);
-  --border-radius: 12px;
-  --font-primary: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* Variables generales renombradas con prefijo sol- */
+  --sol-primary-gradient: linear-gradient(135deg, #0055CC 0%, #003366 100%);
+  --sol-secondary-gradient: linear-gradient(135deg, #00BFFF 0%, #0080FF 100%);
+  --sol-card-bg: rgba(8, 34, 71, 0.92);
+  --sol-tab-hover: rgba(0, 191, 255, 0.15);
+  --sol-text-light: #E6F7FF;
+  --sol-accent-blue: #00BFFF;
+  --sol-transition-speed: 0.3s;
+  --sol-box-shadow: 0 8px 32px rgba(0, 91, 188, 0.3);
+  --sol-border-radius: 12px;
+  --sol-font-primary: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 * {
@@ -28,7 +29,7 @@
   padding: 20px;
   overflow: hidden;
   background: radial-gradient(ellipse at bottom, #001529 0%, #000000 100%);
-  font-family: var(--font-primary);
+  font-family: var(--sol-font-primary);
   color: white;
 }
 
@@ -69,8 +70,8 @@
   width: 100%;
   backdrop-filter: blur(8px);
   background-color: rgba(8, 34, 71, 0.7);
-  box-shadow: var(--box-shadow);
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  box-shadow: var(--sol-box-shadow);
+  border-radius: var(--sol-border-radius) var(--sol-border-radius) 0 0;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -87,12 +88,12 @@
   padding: 16px 12px;
   border: none;
   background-color: transparent;
-  color: var(--text-light);
-  font-family: var(--font-primary);
+  color: var(--sol-text-light);
+  font-family: var(--sol-font-primary);
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all var(--transition-speed) ease;
+  transition: all var(--sol-transition-speed) ease;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -100,8 +101,8 @@
 }
 
 .tab-button:hover {
-  background-color: var(--tab-hover);
-  color: var(--accent-blue);
+  background-color: var(--sol-tab-hover);
+  color: var(--sol-accent-blue);
   transform: translateY(-2px);
 }
 
@@ -112,8 +113,8 @@
   left: 50%;
   width: 0;
   height: 3px;
-  background: var(--secondary-gradient);
-  transition: all var(--transition-speed) ease;
+  background: var(--sol-secondary-gradient);
+  transition: all var(--sol-transition-speed) ease;
   transform: translateX(-50%);
   z-index: -1;
 }
@@ -129,11 +130,11 @@
 
 .tab-button.active::after {
   width: 100%;
-  background: var(--accent-blue);
+  background: var(--sol-accent-blue);
 }
 
 .tab-button:focus-visible {
-  outline: 2px solid var(--accent-blue);
+  outline: 2px solid var(--sol-accent-blue);
   outline-offset: 2px;
 }
 
@@ -145,9 +146,9 @@
   width: 100%;
   padding: 40px 30px 50px;
   backdrop-filter: blur(8px);
-  background-color: var(--card-bg);
-  box-shadow: var(--box-shadow);
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  background-color: var(--sol-card-bg);
+  box-shadow: var(--sol-box-shadow);
+  border-radius: 0 0 var(--sol-border-radius) var(--sol-border-radius);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -163,7 +164,7 @@
 }
 
 .hero-title {
-  background: var(--secondary-gradient);
+  background: var(--sol-secondary-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -190,7 +191,7 @@
 }
 
 .module-description:hover {
-  color: var(--accent-blue);
+  color: var(--sol-accent-blue);
   text-decoration: underline;
 }
 
@@ -235,7 +236,7 @@
   
   .tabs-container {
     flex-wrap: wrap;
-    border-radius: var(--border-radius);
+    border-radius: var(--sol-border-radius);
   }
   
   .tab-button {
@@ -248,7 +249,7 @@
   
   .hero-content {
     padding: 30px 20px 40px;
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    border-radius: 0 0 var(--sol-border-radius) var(--sol-border-radius);
   }
   
   .hero-logo {
@@ -316,7 +317,7 @@
 
 /* Efectos de transición para suavizar cambios */
 .tab-button, .module-description, .hero-logo {
-  transition: all var(--transition-speed) ease;
+  transition: all var(--sol-transition-speed) ease;
 }
 
 /* Mejora de accesibilidad para modo oscuro/claro */
