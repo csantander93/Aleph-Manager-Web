@@ -1,0 +1,858 @@
+/* ModulosPopup.css - Versión Completa Responsive */
+
+/* ==========================================================================
+Variables y Configuraciones Base
+========================================================================== */
+:root {
+  /* Colores */
+  --modules-primary: #67e8f9;
+  --modules-secondary: #6ee7b7;
+  --modules-tertiary: #a78bfa;
+  --modules-bg-dark: #0f172a;
+  --modules-bg-light: rgba(15, 23, 42, 0.7);
+  --modules-text-primary: #e2e8f0;
+  --modules-text-secondary: #94a3b8;
+
+  /* Espaciados */
+  --modules-space-xs: 0.25rem;
+  --modules-space-sm: 0.5rem;
+  --modules-space-md: 1rem;
+  --modules-space-lg: 1.5rem;
+  --modules-space-xl: 2rem;
+
+  /* Bordes */
+  --modules-radius-sm: 0.25rem;
+  --modules-radius-md: 0.5rem;
+  --modules-radius-lg: 1rem;
+
+  /* Sombras */
+  --modules-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --modules-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  /* Transiciones */
+  --modules-transition-fast: 0.2s ease;
+  --modules-transition-normal: 0.4s ease;
+  --modules-transition-slow: 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ==========================================================================
+Estilos para el overlay (fondo futurista)
+========================================================================== */
+.modulos-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: var(--modules-space-md);
+  animation: fadeIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes gentleSlideIn {
+  from {
+      opacity: 0;
+      transform: translateX(50px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+/* ==========================================================================
+Contenedor principal del popup (estilo futurista)
+========================================================================== */
+.modulos-popup-container {
+  width: 100%;
+  max-width: 920px;
+  height: 90vh;
+  max-height: 600px;
+  background: linear-gradient(160deg, rgba(10, 80, 120, 0.7), rgba(5, 50, 90, 0.5));
+  border-radius: var(--modules-radius-lg);
+  box-shadow:
+      0 12px 40px rgba(0, 180, 255, 0.3),
+      inset 0 0 12px rgba(100, 220, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  border: 1px solid rgba(100, 220, 255, 0.5);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ==========================================================================
+Encabezado del popup
+========================================================================== */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--modules-space-md) var(--modules-space-lg);
+  background: linear-gradient(135deg, rgba(8, 47, 73, 0.9), rgba(8, 47, 73, 0.7));
+  border-bottom: 1px solid rgba(56, 182, 255, 0.5);
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+      0 2px 10px rgba(0, 0, 0, 0.3),
+      inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.popup-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(255, 255, 255, 0.25) 30%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.25) 70%,
+      transparent 100%
+  );
+  animation: metalShine 6s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+  transform: skewX(-20deg);
+  opacity: 0.9;
+  mix-blend-mode: overlay;
+}
+
+@keyframes metalShine {
+  0% { left: -60%; opacity: 0; }
+  20% { opacity: 0.9; }
+  80% { opacity: 0.9; }
+  100% { left: 150%; opacity: 0; }
+}
+
+.popup-header h3 {
+  color: var(--modules-primary);
+  text-shadow:
+      0 0 5px rgba(103, 232, 249, 0.5),
+      0 1px 2px rgba(8, 47, 73, 0.9);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+Botón de cerrar mejorado (estilo futurista)
+========================================================================== */
+.close-button {
+  position: absolute;
+  top: 50%;
+  right: var(--modules-space-md);
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  background-color: rgba(255, 68, 68, 0.8);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--modules-transition-fast);
+  box-shadow:
+      0 3px 8px rgba(0, 0, 0, 0.25),
+      0 0 8px rgba(255, 68, 68, 0.4);
+  z-index: 20;
+  outline: none;
+}
+
+.close-button:hover {
+  background-color: rgba(255, 0, 0, 0.9);
+  transform: scale(1.12) translateY(-50%);
+  box-shadow:
+      0 4px 10px rgba(0, 0, 0, 0.3),
+      0 0 12px rgba(255, 0, 0, 0.5);
+}
+
+.close-button:active {
+  transform: scale(0.96) translateY(-50%);
+}
+
+.close-button svg {
+  width: 16px;
+  height: 16px;
+  stroke: white;
+  stroke-width: 2.5;
+}
+
+/* ==========================================================================
+Contenido principal (estilo futurista)
+========================================================================== */
+.modulos-popup-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(103, 232, 249, 0.4) rgba(15, 23, 42, 0.5);
+  height: calc(100% - 60px);
+  transition: all var(--modules-transition-slow);
+  flex-direction: column;
+}
+
+/* Animación para el estado inicial (centrado) */
+.modulos-popup-content:not(.panel-animated) {
+  justify-content: center;
+}
+
+.modulos-popup-content:not(.panel-animated) .modules-panel {
+  flex: 0 0 100%;
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transition: all var(--modules-transition-slow);
+  will-change: flex, transform, max-width;
+}
+
+.modulos-popup-content:not(.panel-animated) .module-detail-panel {
+  display: none;
+}
+
+/* Animación para el estado con detalles */
+.modulos-popup-content.panel-animated {
+  justify-content: flex-start;
+}
+
+.modulos-popup-content.panel-animated .modules-panel {
+  flex: 0 0 100%;
+  transform: translateX(0);
+  transition: all var(--modules-transition-slow);
+  will-change: flex, transform;
+  display: none;
+}
+
+.modulos-popup-content.panel-animated .module-detail-panel {
+  display: block;
+  animation: gentleSlideIn 2s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+  will-change: transform, opacity;
+  flex: 1;
+}
+
+/* Scrollbar para Webkit */
+.modulos-popup-content::-webkit-scrollbar {
+  width: 6px;
+}
+.modulos-popup-content::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 3px;
+}
+.modulos-popup-content::-webkit-scrollbar-thumb {
+  background: rgba(103, 232, 249, 0.4);
+  border-radius: 3px;
+}
+.modulos-popup-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(103, 232, 249, 0.6);
+}
+
+/* ==========================================================================
+Panel de módulos (estilo futurista)
+========================================================================== */
+.modules-panel {
+  border-right: none;
+  overflow-y: auto;
+  padding: var(--modules-space-md);
+  background-color: rgba(15, 23, 42, 0.5);
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.modules-panel::after {
+  display: none;
+}
+
+.panel-header {
+  margin-bottom: var(--modules-space-md);
+  flex-shrink: 0;
+}
+
+.panel-header h3 {
+  font-size: 1.1rem;
+  color: var(--modules-primary);
+  margin-bottom: var(--modules-space-sm);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.panel-header h3::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--modules-secondary);
+  margin-right: var(--modules-space-sm);
+}
+
+.panel-header p {
+  color: var(--modules-text-secondary);
+  font-size: 0.85rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.modulos-count {
+  display: inline-block;
+  background-color: rgba(56, 182, 255, 0.2);
+  color: #a5f3fc;
+  padding: var(--modules-space-xs) var(--modules-space-sm);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  margin-left: var(--modules-space-sm);
+  font-weight: 500;
+}
+
+.modules-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--modules-space-sm);
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-bottom: var(--modules-space-md);
+}
+
+/* Scrollbar para la lista de módulos */
+.modules-list::-webkit-scrollbar {
+  width: 4px;
+}
+.modules-list::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 2px;
+}
+.modules-list::-webkit-scrollbar-thumb {
+  background: rgba(103, 232, 249, 0.3);
+  border-radius: 2px;
+}
+.modules-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(103, 232, 249, 0.5);
+}
+
+.module-item {
+  display: flex;
+  align-items: center;
+  padding: var(--modules-space-sm) var(--modules-space-md);
+  background-color: transparent;
+  border-radius: var(--modules-radius-sm);
+  cursor: pointer;
+  transition: all var(--modules-transition-normal);
+  box-shadow: var(--modules-shadow-sm);
+  border-left: 4px solid transparent;
+  opacity: 0;
+  animation: fadeInItem 0.4s ease-out forwards;
+  flex-shrink: 0;
+  will-change: transform, opacity;
+}
+
+@keyframes fadeInItem {
+  to { opacity: 1; }
+}
+
+.module-item:hover {
+  background-color: rgba(56, 182, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: var(--modules-shadow-md);
+}
+
+.module-item.selected {
+  border-left-color: var(--modules-secondary);
+  background-color: rgba(56, 182, 255, 0.25);
+  color: var(--modules-primary);
+  box-shadow: inset 3px 0 0 var(--modules-secondary);
+}
+
+.module-icon {
+  margin-right: var(--modules-space-sm);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  min-height: 20px;
+  flex-shrink: 0;
+}
+
+.module-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--modules-primary);
+  stroke-width: 2;
+  display: block;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.module-item.selected .module-icon svg {
+  stroke: #a5f3fc;
+}
+
+.module-item h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--modules-text-primary);
+  font-weight: 500;
+}
+
+.module-item.selected h4 {
+  font-weight: 600;
+  color: #a5f3fc;
+}
+
+/* ==========================================================================
+Panel de detalles (estilo futurista)
+========================================================================== */
+.module-detail-panel {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--modules-space-md);
+  background-color: rgba(15, 23, 42, 0.5);
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.module-detail-panel::after {
+  display: none;
+}
+
+.module-detail-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--modules-space-lg);
+  flex-wrap: wrap;
+  gap: var(--modules-space-sm);
+}
+
+.module-detail-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--modules-primary);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.module-category-badge {
+  background-color: rgba(56, 182, 255, 0.2);
+  color: #a5f3fc;
+  padding: var(--modules-space-xs) var(--modules-space-sm);
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.module-description {
+  color: var(--modules-text-primary);
+  line-height: 1.6;
+  margin-bottom: var(--modules-space-lg);
+  font-size: 0.9rem;
+}
+
+.module-detail-panel {
+  flex: 1;
+  overflow: auto;
+  padding: var(--modules-space-md);
+  background-color: rgba(15, 23, 42, 0.5);
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.module-detail-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: var(--modules-space-lg);
+  scrollbar-gutter: stable;
+}
+
+.module-features {
+  margin-top: var(--modules-space-lg);
+  border-top: 1px dashed rgba(56, 182, 255, 0.2);
+  padding-top: var(--modules-space-md);
+  padding-bottom: var(--modules-space-lg);
+}
+
+.module-features h4 {
+  color: var(--modules-primary);
+  margin-bottom: var(--modules-space-md);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.module-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--modules-space-sm);
+}
+
+.module-features li {
+  display: flex;
+  align-items: flex-start;
+  color: var(--modules-text-primary);
+  line-height: 1.5;
+  font-size: 0.85rem;
+}
+
+.module-features li svg {
+  flex-shrink: 0;
+  margin-right: var(--modules-space-sm);
+  margin-top: 0.125rem;
+  width: 16px;
+  height: 16px;
+  stroke: var(--modules-secondary);
+  stroke-width: 2.5;
+}
+
+/* ==========================================================================
+Estado vacío (estilo futurista)
+========================================================================== */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: var(--modules-space-lg);
+}
+
+.empty-state-icon svg {
+  width: 50px;
+  height: 50px;
+  stroke: var(--modules-primary);
+  margin-bottom: var(--modules-space-md);
+  opacity: 0.7;
+}
+
+.empty-state h4 {
+  color: var(--modules-text-primary);
+  font-size: 1.1rem;
+  margin-bottom: var(--modules-space-sm);
+  font-weight: 600;
+}
+
+.empty-state p {
+  color: var(--modules-text-secondary);
+  max-width: 280px;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+Breadcrumbs (estilo futurista)
+========================================================================== */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--modules-space-xs);
+  font-size: 0.8rem;
+  margin-bottom: var(--modules-space-sm);
+}
+
+.breadcrumb {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color var(--modules-transition-fast);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.breadcrumb.active {
+  color: white;
+  font-weight: 500;
+}
+
+.breadcrumb-divider {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-right: var(--modules-space-sm);
+  padding: var(--modules-space-xs) 0;
+  transition: color var(--modules-transition-fast);
+}
+
+.back-button:hover {
+  color: white;
+}
+
+.back-button svg {
+  width: 16px;
+  height: 16px;
+  margin-right: var(--modules-space-sm);
+  stroke: currentColor;
+  stroke-width: 2.5;
+  transition: stroke var(--modules-transition-fast);
+}
+
+/* ==========================================================================
+Animaciones para los items del módulo
+========================================================================== */
+.module-item {
+  animation-delay: var(--delay);
+  will-change: transform, opacity;
+}
+
+/* ==========================================================================
+Media Queries para pantallas medianas (tablets)
+========================================================================== */
+
+.mobile-back-button-container {
+  display: none;
+  width: 100%;
+  margin-bottom: var(--modules-space-md);
+}
+
+.mobile-back-button {
+  display: flex;
+  align-items: center;
+  gap: var(--modules-space-sm);
+  padding: var(--modules-space-sm) var(--modules-space-md);
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(56, 182, 255, 0.3);
+  border-radius: var(--modules-radius-md);
+  color: var(--modules-text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--modules-transition-fast);
+  width: fit-content;
+  box-shadow: var(--modules-shadow-sm);
+}
+
+.mobile-back-button:hover {
+  background: rgba(56, 182, 255, 0.2);
+  border-color: var(--modules-primary);
+  color: var(--modules-primary);
+  transform: translateY(-1px);
+}
+
+.mobile-back-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.mobile-back-button svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--modules-text-primary);
+  stroke-width: 2.5;
+  transition: stroke var(--modules-transition-fast);
+}
+
+.mobile-back-button:hover svg {
+  stroke: var(--modules-primary);
+}
+
+@media (max-width: 768px) {
+  .mobile-back-button-container {
+      display: block;
+  }
+}
+
+@media (min-width: 640px) {
+  .modulos-popup-container {
+      height: 80vh;
+      max-height: 700px;
+  }
+  
+  .popup-header h3 {
+      font-size: 1.2rem;
+  }
+  
+  .close-button {
+      width: 34px;
+      height: 34px;
+  }
+  
+  .close-button svg {
+      width: 17px;
+      height: 17px;
+  }
+  
+  .modules-panel {
+      padding: var(--modules-space-lg);
+  }
+  
+  .panel-header h3 {
+      font-size: 1.2rem;
+  }
+  
+  .panel-header p {
+      font-size: 0.9rem;
+  }
+  
+  .module-item {
+      padding: var(--modules-space-md) var(--modules-space-lg);
+  }
+  
+  .module-item h4 {
+      font-size: 0.95rem;
+  }
+  
+  .module-detail-panel {
+      padding: var(--modules-space-lg);
+  }
+  
+  .module-detail-header h3 {
+      font-size: 1.3rem;
+  }
+  
+  .module-description {
+      font-size: 0.95rem;
+  }
+  
+  .module-features li {
+      font-size: 0.9rem;
+  }
+}
+
+/* ==========================================================================
+Media Queries para pantallas grandes (desktop)
+========================================================================== */
+@media (min-width: 768px) {
+  .modulos-popup-container {
+      height: 600px;
+      max-height: none;
+  }
+  
+  .modulos-popup-content {
+      flex-direction: row;
+  }
+  
+  .modulos-popup-content.panel-animated .modules-panel {
+      flex: 0 0 320px;
+      display: block;
+  }
+  
+  .modules-panel {
+      border-right: 1px solid rgba(56, 182, 255, 0.2);
+  }
+  
+  .modules-panel::after {
+      display: block;
+  }
+  
+  .module-detail-panel::after {
+      display: block;
+  }
+  
+  .popup-header h3 {
+      font-size: 1.3rem;
+  }
+  
+  .close-button {
+      width: 36px;
+      height: 36px;
+      top: 50%;
+      right: var(--modules-space-md);
+      transform: translateY(-50%);
+  }
+  
+  .close-button svg {
+      width: 18px;
+      height: 18px;
+  }
+  
+  .panel-header h3 {
+      font-size: 1.3rem;
+  }
+  
+  .panel-header h3::before {
+      width: 8px;
+      height: 8px;
+  }
+  
+  .panel-header p {
+      font-size: 0.95rem;
+  }
+  
+  .module-icon {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      min-height: 24px;
+  }
+  
+  .module-item h4 {
+      font-size: 1rem;
+  }
+  
+  .module-detail-header h3 {
+      font-size: 1.4rem;
+  }
+  
+  .module-description {
+      font-size: 1rem;
+  }
+  
+  .module-features h4 {
+      font-size: 1.1rem;
+  }
+  
+  .module-features li {
+      font-size: 0.95rem;
+  }
+  
+  .module-features li svg {
+      width: 18px;
+      height: 18px;
+  }
+  
+  .empty-state-icon svg {
+      width: 70px;
+      height: 70px;
+  }
+  
+  .empty-state h4 {
+      font-size: 1.3rem;
+  }
+  
+  .empty-state p {
+      font-size: 0.95rem;
+  }
+}
+
+/* ==========================================================================
+Media Queries para pantallas extra grandes
+========================================================================== */
+@media (min-width: 1024px) {
+  .modulos-popup-container {
+      height: 650px;
+  }
+}

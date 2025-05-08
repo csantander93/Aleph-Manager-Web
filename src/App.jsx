@@ -9,6 +9,7 @@ import SolutionsManager from "./components/modules/SolutionManager"
 import SectionWrapper from "./components/section/SectionWrapper"
 import { HelmetProvider } from 'react-helmet-async'
 import SEO from "./components/seo/SEO"
+import Solutions from "./components/modules/modules-test/Solutions"
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
       </SectionWrapper>
 
       <SectionWrapper id="modulos">
-        <SolutionsManager />
+        <Solutions />
       </SectionWrapper>
 
       <SectionWrapper id="caracteristicas">
