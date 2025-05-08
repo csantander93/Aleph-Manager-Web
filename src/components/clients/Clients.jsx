@@ -138,7 +138,7 @@ const Clients = () => {
       <div className="clients-container">
         <div className="clients-header">
           <h2 id="clients-heading" className="clients-title">
-            NUESTROS CLIENTES
+            CLIENTES POR PAÍS
           </h2>
           <p className="clients-subtitle">
             Empresas que confían en nuestros servicios

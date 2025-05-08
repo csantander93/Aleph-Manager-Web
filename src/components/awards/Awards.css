@@ -64,8 +64,6 @@
   background-size: 300% 300%;
   font-family: 'Corbel', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
   'Lucida Sans Unicode', Geneva, Verdana, sans-serif;  animation: gradientShift 8s ease infinite;
-  text-shadow: 0 0 8px rgba(103, 232, 249, 0.5), /* Reducido de 10px */
-              0 0 16px rgba(103, 232, 249, 0.3); /* Reducido de 20px */
 }
 
 .awards-subtitle {

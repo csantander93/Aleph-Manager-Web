@@ -60,18 +60,6 @@
   display: inline-block;
 }
 
-.clients-title::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 64px;
-  height: 2.4px;
-  background: var(--primary-gradient);
-  border-radius: 2.4px;
-}
-
 .clients-subtitle {
   font-size: clamp(0.8rem, 2vw, 1rem);
   line-height: 1.6;

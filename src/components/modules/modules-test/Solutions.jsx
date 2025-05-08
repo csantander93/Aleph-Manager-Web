@@ -140,7 +140,7 @@ const Solutions = () => {
   }, [isMobile]);
 
   return (
-    <section className='hero-section' role="region" aria-labelledby="main-heading">
+    <section id='soluciones' className='hero-section' role="region" aria-labelledby="main-heading">
       <canvas 
         id="particle-canvas" 
         className="particle-background"
