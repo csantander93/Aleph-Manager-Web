@@ -23,6 +23,22 @@ const Solutions = () => {
     };
   }, []);
 
+  // Efecto para bloquear el scroll del body cuando el popup está abierto
+  useEffect(() => {
+    if (showModulesPopup) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    };
+  }, [showModulesPopup]);
+
   const tabs = [
     'Net Discovery',
     'GRC',
@@ -147,9 +163,9 @@ const Solutions = () => {
         aria-hidden="true"
       ></canvas>
       
-      <div className='hero-container'>
       <h1 id="main-heading" className="hero-title">SOLUCIONES DE SOFTWARE</h1>
-
+      
+      <div className='hero-container'>
         <div className='tabs-container' role="tablist">
           {tabs.map((tab) => (
             <button
@@ -178,7 +194,7 @@ const Solutions = () => {
           />
         </div>
       </div>
-
+  
       {showModulesPopup && currentPopupTab && (
         <ModulosPopup
           initialCategory={currentPopupTab}

@@ -36,6 +36,32 @@ const ModulosPopup = ({
     }
   }, [selectedModule]);
 
+  // Efecto para controlar el scroll dentro del popup
+  useEffect(() => {
+    const handleWheel = (e) => {
+      if (!descriptionPanelRef.current) return;
+      
+      const { scrollTop, scrollHeight, clientHeight } = descriptionPanelRef.current;
+      const isAtTop = scrollTop === 0;
+      const isAtBottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 1;
+      
+      if ((e.deltaY < 0 && !isAtTop) || (e.deltaY > 0 && !isAtBottom)) {
+        e.stopPropagation();
+      }
+    };
+
+    const panel = descriptionPanelRef.current;
+    if (panel) {
+      panel.addEventListener('wheel', handleWheel, { passive: false });
+    }
+
+    return () => {
+      if (panel) {
+        panel.removeEventListener('wheel', handleWheel);
+      }
+    };
+  }, [selectedModule]);
+
   const handleModuleClick = (moduleName) => {
     onModuleSelect(moduleName);
   };
