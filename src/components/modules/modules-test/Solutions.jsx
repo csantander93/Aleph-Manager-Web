@@ -162,9 +162,9 @@ const Solutions = () => {
         className="particle-background"
         aria-hidden="true"
       ></canvas>
-      
-      <h1 id="main-heading" className="hero-title">SOLUCIONES DE SOFTWARE</h1>
-      
+        <div className="hero-header">
+          <h1 id="main-heading" className="hero-title">SOLUCIONES DE SOFTWARE</h1>
+        </div>
       <div className='hero-container'>
         <div className='tabs-container' role="tablist">
           {tabs.map((tab) => (
