@@ -94,11 +94,22 @@
   background-color: var(--color-primary-light);
 }
 
-.mobile-language-switcher {
-  margin-top: 0.5rem;
-  padding: 0.75rem 1rem;
-  width: auto;
-  display: inline-flex;
+/* Contenedor para elementos móviles */
+.mobile-elements-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .mobile-elements-container {
+    display: none;
+  }
+}
+
+/* Botón de idioma en móvil */
+.mobile-language-button {
+  padding: 0.4rem 0.8rem;
   font-size: 0.95rem;
   font-family: 'Inter Tight', sans-serif;
   font-weight: 500;
@@ -107,16 +118,28 @@
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  border-radius: 4px;
+  position: relative;
+  opacity: 0.9;
 }
 
-.mobile-language-switcher:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+.mobile-language-button:hover {
+  opacity: 1;
   color: var(--color-primary-medium);
 }
 
-.mobile-language-switcher.active {
-  color: var(--color-primary-light);
+.mobile-language-button::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-primary-medium);
+  transition: width 0.3s ease;
+}
+
+.mobile-language-button:hover::after {
+  width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -136,7 +159,8 @@
 .nav-item-scrolled,
 .nav-item-transparent,
 .mobile-menu-button-scrolled,
-.mobile-menu-button-transparent {
+.mobile-menu-button-transparent,
+.mobile-language-button {
   color: rgb(243, 244, 246);
 }
 

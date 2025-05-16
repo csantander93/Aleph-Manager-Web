@@ -90,17 +90,28 @@ const Header = () => {
           </button>
         </nav>
 
-        {/* Menú móvil */}
-        <button
-          aria-label={menuOpen ? t('header.ariaLabels.menuClose') : t('header.ariaLabels.menuToggle')}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen(!menuOpen)}
-          className={`mobile-menu-button ${isScrolled ? 'mobile-menu-button-scrolled' : 'mobile-menu-button-transparent'}`}
-        >
-          <svg className="mobile-menu-icon" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke="currentColor" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
+        {/* Contenedor para elementos móviles (idioma y menú) */}
+        <div className="mobile-elements-container">
+          {/* Botón de cambio de idioma en móvil */}
+          <button 
+            onClick={() => changeLanguage(i18n.language === 'es' ? 'en' : 'es')}
+            className="mobile-language-button"
+          >
+            {i18n.language === 'es' ? 'EN' : 'ES'}
+          </button>
+
+          {/* Botón del menú hamburguesa */}
+          <button
+            aria-label={menuOpen ? t('header.ariaLabels.menuClose') : t('header.ariaLabels.menuToggle')}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(!menuOpen)}
+            className={`mobile-menu-button ${isScrolled ? 'mobile-menu-button-scrolled' : 'mobile-menu-button-transparent'}`}
+          >
+            <svg className="mobile-menu-icon" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke="currentColor" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Menú móvil desplegable */}
@@ -120,17 +131,6 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
-            
-            {/* Botón de cambio de idioma en versión móvil */}
-            <button 
-              onClick={() => {
-                changeLanguage(i18n.language === 'es' ? 'en' : 'es');
-                setMenuOpen(false);
-              }}
-              className="mobile-language-switcher"
-            >
-              {i18n.language === 'es' ? 'English' : 'Español'}
-            </button>
           </div>
         </div>
       )}
