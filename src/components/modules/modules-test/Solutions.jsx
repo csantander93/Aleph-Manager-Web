@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import alephLogoGif from "../../../assets/Gif-Aleph-una-vez.gif";
 import ModulosPopup from './modules-popup/ModulosPopup';
@@ -13,6 +13,7 @@ const Solutions = () => {
   const [currentPopupTab, setCurrentPopupTab] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [modulesData, setModulesData] = useState(i18n.language === 'es' ? modulesDataES : modulesDataEN);
+  const solutionsRef = useRef(null);
 
   // Actualizar datos de módulos cuando cambie el idioma
   useEffect(() => {
@@ -56,6 +57,11 @@ const Solutions = () => {
     if (showModulesPopup) {
       document.body.style.overflow = 'hidden';
       document.body.style.touchAction = 'none';
+      
+      // Scroll a la sección de soluciones si no está visible
+      if (solutionsRef.current) {
+        solutionsRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     } else {
       document.body.style.overflow = '';
       document.body.style.touchAction = '';
@@ -153,6 +159,11 @@ const Solutions = () => {
     setCurrentPopupTab(fullTabName);
     setShowModulesPopup(true);
     setSelectedModule(null);
+    
+    // Redirigir a la sección de soluciones
+    if (solutionsRef.current) {
+      solutionsRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   };
 
   const handleModuleSelect = (moduleName) => {
@@ -170,7 +181,13 @@ const Solutions = () => {
   };
 
   return (
-    <section id='soluciones' className='hero-section' role="region" aria-labelledby="main-heading">
+    <section 
+      id='soluciones' 
+      className='hero-section' 
+      role="region" 
+      aria-labelledby="main-heading"
+      ref={solutionsRef}
+    >
       <canvas 
         id="particle-canvas" 
         className="particle-background"
