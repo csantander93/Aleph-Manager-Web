@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import logo from '../../assets/LOGO ALEPH FIJO v02.png';
 import './Header.css';
 
@@ -6,6 +7,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("#inicio");
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,12 +31,22 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const changeLanguage = async (lng) => {
+    try {
+      await i18n.changeLanguage(lng);
+      // Forzar re-renderizado de los componentes
+      window.location.reload();
+    } catch (error) {
+      console.error('Error changing language:', error);
+    }
+  };
+
   const menuItems = [
-    { name: "Inicio", href: "#inicio" },
-    { name: "Soluciones de software", href: "#soluciones" },
-    { name: "Características", href: "#caracteristicas" },
-    { name: "Clientes", href: "#clientes" },
-    { name: "Contáctanos", href: "#contacto" }
+    { name: t('header.menuItems.home'), href: "#inicio", key: "home" },
+    { name: t('header.menuItems.solutions'), href: "#soluciones", key: "solutions" },
+    { name: t('header.menuItems.features'), href: "#caracteristicas", key: "features" },
+    { name: t('header.menuItems.clients'), href: "#clientes", key: "clients" },
+    { name: t('header.menuItems.contact'), href: "#contacto", key: "contact" }
   ];
 
   return (
@@ -42,20 +54,20 @@ const Header = () => {
       <div className="header-container">
         {/* Logo clickable */}
         <div className="flex items-center">
-          <a href="#inicio" className="cursor-pointer" aria-label="Ir al inicio">
+          <a href="#inicio" className="cursor-pointer" aria-label={t('header.ariaLabels.logo')}>
             <img 
               src={logo} 
-              alt="Aleph Manager - Software especializado en gestión ISO, GRC y PLAFT" 
+              alt={t('header.logoAlt')} 
               className="header-logo"
             />
           </a>
         </div>
 
         {/* Menú desktop */}
-        <nav className="nav-desktop" aria-label="Navegación principal">
+        <nav className="nav-desktop" aria-label={t('header.ariaLabels.navigation')}>
           {menuItems.map((item) => (
             <a
-              key={item.name}
+              key={item.key}
               href={item.href}
               aria-current={activeSection === item.href ? "page" : undefined}
               className={`nav-item ${isScrolled ? 'nav-item-scrolled' : 'nav-item-transparent'} ${
@@ -68,11 +80,19 @@ const Header = () => {
               }`}></span>
             </a>
           ))}
+          
+          {/* Botón de cambio de idioma */}
+          <button 
+            onClick={() => changeLanguage(i18n.language === 'es' ? 'en' : 'es')}
+            className="language-switcher"
+          >
+            {i18n.language === 'es' ? 'EN' : 'ES'}
+          </button>
         </nav>
 
         {/* Menú móvil */}
         <button
-          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-label={menuOpen ? t('header.ariaLabels.menuClose') : t('header.ariaLabels.menuToggle')}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(!menuOpen)}
           className={`mobile-menu-button ${isScrolled ? 'mobile-menu-button-scrolled' : 'mobile-menu-button-transparent'}`}
@@ -89,7 +109,7 @@ const Header = () => {
           <div className="mobile-menu-container">
             {menuItems.map((item) => (
               <a
-                key={item.name}
+                key={item.key}
                 href={item.href}
                 aria-current={activeSection === item.href ? "page" : undefined}
                 className={`mobile-menu-item ${
@@ -100,6 +120,17 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
+            
+            {/* Botón de cambio de idioma en versión móvil */}
+            <button 
+              onClick={() => {
+                changeLanguage(i18n.language === 'es' ? 'en' : 'es');
+                setMenuOpen(false);
+              }}
+              className="mobile-language-switcher"
+            >
+              {i18n.language === 'es' ? 'English' : 'Español'}
+            </button>
           </div>
         </div>
       )}

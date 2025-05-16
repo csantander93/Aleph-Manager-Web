@@ -1,9 +1,12 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import backgroundImage from '../../assets/intro-bg.jpg';
 import logoGif from '../../assets/Gif-Aleph-una-vez.gif';
 import './Intro.css';
 
 const Intro = () => {
+  const { t } = useTranslation();
+
   const scrollToSection = (sectionId) => {
     const section = document.querySelector(sectionId);
     if (section) {
@@ -17,7 +20,7 @@ const Intro = () => {
       <div className="intro-background">
         <img 
           src={backgroundImage} 
-          alt="Sistemas de gestión empresarial ISO y GRC" 
+          alt={t('intro.backgroundAlt')} 
           className="background-image" 
           itemProp="image"
         />
@@ -29,33 +32,33 @@ const Intro = () => {
         {/* Columna de texto */}
         <div className="text-column">
           <div className="title-container">
-            <h1 className="sr-only" itemProp="name">Aleph Manager - Soluciones en Gestión de Normas</h1>
+            <h1 className="sr-only" itemProp="name">{t('intro.srTitle')}</h1>
             <img 
               src={logoGif} 
-              alt="Aleph Manager - Plataforma integral para gestión de riesgos" 
+              alt={t('intro.logoAlt')}
               className="logo-gif"
             />
           </div>
           
           <p className="description-text" itemProp="description">
-            Soluciones de software para los sistemas de gestión de normas ISO, Gobierno, Riesgo y cumplimiento (GRC), Seguridad, Continuidad, Pérdida Crediticia Esperada y Prevención de Lavado de Activos y Financiamiento del Terrorismo (PLAFT)
+            {t('intro.description')}
           </p>
           
           <div className="buttons-container">
             <button 
               className="demo-button"
               onClick={() => scrollToSection('#contacto')}
-              aria-label="Solicitar contacto para demostración"
+              aria-label={t('intro.ctaPrimaryAria')}
             >
-              Solicitar Contacto
+              {t('intro.ctaPrimary')}
               <span className="button-underline"></span>
             </button>
             <button 
               className="more-info-button"
-              onClick={() => scrollToSection('#modulos')}
-              aria-label="Conocer más sobre los módulos"
+              onClick={() => scrollToSection('#soluciones')}
+              aria-label={t('intro.ctaSecondaryAria')}
             >
-              Conocer más
+              {t('intro.ctaSecondary')}
               <span className="button-underline"></span>
             </button>
           </div>
@@ -73,8 +76,8 @@ const Intro = () => {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebPage",
-          "name": "Aleph Manager - Soluciones en Gestión",
-          "description": "Software para sistemas de gestión ISO, GRC y PLAFT",
+          "name": t('intro.schemaName'),
+          "description": t('intro.schemaDescription'),
           "image": "https://alephmanager.com/assets/intro-bg.jpg"
         })}
       </script>

@@ -1,9 +1,12 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './Footer.css';
 import { FaLinkedin } from 'react-icons/fa';
 import logoYafo from '../../assets/Logo Yafo JPG_grises 150dpi.jpg';
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   // Datos estructurados para el footer
   const footerStructuredData = {
     "@context": "https://schema.org",
@@ -11,14 +14,14 @@ const Footer = () => {
     "name": "Aleph Manager",
     "url": "https://www.alephmanager.com",
     "logo": "https://alephmanager.com/assets/Gif-Aleph-una-vez.gif",
-    "description": "Soluciones innovadoras para la gestión empresarial",
+    "description": t('footer.schemaDescription'),
     "email": "gerencia@alephmanager.com",
     "sameAs": [
       "https://www.linkedin.com/showcase/aleph-manager/about/"
     ],
     "address": {
       "@type": "PostalAddress",
-      "addressCountry": "Argentina"
+      "addressCountry": t('footer.country')
     }
   };
 
@@ -32,17 +35,17 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-section footer-logo-section" itemScope itemType="https://schema.org/Organization">
           <p className="footer-text" itemProp="description">
-            Propiedad intelectual de
+            {t('footer.intellectualProperty')}
           </p>
           <a 
             href="https://yafoconsultora.com/" 
             target="_blank" 
             rel="noopener noreferrer" 
-            aria-label="Visitar sitio de Yafo Consultora"
+            aria-label={t('footer.visitYafo')}
           >
             <img 
               src={logoYafo} 
-              alt="Logo Yafo Consultora" 
+              alt={t('footer.yafoLogoAlt')} 
               className="info-logo" 
               itemProp="logo"
               loading="lazy"
@@ -51,26 +54,28 @@ const Footer = () => {
         </div>
 
         <div className="footer-section">
-          <h4 className="footer-subtitle">Enlaces Rápidos</h4>
+          <h4 className="footer-subtitle">{t('footer.quickLinks')}</h4>
           <ul className="footer-links">
-            <li><a href="#inicio" itemProp="url">Inicio</a></li>
-            <li><a href="#soluciones">Soluciones de software</a></li>
-            <li><a href="#caracteristicas">Características</a></li>
-            <li><a href="#clientes">Clientes</a></li>
+            <li><a href="#inicio" itemProp="url">{t('header.menuItems.home')}</a></li>
+            <li><a href="#soluciones">{t('header.menuItems.solutions')}</a></li>
+            <li><a href="#caracteristicas">{t('header.menuItems.features')}</a></li>
+            <li><a href="#clientes">{t('header.menuItems.clients')}</a></li>
           </ul>
         </div>
 
         <div className="footer-section" itemScope itemType="https://schema.org/ContactPoint">
-          <h4 className="footer-subtitle">Contacto</h4>
+          <h4 className="footer-subtitle">{t('footer.contact')}</h4>
           <ul className="footer-contact">
             <li>
               <a 
                 href="mailto:gerencia@alephmanager.com" 
                 itemProp="email"
-                aria-label="Enviar correo electrónico a gerencia@alephmanager.com"
+                aria-label={t('footer.sendEmailTo')}
               >
                 gerencia@alephmanager.com
               </a>
+            </li>
+            <li className="social-link">
             </li>
           </ul>
         </div>
@@ -78,7 +83,7 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <p itemProp="copyrightYear">
-          &copy; {new Date().getFullYear()} <span itemProp="copyrightHolder">Aleph Manager</span>. Todos los derechos reservados.
+          &copy; {new Date().getFullYear()} <span itemProp="copyrightHolder">Aleph Manager</span>. {t('footer.rightsReserved')}
         </p>
       </div>
     </footer>

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './ContactForm.css';
 import logoAleph from '../../assets/LOGO ALEPH FIJO v02.png';
 import { sendContactEmail } from '../../services/emailService';
 
 const ContactForm = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -39,12 +41,12 @@ const ContactForm = () => {
           message: ''
         });
       } else {
-        console.error('Error al enviar el mensaje:', result?.message || 'Error desconocido');
-        setErrorMessage('Hubo un error al enviar el mensaje. Por favor intenta nuevamente.');
+        console.error(t('contact.formSubmitError'), result?.message || t('contact.unknownError'));
+        setErrorMessage(t('contact.submitErrorMessage'));
       }
     } catch (error) {
-      console.error('Error:', error);
-      setErrorMessage('Hubo un error al conectar con el servidor.');
+      console.error(t('contact.error'), error);
+      setErrorMessage(t('contact.serverErrorMessage'));
     } finally {
       setIsSubmitting(false);
       
@@ -63,8 +65,8 @@ const ContactForm = () => {
       
       <div className="contact-container">
         <div className="contact-header">
-          <h2 className="contact-title">CONTACTO</h2>
-          <p className="contact-subtitle">Completa el formulario y nos pondremos en contacto contigo</p>
+          <h2 className="contact-title">{t('contact.title')}</h2>
+          <p className="contact-subtitle">{t('contact.subtitle')}</p>
         </div>
 
         <div className="contact-row">
@@ -75,8 +77,8 @@ const ContactForm = () => {
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="#6ee7b7" strokeWidth="2" strokeLinecap="round"/>
                   <path d="M22 4 12 14.01l-3-3" stroke="#6ee7b7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                <h4>¡Mensaje enviado!</h4>
-                <p>Nos pondremos en contacto contigo pronto.</p>
+                <h4>{t('contact.successTitle')}</h4>
+                <p>{t('contact.successMessage')}</p>
               </div>
             ) : (
               <form className="contact-form" onSubmit={handleSubmit}>
@@ -96,7 +98,7 @@ const ContactForm = () => {
                       placeholder=" "
                       required 
                     />
-                    <label htmlFor="name">Nombre y Apellido</label>
+                    <label htmlFor="name">{t('contact.nameLabel')}</label>
                   </div>
                   
                   <div className="floating-input">
@@ -109,7 +111,7 @@ const ContactForm = () => {
                       placeholder=" "
                       required 
                     />
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">{t('contact.emailLabel')}</label>
                   </div>
                 </div>
                 
@@ -123,7 +125,7 @@ const ContactForm = () => {
                     placeholder=" "
                     required 
                   />
-                  <label htmlFor="subject">Asunto</label>
+                  <label htmlFor="subject">{t('contact.subjectLabel')}</label>
                 </div>
                 
                 <div className="floating-input textarea-input">
@@ -136,7 +138,7 @@ const ContactForm = () => {
                     placeholder=" "
                     required
                   ></textarea>
-                  <label htmlFor="message">Mensaje</label>
+                  <label htmlFor="message">{t('contact.messageLabel')}</label>
                 </div>
                 
                 <button 
@@ -148,7 +150,7 @@ const ContactForm = () => {
                     <span className="spinner"></span>
                   ) : (
                     <>
-                      Enviar Mensaje
+                      {t('contact.submitButton')}
                       <svg className="submit-icon" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
@@ -162,11 +164,11 @@ const ContactForm = () => {
           <div className="info-container">
             <img 
               src={logoAleph} 
-              alt="Aleph Manager Logo" 
+              alt={t('contact.logoAlt')} 
               className="info-logo"
             />
             <p className="info-text">
-              Estamos a disposición para responder cualquier duda o consulta que pueda surgirle.
+              {t('contact.infoText')}
             </p>
             <p className="info-email">
               <a href="mailto:gerencia@alephmanager.com">gerencia@alephmanager.com</a>

@@ -1,0 +1,151 @@
+{
+  "header": {
+    "menuItems": {
+      "home": "Home",
+      "solutions": "Software Solutions",
+      "features": "Features",
+      "clients": "Clients",
+      "contact": "Contact Us"
+    },
+    "ariaLabels": {
+      "logo": "Go to home",
+      "menuToggle": "Open menu",
+      "menuClose": "Close menu",
+      "navigation": "Main navigation"
+    },
+    "logoAlt": "Aleph Manager - Specialized software for ISO, GRC and PLAFT management"
+  },
+  "intro": {
+    "backgroundAlt": "ISO and GRC business management systems",
+    "srTitle": "Aleph Manager - Standards Management Solutions",
+    "logoAlt": "Aleph Manager - Comprehensive risk management platform",
+    "description": "Software solutions for ISO standards management systems, Governance, Risk and Compliance (GRC), Security, Continuity, Expected Credit Loss and Anti-Money Laundering and Counter-Terrorism Financing (AML/CTF)",
+    "ctaPrimary": "Request Contact",
+    "ctaPrimaryAria": "Request contact for a demo",
+    "ctaSecondary": "Learn more",
+    "ctaSecondaryAria": "Learn more about the modules",
+    "schemaName": "Aleph Manager - Management Solutions",
+    "schemaDescription": "Software for ISO, GRC and AML/CFT management systems"
+  },
+  "solutions": {
+    "title": "SOFTWARE SOLUTIONS",
+    "tabs": {
+      "netDiscovery": "Net Discovery",
+      "grc": "GRC",
+      "businessContinuity": "Business Continuity",
+      "creditLoss": "Expected Credit Loss",
+      "plaft": "AML/CFT"
+    },
+    "tabMapping": {
+      "netDiscovery": "Net Discovery",
+      "grc": "GRC (Governance, Risk and Compliance)",
+      "businessContinuity": "Business Continuity",
+      "creditLoss": "Expected Credit Loss",
+      "plaft": "AML/CFT (Anti-Money Laundering and Counter-Terrorism Financing)"
+    },
+    "ariaLabels": {
+      "tablist": "Solutions categories list",
+      "tab": "View {tabName} solutions",
+      "particles": "Particles visual effect"
+    },
+    "logoAlt": "Aleph Manager animated logo"
+  },
+    "popup": {
+    "closeAria": "Close popup",
+    "modulesTitle": "Modules",
+    "modulesCount": "modules",
+    "moduleSelectionPrompt": "Select a module to view details",
+    "backAria": "Back to modules",
+    "backButton": "Back",
+    "mainFeatures": "Main features"
+  },
+  "features": {
+    "title": "FEATURES",
+    "subtitle": "Aleph Manager's integrated approach allows growth with the various tools that make up the platform, thus taking administrative advantages, cost and time savings.",
+    "feature1": {
+      "title": "Reduces loading times",
+      "description": "The web application replaces conventional spreadsheets and allows collecting information from referents through online questionnaires, personalized and with historical data."
+    },
+    "feature2": {
+      "title": "Protects information integrity",
+      "description": "The tool's design safeguards information integrity regarding non-alteration of the originally registered state, in order to guarantee its reliability."
+    },
+    "feature3": {
+      "title": "Economical and personalized",
+      "description": "We provide an excellent product and service, economical and personalized for each client. We generate a space for good professional relationship and constant collaboration."
+    },
+    "feature4": {
+      "title": "Continuous improvement",
+      "description": "The tool's design includes algorithms that allow detecting personalized recommendations. It shows strong points to maintain and areas for improvement."
+    }
+  },
+  "clients": {
+    "title": "CLIENTS BY COUNTRY",
+    "subtitle": "Companies that trust our services",
+    "countries": {
+      "argentina": "Argentina",
+      "colombia": "Colombia",
+      "costaRica": "Costa Rica",
+      "honduras": "Honduras",
+      "nicaragua": "Nicaragua",
+      "panama": "Panama"
+    },
+    "logoAlt": "Logo of {clientName}",
+    "logoAltCountry": "Client logo in {country}",
+    "clientGeneric": "client",
+    "ariaClientList": "Client list",
+    "ariaInternationalClients": "International clients",
+    "ariaClientsIn": "clients in",
+    "ariaClientIn": "client in",
+    "imageError": "Error loading image"
+  },
+  "awards": {
+    "title": "AWARDS",
+    "subtitle": "Awards and distinctions that validate our commitment to excellence",
+    "award1": {
+      "title": "1st place BANCO PATAGONIA EMPRENDE Program 2018",
+      "subtitle": "BPemprende",
+      "year": "2018",
+      "awarder": "Banco Patagonia"
+    },
+    "award2": {
+      "title": "Finalist in BIND INNOVA III",
+      "subtitle": "Innovation Program",
+      "year": "2020",
+      "awarder": "BIND"
+    },
+    "logoAlt": "Logo of the award {awardTitle}",
+    "ariaAwardList": "List of awards and recognitions",
+    "imageError": "Error loading award image: {awardTitle}"
+  },
+    "contact": {
+    "title": "CONTACT",
+    "subtitle": "Complete the form and we will get in touch with you",
+    "nameLabel": "Full Name",
+    "emailLabel": "Email",
+    "subjectLabel": "Subject",
+    "messageLabel": "Message",
+    "submitButton": "Send Message",
+    "successTitle": "Message sent!",
+    "successMessage": "We will contact you soon.",
+    "submitErrorMessage": "There was an error sending the message. Please try again.",
+    "serverErrorMessage": "There was an error connecting to the server.",
+    "formSubmitError": "Error sending message:",
+    "unknownError": "Unknown error",
+    "error": "Error:",
+    "infoText": "We are available to answer any questions or queries you may have.",
+    "logoAlt": "Aleph Manager Logo"
+  },
+  "footer": {
+    "schemaDescription": "Innovative solutions for business management",
+    "country": "Argentina",
+    "intellectualProperty": "Intellectual property of",
+    "visitYafo": "Visit Yafo Consultora website",
+    "yafoLogoAlt": "Yafo Consultora Logo",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "sendEmailTo": "Send email to gerencia@alephmanager.com",
+    "visitLinkedIn": "Visit our LinkedIn page",
+    "rightsReserved": "All rights reserved."
+  }
+}

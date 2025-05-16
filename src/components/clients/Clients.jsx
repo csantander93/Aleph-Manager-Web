@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './Clients.css';
 
 // Importamos todas las imágenes directamente (se mantienen igual)
@@ -84,8 +85,9 @@ const clientNames = [
   "Crédito Regional", "Balanz", "Galicia Más", "Banco Macro", "Interbank", "Sancor Seguros"
 ];
 
-
 const Clients = () => {
+  const { t } = useTranslation();
+  
   // Dividimos las imágenes en filas según el dispositivo
   const desktopRows = [
     clientImages.slice(0, 13),
@@ -102,11 +104,11 @@ const Clients = () => {
 
   // Datos para los nuevos contadores
   const additionalCounters = [
-    { country: "Colombia", image: uala, value: 1 },
-    { country: "Costa Rica", image: coopeande, value: 1 },
-    { country: "Honduras", image: bcoficohsa, value: 1 },
-    { country: "Nicaragua", image: bcoficohsa, value: 1 },
-    { country: "Panamá", image: mercantil, value: 1 }
+    { country: t('clients.countries.colombia'), image: uala, value: 1 },
+    { country: t('clients.countries.costaRica'), image: coopeande, value: 1 },
+    { country: t('clients.countries.honduras'), image: bcoficohsa, value: 1 },
+    { country: t('clients.countries.nicaragua'), image: bcoficohsa, value: 1 },
+    { country: t('clients.countries.panama'), image: mercantil, value: 1 }
   ];
 
   const clientsStructuredData = {
@@ -125,6 +127,8 @@ const Clients = () => {
       id="clientes" 
       className="clients-section"
       aria-labelledby="clients-heading"
+      itemScope
+      itemType="https://schema.org/WebPage"
     >
       {/* Datos estructurados para clientes */}
       <script type="application/ld+json">
@@ -138,28 +142,28 @@ const Clients = () => {
       <div className="clients-container">
         <div className="clients-header">
           <h2 id="clients-heading" className="clients-title">
-            CLIENTES POR PAÍS
+            {t('clients.title')}
           </h2>
           <p className="clients-subtitle">
-            Empresas que confían en nuestros servicios
+            {t('clients.subtitle')}
           </p>
         </div>
 
         <div className="clients-counter-container">
           <AnimatedCounter 
             targetValue={53} 
-            label="Argentina" 
+            label={t('clients.countries.argentina')} 
             delay={0.3}
-            aria-label="53 clientes en Argentina"
+            aria-label={`53 ${t('clients.ariaClientsIn')} ${t('clients.countries.argentina')}`}
           />
         </div>
         
-        <div className="clients-static-grid desktop-version" role="list" aria-label="Lista de clientes">
+        <div className="clients-static-grid desktop-version" role="list" aria-label={t('clients.ariaClientList')}>
           {desktopRows.map((row, rowIndex) => (
             <div key={`desktop-row-${rowIndex}`} className="clients-static-row" role="listitem">
               {row.map((image, index) => {
                 const clientIndex = rowIndex * 13 + index;
-                const clientName = clientNames[clientIndex] || 'cliente';
+                const clientName = clientNames[clientIndex] || t('clients.clientGeneric');
                 return (
                   <div 
                     key={`desktop-row-${rowIndex}-${index}`} 
@@ -169,13 +173,13 @@ const Clients = () => {
                   >
                     <img 
                       src={image} 
-                      alt={`Logo de ${clientName}`}
+                      alt={t('clients.logoAlt', { clientName })}
                       className="client-logo"
                       loading="lazy"
                       itemProp="logo"
                       onError={(e) => {
                         e.target.style.display = 'none';
-                        console.error(`Error al cargar imagen: ${clientName}`);
+                        console.error(`${t('clients.imageError')}: ${clientName}`);
                       }}
                     />
                     <meta itemProp="name" content={clientName} />
@@ -187,12 +191,12 @@ const Clients = () => {
         </div>
 
         {/* Versión para móvil */}
-        <div className="clients-static-grid mobile-version" role="list" aria-label="Lista de clientes">
+        <div className="clients-static-grid mobile-version" role="list" aria-label={t('clients.ariaClientList')}>
           {mobileRows.map((row, rowIndex) => (
             <div key={`mobile-row-${rowIndex}`} className="clients-static-row" role="listitem">
               {row.map((image, index) => {
                 const clientIndex = rowIndex * 4 + index;
-                const clientName = clientNames[clientIndex] || 'cliente';
+                const clientName = clientNames[clientIndex] || t('clients.clientGeneric');
                 return (
                   <div 
                     key={`mobile-row-${rowIndex}-${index}`} 
@@ -202,13 +206,13 @@ const Clients = () => {
                   >
                     <img 
                       src={image} 
-                      alt={`Logo de ${clientName}`}
+                      alt={t('clients.logoAlt', { clientName })}
                       className="client-logo"
                       loading="lazy"
                       itemProp="logo"
                       onError={(e) => {
                         e.target.style.display = 'none';
-                        console.error(`Error al cargar imagen: ${clientName}`);
+                        console.error(`${t('clients.imageError')}: ${clientName}`);
                       }}
                     />
                     <meta itemProp="name" content={clientName} />
@@ -219,11 +223,10 @@ const Clients = () => {
           ))}
         </div>
           
-
         {/* Sección de contadores adicionales */}
         <div 
           className="additional-counters-container"
-          aria-label="Clientes internacionales"
+          aria-label={t('clients.ariaInternationalClients')}
         >
           <div className="additional-counters-grid" role="list">
             {additionalCounters.map((item, index) => (
@@ -238,12 +241,12 @@ const Clients = () => {
                   targetValue={item.value} 
                   label={item.country}
                   delay={0.3 + (index * 0.1)}
-                  aria-label={`${item.value} cliente en ${item.country}`}
+                  aria-label={`${item.value} ${t('clients.ariaClientIn')} ${item.country}`}
                 />
                 <div className="client-item">
                   <img 
                     src={item.image} 
-                    alt={`Logo de cliente en ${item.country}`}
+                    alt={t('clients.logoAltCountry', { country: item.country })}
                     className="client-logo" 
                     loading="lazy"
                     itemProp="image"

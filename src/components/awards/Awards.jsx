@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './Awards.css';
 
 // Importar imágenes
@@ -6,22 +7,24 @@ import bpEmprende from '../../assets/img-awards/patagonia.png';
 import bindInnovA from '../../assets/img-awards/bind.png';
 
 const Awards = () => {
+  const { t } = useTranslation();
+
   const awardsData = [
     {
       id: 1,
       image: bpEmprende,
-      title: "1° puesto Programa BANCO PATAGONIA EMPRENDE 2018",
-      subtitle: "BPemprende",
-      year: "2018",
-      awarder: "Banco Patagonia"
+      title: t('awards.award1.title'),
+      subtitle: t('awards.award1.subtitle'),
+      year: t('awards.award1.year'),
+      awarder: t('awards.award1.awarder')
     },
     {
       id: 2,
       image: bindInnovA,
-      title: "Finalista en BIND INNOVA III",
-      subtitle: "Programa de Innovación",
-      year: "2020",
-      awarder: "BIND"
+      title: t('awards.award2.title'),
+      subtitle: t('awards.award2.subtitle'),
+      year: t('awards.award2.year'),
+      awarder: t('awards.award2.awarder')
     }
   ];
 
@@ -44,6 +47,8 @@ const Awards = () => {
       id="premios" 
       className="awards-section"
       aria-labelledby="awards-heading"
+      itemScope
+      itemType="https://schema.org/WebPage"
     >
       {/* Datos estructurados para premios */}
       <script type="application/ld+json">
@@ -56,11 +61,15 @@ const Awards = () => {
       
       <div className="awards-container">
         <div className="awards-header">
-          <h2 id="awards-heading" className="awards-title">RECONOCIMIENTOS</h2>
-          <p className="awards-subtitle">Premios y distinciones que validan nuestro compromiso con la excelencia</p>
+          <h2 id="awards-heading" className="awards-title">
+            {t('awards.title')}
+          </h2>
+          <p className="awards-subtitle">
+            {t('awards.subtitle')}
+          </p>
         </div>
         
-        <div className="awards-grid" role="list" aria-label="Lista de premios y reconocimientos">
+        <div className="awards-grid" role="list" aria-label={t('awards.ariaAwardList')}>
           {awardsData.map((award) => (
             <div 
               key={award.id} 
@@ -72,14 +81,14 @@ const Awards = () => {
               <div className="award-image-container">
                 <img 
                   src={award.image} 
-                  alt={`Logo del premio ${award.title}`} 
+                  alt={t('awards.logoAlt', { awardTitle: award.title })} 
                   className={`award-image ${award.subtitle.toLowerCase().replace(/\s+/g, '-')}`} 
                   loading="lazy"
                   decoding="async"
                   itemProp="image"
                   onError={(e) => {
                     e.target.style.display = 'none';
-                    console.error(`Error al cargar imagen del premio: ${award.title}`);
+                    console.error(t('awards.imageError', { awardTitle: award.title }));
                   }}
                 />
                 <div className="award-year" itemProp="dateReceived">{award.year}</div>

@@ -1,0 +1,151 @@
+{
+  "header": {
+    "menuItems": {
+      "home": "Inicio",
+      "solutions": "Soluciones de software",
+      "features": "Características",
+      "clients": "Clientes",
+      "contact": "Contáctanos"
+    },
+    "ariaLabels": {
+      "logo": "Ir al inicio",
+      "menuToggle": "Abrir menú",
+      "menuClose": "Cerrar menú",
+      "navigation": "Navegación principal"
+    },
+    "logoAlt": "Aleph Manager - Software especializado en gestión ISO, GRC y PLAFT"
+  },
+  "intro": {
+    "backgroundAlt": "Sistemas de gestión empresarial ISO y GRC",
+    "srTitle": "Aleph Manager - Soluciones en Gestión de Normas",
+    "logoAlt": "Aleph Manager - Plataforma integral para gestión de riesgos",
+    "description": "Soluciones de software para los sistemas de gestión de normas ISO, Gobierno, Riesgo y cumplimiento (GRC), Seguridad, Continuidad, Pérdida Crediticia Esperada y Prevención de Lavado de Activos y Financiamiento del Terrorismo (PLAFT)",
+    "ctaPrimary": "Solicitar Contacto",
+    "ctaPrimaryAria": "Solicitar contacto para demostración",
+    "ctaSecondary": "Conocer más",
+    "ctaSecondaryAria": "Conocer más sobre los módulos",
+    "schemaName": "Aleph Manager - Soluciones en Gestión",
+    "schemaDescription": "Software para sistemas de gestión ISO, GRC y PLAFT"
+  },
+  "solutions": {
+    "title": "SOLUCIONES DE SOFTWARE",
+    "tabs": {
+      "netDiscovery": "Net Discovery",
+      "grc": "GRC",
+      "businessContinuity": "Continuidad de Negocio",
+      "creditLoss": "Pérdida Crediticia Esperada",
+      "plaft": "PLAFT"
+    },
+    "tabMapping": {
+      "netDiscovery": "Net Discovery",
+      "grc": "GRC (Gobierno, Riesgo y Cumplimiento)",
+      "businessContinuity": "Continuidad de Negocio",
+      "creditLoss": "Pérdida Crediticia Esperada",
+      "plaft": "PLAFT (Prevención de Lavado de Activos y Financiamiento del Terrorismo)"
+    },
+    "ariaLabels": {
+      "tablist": "Lista de categorías de soluciones",
+      "tab": "Ver soluciones de {tabName}",
+      "particles": "Efecto visual de partículas"
+    },
+    "logoAlt": "Logo animado de Aleph Manager"
+  },
+    "popup": {
+    "closeAria": "Cerrar popup",
+    "modulesTitle": "Módulos",
+    "modulesCount": "módulos",
+    "moduleSelectionPrompt": "Seleccione un módulo para ver detalles",
+    "backAria": "Volver a módulos",
+    "backButton": "Volver",
+    "mainFeatures": "Características principales"
+  },
+  "features": {
+    "title": "CARACTERÍSTICAS",
+    "subtitle": "El enfoque integrado de Aleph Manager permite crecer con las distintas herramientas que componen la plataforma, y de esa manera tomar ventajas administrativas, ahorro de costos y tiempo.",
+    "feature1": {
+      "title": "Disminuye tiempos de carga",
+      "description": "La aplicación web reemplaza las planillas convencionales y permite relevar información de los referentes mediante cuestionarios online, personalizados y con datos históricos."
+    },
+    "feature2": {
+      "title": "Protege la integridad de información",
+      "description": "El diseño de la herramienta permite resguardar la integridad de la información en relación con la no alteración del estado registrado originalmente, con el fin de garantizar su confiabilidad."
+    },
+    "feature3": {
+      "title": "Económico y personalizado",
+      "description": "Brindamos un producto y servicio de excelencia, económico y personalizado a cada cliente. Generamos un espacio de buena relación profesional y colaboración constante."
+    },
+    "feature4": {
+      "title": "Mejora continua",
+      "description": "El diseño de la herramienta cuenta con algoritmos que permiten detectar recomendaciones personalizadas. Muestra puntos fuertes, que hay que tratar de mantener y áreas de mejora."
+    }
+  },
+  "clients": {
+    "title": "CLIENTES POR PAÍS",
+    "subtitle": "Empresas que confían en nuestros servicios",
+    "countries": {
+      "argentina": "Argentina",
+      "colombia": "Colombia",
+      "costaRica": "Costa Rica",
+      "honduras": "Honduras",
+      "nicaragua": "Nicaragua",
+      "panama": "Panamá"
+    },
+    "logoAlt": "Logo de {clientName}",
+    "logoAltCountry": "Logo de cliente en {country}",
+    "clientGeneric": "cliente",
+    "ariaClientList": "Lista de clientes",
+    "ariaInternationalClients": "Clientes internacionales",
+    "ariaClientsIn": "clientes en",
+    "ariaClientIn": "cliente en",
+    "imageError": "Error al cargar imagen"
+  },
+  "awards": {
+    "title": "RECONOCIMIENTOS",
+    "subtitle": "Premios y distinciones que validan nuestro compromiso con la excelencia",
+    "award1": {
+      "title": "1° puesto Programa BANCO PATAGONIA EMPRENDE 2018",
+      "subtitle": "BPemprende",
+      "year": "2018",
+      "awarder": "Banco Patagonia"
+    },
+    "award2": {
+      "title": "Finalista en BIND INNOVA III",
+      "subtitle": "Programa de Innovación",
+      "year": "2020",
+      "awarder": "BIND"
+    },
+    "logoAlt": "Logo del premio {awardTitle}",
+    "ariaAwardList": "Lista de premios y reconocimientos",
+    "imageError": "Error al cargar imagen del premio: {awardTitle}"
+  },
+   "contact": {
+    "title": "CONTACTO",
+    "subtitle": "Completa el formulario y nos pondremos en contacto contigo",
+    "nameLabel": "Nombre y Apellido",
+    "emailLabel": "Email",
+    "subjectLabel": "Asunto",
+    "messageLabel": "Mensaje",
+    "submitButton": "Enviar Mensaje",
+    "successTitle": "¡Mensaje enviado!",
+    "successMessage": "Nos pondremos en contacto contigo pronto.",
+    "submitErrorMessage": "Hubo un error al enviar el mensaje. Por favor intenta nuevamente.",
+    "serverErrorMessage": "Hubo un error al conectar con el servidor.",
+    "formSubmitError": "Error al enviar el mensaje:",
+    "unknownError": "Error desconocido",
+    "error": "Error:",
+    "infoText": "Estamos a disposición para responder cualquier duda o consulta que pueda surgirle.",
+    "logoAlt": "Logo de Aleph Manager"
+  },
+  "footer": {
+    "schemaDescription": "Soluciones innovadoras para la gestión empresarial",
+    "country": "Argentina",
+    "intellectualProperty": "Propiedad intelectual de",
+    "visitYafo": "Visitar sitio de Yafo Consultora",
+    "yafoLogoAlt": "Logo Yafo Consultora",
+    "quickLinks": "Enlaces Rápidos",
+    "contact": "Contacto",
+    "sendEmailTo": "Enviar correo electrónico a gerencia@alephmanager.com",
+    "visitLinkedIn": "Visitar nuestra página de LinkedIn",
+    "rightsReserved": "Todos los derechos reservados."
+  }
+}

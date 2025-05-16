@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import './Features.css';
 
 // Componentes de iconos con animaciones mejoradas (añadido aria-hidden)
@@ -119,6 +120,7 @@ const GraphIcon = () => (
 );
 
 const Features = () => {
+  const { t } = useTranslation();
   const featureRefs = useRef([]);
   const sectionRef = useRef();
 
@@ -145,29 +147,29 @@ const Features = () => {
 
   const features = [
     {
-      title: "Disminuye tiempos de carga",
-      description: "La aplicación web reemplaza las planillas convencionales y permite relevar información de los referentes mediante cuestionarios online, personalizados y con datos históricos.",
+      title: t('features.feature1.title'),
+      description: t('features.feature1.description'),
       align: "left",
       icon: <ClockIcon />,
       delay: 0.1
     },
     {
-      title: "Protege la integridad de información",
-      description: "El diseño de la herramienta permite resguardar la integridad de la información en relación con la no alteración del estado registrado originalmente, con el fin de garantizar su confiabilidad.",
+      title: t('features.feature2.title'),
+      description: t('features.feature2.description'),
       align: "right",
       icon: <ShieldIcon />,
       delay: 0.3
     },
     {
-      title: "Económico y personalizado",
-      description: "Brindamos un producto y servicio de excelencia, económico y personalizado a cada cliente. Generamos un espacio de buena relación profesional y colaboración constante.",
+      title: t('features.feature3.title'),
+      description: t('features.feature3.description'),
       align: "left",
       icon: <MoneyIcon />,
       delay: 0.5
     },
     {
-      title: "Mejora continua",
-      description: "El diseño de la herramienta cuenta con algoritmos que permiten detectar recomendaciones personalizadas. Muestra puntos fuertes, que hay que tratar de mantener y áreas de mejora.",
+      title: t('features.feature4.title'),
+      description: t('features.feature4.description'),
       align: "right",
       icon: <GraphIcon />,
       delay: 0.7
@@ -192,6 +194,8 @@ const Features = () => {
       className="features-section" 
       ref={sectionRef}
       aria-labelledby="features-heading"
+      itemScope 
+      itemType="https://schema.org/WebPage"
     >
       {/* Datos estructurados para SEO */}
       <script type="application/ld+json">
@@ -216,10 +220,10 @@ const Features = () => {
       <div className="features-container">
         <div className="features-header">
           <h2 id="features-heading" className="features-title animate-gradient">
-            CARACTERÍSTICAS
+            {t('features.title')}
           </h2>
           <p className="features-subtitle">
-            El enfoque integrado de Aleph Manager permite crecer con las distintas herramientas que componen la plataforma, y de esa manera tomar ventajas administrativas, ahorro de costos y tiempo.
+            {t('features.subtitle')}
           </p>
         </div>
 

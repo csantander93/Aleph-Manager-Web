@@ -46,6 +46,79 @@
   gap: 1.2rem; /* Reducido de 1.5rem */
 }
 
+/* Reemplaza tus estilos actuales del language-switcher con estos */
+.language-switcher {
+  margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 500;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  opacity: 0.9;
+}
+
+.language-switcher:hover {
+  opacity: 1;
+  color: var(--color-primary-medium);
+}
+
+/* Subrayado animado como las otras opciones */
+.language-switcher::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-primary-medium);
+  transition: width 0.3s ease;
+}
+
+.language-switcher:hover::after {
+  width: 100%;
+}
+
+/* Versión cuando está activo (idioma actual) */
+.language-switcher.active {
+  color: var(--color-primary-light);
+  opacity: 1;
+}
+
+.language-switcher.active::after {
+  width: 100%;
+  background-color: var(--color-primary-light);
+}
+
+.mobile-language-switcher {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  width: auto;
+  display: inline-flex;
+  font-size: 0.95rem;
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 500;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.mobile-language-switcher:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-primary-medium);
+}
+
+.mobile-language-switcher.active {
+  color: var(--color-primary-light);
+}
+
 @media (min-width: 768px) {
   .nav-desktop {
     display: flex;

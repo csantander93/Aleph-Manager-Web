@@ -1,5 +1,5 @@
 // modulesData.js
-export const modulesData = {
+export const modulesDataES = {
   "Net Discovery": {
     "Endpoint y Servidores": {
       description: "Descubrimiento automatizado de dispositivos finales y servidores dentro de la red corporativa.",
@@ -315,4 +315,4 @@ export const modulesData = {
   }
 };
 
-export const categoriesList = Object.keys(modulesData);
+export const categoriesList = Object.keys(modulesDataES);

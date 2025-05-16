@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import './ModulosPopup.css';
 
 const ModulosPopup = ({
@@ -8,26 +9,54 @@ const ModulosPopup = ({
   onClose,
   onBack,
   modulesData,
-  categoryMapping
+  categoryMapping,
+  currentLanguage
 }) => {
+  const { t } = useTranslation();
   const [animate, setAnimate] = useState(false);
   const [isPanelAnimated, setIsPanelAnimated] = useState(false);
   const descriptionPanelRef = useRef(null);
 
+  // Función para obtener el nombre corto de la categoría (sin paréntesis)
   const getShortCategoryName = (category) => {
     return category.includes('(') ? category.split('(')[0].trim() : category;
   };
 
+  // Función para encontrar la categoría real en modulesData
+  const findActualCategory = (displayCategory) => {
+    // Primero buscar coincidencia exacta
+    if (modulesData[displayCategory]) {
+      return displayCategory;
+    }
+    
+    // Si no existe, buscar en el mapeo inverso
+    for (const [key, value] of Object.entries(categoryMapping)) {
+      if (value === displayCategory) {
+        return key;
+      }
+    }
+    
+    // Si no se encuentra, devolver la original (con advertencia)
+    console.warn(`Category "${displayCategory}" not found in modulesData`);
+    return displayCategory;
+  };
+
+  // Obtener la categoría real basada en el mapeo
+  const actualCategory = findActualCategory(initialCategory);
+
+  // Resetear scroll al cambiar de módulo
   useEffect(() => {
     if (descriptionPanelRef.current) {
       descriptionPanelRef.current.scrollTop = 0;
     }
   }, [selectedModule]);
 
+  // Animación de entrada
   useEffect(() => {
     setAnimate(true);
   }, []);
 
+  // Animación del panel de detalles
   useEffect(() => {
     if (selectedModule) {
       setTimeout(() => setIsPanelAnimated(true), 50);
@@ -36,7 +65,7 @@ const ModulosPopup = ({
     }
   }, [selectedModule]);
 
-  // Efecto para controlar el scroll dentro del popup
+  // Manejar scroll interno del popup
   useEffect(() => {
     const handleWheel = (e) => {
       if (!descriptionPanelRef.current) return;
@@ -62,12 +91,9 @@ const ModulosPopup = ({
     };
   }, [selectedModule]);
 
-  const handleModuleClick = (moduleName) => {
-    onModuleSelect(moduleName);
-  };
-
-  if (!modulesData[initialCategory]) {
-    console.error(`La categoría "${initialCategory}" no existe en modulesData`);
+  // Validar que la categoría exista
+  if (!modulesData[actualCategory]) {
+    console.error(`Category "${actualCategory}" not found in modulesData for language "${currentLanguage}"`);
     return null;
   }
 
@@ -77,7 +103,7 @@ const ModulosPopup = ({
         <div className="popup-header">
           <div className="breadcrumbs">
             <span className="breadcrumb">
-              {categoryMapping[initialCategory] || initialCategory}
+              {categoryMapping[actualCategory] || actualCategory}
             </span>
             {selectedModule && (
               <>
@@ -89,7 +115,7 @@ const ModulosPopup = ({
           <button 
             className="close-button" 
             onClick={onClose}
-            aria-label="Cerrar popup"
+            aria-label={t('popup.closeAria')}
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M18 6L6 18M6 6l12 12" strokeWidth="2" strokeLinecap="round"/>
@@ -100,19 +126,19 @@ const ModulosPopup = ({
         <div className={`popup-modulos-popup-content ${isPanelAnimated ? 'panel-animated' : ''}`}>
           <div className="popup-modules-panel">
             <div className="panel-header popup-modulos-header-container">
-              <h3>Módulos</h3>
+              <h3>{t('popup.modulesTitle')}</h3>
               <span className="popup-modulos-count">
-                {Object.keys(modulesData[initialCategory]).length} módulos
+                {Object.keys(modulesData[actualCategory]).length} {t('popup.modulesCount')}
               </span>
-              <p>Seleccione un módulo para ver detalles</p>
+              <p>{t('popup.moduleSelectionPrompt')}</p>
             </div>
             
             <div className="popup-modules-list">
-              {Object.keys(modulesData[initialCategory]).map((moduleName, index) => (
+              {Object.keys(modulesData[actualCategory]).map((moduleName, index) => (
                 <div
                   key={moduleName}
                   className={`popup-module-item ${selectedModule === moduleName ? 'selected' : ''}`}
-                  onClick={() => handleModuleClick(moduleName)}
+                  onClick={() => onModuleSelect(moduleName)}
                   style={{ '--delay': `${index * 0.05 + 0.1}s` }}
                 >
                   <div className="popup-module-icon">
@@ -135,30 +161,30 @@ const ModulosPopup = ({
                     <button 
                       className="popup-mobile-back-button"
                       onClick={onBack}
-                      aria-label="Volver a módulos"
+                      aria-label={t('popup.backAria')}
                     >
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path d="M15 18l-6-6 6-6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
-                      Volver
+                      {t('popup.backButton')}
                     </button>
                   </div>
                   <h3 title={selectedModule}>{selectedModule}</h3>
                   <div className="popup-module-category-badge">
-                    {getShortCategoryName(initialCategory)}
+                    {getShortCategoryName(actualCategory)}
                   </div>
                 </div>
                 
                 <div className="popup-module-detail-content">
                   <p className="popup-module-description">
-                    {modulesData[initialCategory][selectedModule].description}
+                    {modulesData[actualCategory][selectedModule].description}
                   </p>
                   
-                  {modulesData[initialCategory][selectedModule].features && (
+                  {modulesData[actualCategory][selectedModule].features && (
                     <div className="popup-module-features">
-                      <h4>Características principales:</h4>
+                      <h4>{t('popup.mainFeatures')}:</h4>
                       <ul>
-                        {modulesData[initialCategory][selectedModule].features.map((feature, i) => (
+                        {modulesData[actualCategory][selectedModule].features.map((feature, i) => (
                           <li key={i}>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                               <path d="M20 6L9 17l-5-5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

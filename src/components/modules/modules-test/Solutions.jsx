@@ -1,15 +1,43 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import alephLogoGif from "../../../assets/Gif-Aleph-una-vez.gif";
 import ModulosPopup from './modules-popup/ModulosPopup';
-import { modulesData } from '../data/modulesData';
+import { modulesDataES } from '../data/modulesData.es';
+import { modulesDataEN } from '../data/modulesData.en';
 import "./Solutions.css";
 
 const Solutions = () => {
+  const { t, i18n } = useTranslation();
   const [showModulesPopup, setShowModulesPopup] = useState(false);
   const [selectedModule, setSelectedModule] = useState(null);
   const [currentPopupTab, setCurrentPopupTab] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [modulesData, setModulesData] = useState(i18n.language === 'es' ? modulesDataES : modulesDataEN);
 
+  // Actualizar datos de módulos cuando cambie el idioma
+  useEffect(() => {
+    setModulesData(i18n.language === 'es' ? modulesDataES : modulesDataEN);
+  }, [i18n.language]);
+
+  // Obtener textos traducidos para las pestañas
+  const tabs = [
+    t('solutions.tabs.netDiscovery'),
+    t('solutions.tabs.grc'),
+    t('solutions.tabs.businessContinuity'),
+    t('solutions.tabs.creditLoss'),
+    t('solutions.tabs.plaft')
+  ];
+
+  // Mapeo de nombres de pestañas a nombres completos
+  const tabMapping = {
+    [t('solutions.tabs.netDiscovery')]: t('solutions.tabMapping.netDiscovery'),
+    [t('solutions.tabs.grc')]: t('solutions.tabMapping.grc'),
+    [t('solutions.tabs.businessContinuity')]: t('solutions.tabMapping.businessContinuity'),
+    [t('solutions.tabs.creditLoss')]: t('solutions.tabMapping.creditLoss'),
+    [t('solutions.tabs.plaft')]: t('solutions.tabMapping.plaft')
+  };
+
+  // Detectar si es móvil
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -23,7 +51,7 @@ const Solutions = () => {
     };
   }, []);
 
-  // Efecto para bloquear el scroll del body cuando el popup está abierto
+  // Manejar el scroll cuando el popup está abierto
   useEffect(() => {
     if (showModulesPopup) {
       document.body.style.overflow = 'hidden';
@@ -39,43 +67,7 @@ const Solutions = () => {
     };
   }, [showModulesPopup]);
 
-  const tabs = [
-    'Net Discovery',
-    'GRC',
-    'Continuidad de Negocio',
-    'Pérdida Crediticia Esperada',
-    'PLAFT'
-  ];
-
-  const tabMapping = {
-    'Net Discovery': 'Net Discovery',
-    'GRC': 'GRC (Gobierno, Riesgo y Cumplimiento)',
-    'Continuidad de Negocio': 'Continuidad de Negocio',
-    'Pérdida Crediticia Esperada': 'Pérdida Crediticia Esperada',
-    'PLAFT': 'PLAFT (Prevención de Lavado de Activos y Financiamiento del Terrorismo)'
-  };
-
-  const handleTabClick = (tab) => {
-    const fullTabName = tabMapping[tab] || tab;
-    setCurrentPopupTab(fullTabName);
-    setShowModulesPopup(true);
-    setSelectedModule(null);
-  };
-
-  const handleModuleSelect = (moduleName) => {
-    setSelectedModule(moduleName);
-  };
-
-  const handleClosePopup = () => {
-    setShowModulesPopup(false);
-    setSelectedModule(null);
-    setCurrentPopupTab(null);
-  };
-
-  const handleBack = () => {
-    setSelectedModule(null);
-  };
-
+  // Animación de partículas de fondo
   useEffect(() => {
     const canvas = document.getElementById('particle-canvas');
     if (!canvas) return;
@@ -155,18 +147,47 @@ const Solutions = () => {
     };
   }, [isMobile]);
 
+  // Manejadores de eventos
+  const handleTabClick = (tab) => {
+    const fullTabName = tabMapping[tab] || tab;
+    setCurrentPopupTab(fullTabName);
+    setShowModulesPopup(true);
+    setSelectedModule(null);
+  };
+
+  const handleModuleSelect = (moduleName) => {
+    setSelectedModule(moduleName);
+  };
+
+  const handleClosePopup = () => {
+    setShowModulesPopup(false);
+    setSelectedModule(null);
+    setCurrentPopupTab(null);
+  };
+
+  const handleBack = () => {
+    setSelectedModule(null);
+  };
+
   return (
     <section id='soluciones' className='hero-section' role="region" aria-labelledby="main-heading">
       <canvas 
         id="particle-canvas" 
         className="particle-background"
         aria-hidden="true"
+        aria-label={t('solutions.ariaLabels.particles')}
       ></canvas>
-        <div className="hero-header">
-          <h1 id="main-heading" className="hero-title">SOLUCIONES DE SOFTWARE</h1>
-        </div>
+      
+      <div className="hero-header">
+        <h1 id="main-heading" className="hero-title">{t('solutions.title')}</h1>
+      </div>
+      
       <div className='hero-container'>
-        <div className='tabs-container' role="tablist">
+        <div 
+          className='tabs-container' 
+          role="tablist" 
+          aria-label={t('solutions.ariaLabels.tablist')}
+        >
           {tabs.map((tab) => (
             <button
               key={tab}
@@ -175,6 +196,7 @@ const Solutions = () => {
               role="tab"
               aria-selected={currentPopupTab === tabMapping[tab]}
               aria-controls={`${tab.toLowerCase().replace(/\s+/g, '-')}-panel`}
+              aria-label={t('solutions.ariaLabels.tab', { tabName: tab })}
             >
               {tab}
               <span className="tab-highlight"></span>
@@ -185,7 +207,7 @@ const Solutions = () => {
         <div className='hero-content'>
           <img 
             src={alephLogoGif} 
-            alt="Aleph Logo" 
+            alt={t('solutions.logoAlt')} 
             className="hero-logo" 
             loading="lazy"
             width="400"
@@ -204,6 +226,7 @@ const Solutions = () => {
           onBack={handleBack}
           modulesData={modulesData}
           categoryMapping={tabMapping}
+          currentLanguage={i18n.language}
         />
       )}
     </section>
