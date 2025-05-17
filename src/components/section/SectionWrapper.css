@@ -1,7 +1,6 @@
 .section-wrapper {
-  opacity: 0;
-  transform: scale(0.98);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 .section-wrapper.visible {
