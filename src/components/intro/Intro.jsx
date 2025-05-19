@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import backgroundImage from '../../assets/intro-bg.jpg';
+import backgroundImage from '../../assets/intro-bg.webp';
 import logoGif from '../../assets/Gif-Aleph-una-vez.gif';
 import './Intro.css';
 
