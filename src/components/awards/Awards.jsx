@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import './Awards.css';
 
 // Importar imágenes
-import bpEmprende from '../../assets/img-awards/patagonia.png';
-import bindInnovA from '../../assets/img-awards/bind.png';
+import bpEmprende from '../../assets/img-awards/patagonia.webp';
+import bindInnovA from '../../assets/img-awards/bind.webp';
 
 const Awards = () => {
   const { t } = useTranslation();
