@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import backgroundImage from '../../assets/intro-bg.webp';
+import backgroundImageDesktop from '../../assets/intro-bg.webp'; // Imagen para desktop
+import backgroundImageMobile from '../../assets/intro-bg-mobile.webp'; // Nueva imagen para mobile
 import logoGif from '../../assets/Gif-Aleph-una-vez.gif';
 import './Intro.css';
 
@@ -16,29 +17,44 @@ const Intro = () => {
 
   return (
     <section id="inicio" className="intro-section" itemScope itemType="https://schema.org/WebPage">
-      {/* Fondo */}
+      {/* Fondo responsivo */}
       <div className="intro-background">
-        <img 
-          src={backgroundImage} 
-          alt={t('intro.backgroundAlt')} 
-          className="background-image" 
-          itemProp="image"
-        />
+        <picture>
+          {/* Versión mobile (se muestra en pantallas hasta 768px) */}
+          <source 
+            srcSet={backgroundImageMobile} 
+            media="(max-width: 768px)"
+            type="image/webp"
+          />
+          {/* Versión desktop (predeterminada) */}
+          <source 
+            srcSet={backgroundImageDesktop} 
+            type="image/webp"
+          />
+          {/* Fallback para navegadores que no soportan picture */}
+          <img 
+            src={backgroundImageDesktop} 
+            alt={t('intro.backgroundAlt')} 
+            className="background-image" 
+            itemProp="image"
+            loading="eager"
+            decoding="async"
+          />
+        </picture>
         <div className="background-overlay"></div>
       </div>
       
-      {/* Contenedor principal */}
+      {/* Resto del componente permanece igual */}
       <div className="intro-container">
         {/* Columna de texto */}
         <div className="text-column">
           <div className="title-container">
             <h1 className="sr-only" itemProp="name">{t('intro.srTitle')}</h1>
-          <img 
-            src={logoGif} 
-            alt={t('intro.logoAlt')}
-            className="logo-gif"
-          />
-
+            <img 
+              src={logoGif} 
+              alt={t('intro.logoAlt')}
+              className="logo-gif"
+            />
           </div>
           
           <p className="description-text" itemProp="description">
