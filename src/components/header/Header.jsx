@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
-import logo from '../../assets/LOGO ALEPH FIJO v02.png';
+import logo from '../../assets/LOGO ALEPH FIJO v02.webp';
 import './Header.css';
 
 const Header = () => {

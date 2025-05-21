@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './ContactForm.css';
-import logoAleph from '../../assets/LOGO ALEPH FIJO v02.png';
+import logoAleph from '../../assets/LOGO ALEPH FIJO v02.webp';
 import { sendContactEmail } from '../../services/emailService';
 
 const ContactForm = () => {
