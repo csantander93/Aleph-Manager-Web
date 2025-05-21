@@ -100,15 +100,41 @@ const Header = () => {
             {i18n.language === 'es' ? 'EN' : 'ES'}
           </button>
 
-          {/* Botón del menú hamburguesa */}
+          {/* Botón del menú hamburguesa animado */}
           <button
             aria-label={menuOpen ? t('header.ariaLabels.menuClose') : t('header.ariaLabels.menuToggle')}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen(!menuOpen)}
             className={`mobile-menu-button ${isScrolled ? 'mobile-menu-button-scrolled' : 'mobile-menu-button-transparent'}`}
           >
-            <svg className="mobile-menu-icon" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke="currentColor" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
+            <svg 
+              className="mobile-menu-icon" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round"
+                className={`hamburger-line top-line ${menuOpen ? 'open' : ''}`}
+                d="M4 6h16"
+              />
+              <path 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round"
+                className={`hamburger-line middle-line ${menuOpen ? 'open' : ''}`}
+                d="M4 12h16"
+              />
+              <path 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round"
+                className={`hamburger-line bottom-line ${menuOpen ? 'open' : ''}`}
+                d="M4 18h16"
+              />
             </svg>
           </button>
         </div>

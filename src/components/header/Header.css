@@ -182,11 +182,14 @@
   width: 100%;
 }
 
-/* Menú móvil - Botón Compacto */
+/* Estilos para el menú hamburguesa animado */
 .mobile-menu-button {
-  padding: 0.4rem; /* Reducido de 0.5rem */
+  padding: 0.4rem;
   transition: color 0.2s ease;
   display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -196,8 +199,44 @@
 }
 
 .mobile-menu-icon {
-  height: 1.3rem; /* Reducido de 1.5rem */
-  width: 1.3rem; /* Reducido de 1.5rem */
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.hamburger-line {
+  transform-origin: center;
+  transition: 
+    transform 0.3s ease, 
+    opacity 0.3s ease;
+  stroke: currentColor;
+}
+
+/* Estado abierto (X) */
+.hamburger-line.top-line.open {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger-line.middle-line.open {
+  opacity: 0;
+}
+
+.hamburger-line.bottom-line.open {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Colores específicos para el icono */
+.mobile-menu-button-scrolled .hamburger-line {
+  stroke: rgb(243, 244, 246);
+}
+
+.mobile-menu-button-transparent .hamburger-line {
+  stroke: rgb(243, 244, 246);
+}
+
+/* Efecto hover para el botón */
+.mobile-menu-button:hover .hamburger-line {
+  stroke: var(--color-primary-medium);
 }
 
 /* Menú móvil desplegable - Compacto */
