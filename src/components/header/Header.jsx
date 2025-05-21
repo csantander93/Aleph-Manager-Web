@@ -59,6 +59,9 @@ const Header = () => {
               src={logo} 
               alt={t('header.logoAlt')} 
               className="header-logo"
+              loading="eager" // Esto fuerza una carga prioritaria
+              fetchpriority="high" // Indica alta prioridad
+
             />
           </a>
         </div>
