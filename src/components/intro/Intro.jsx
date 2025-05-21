@@ -23,7 +23,6 @@ const Intro = () => {
           alt={t('intro.backgroundAlt')} 
           className="background-image" 
           itemProp="image"
-          loading="lazy"
         />
         <div className="background-overlay"></div>
       </div>
