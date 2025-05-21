@@ -23,6 +23,7 @@ const Intro = () => {
           alt={t('intro.backgroundAlt')} 
           className="background-image" 
           itemProp="image"
+          loading="lazy"
         />
         <div className="background-overlay"></div>
       </div>
@@ -33,11 +34,13 @@ const Intro = () => {
         <div className="text-column">
           <div className="title-container">
             <h1 className="sr-only" itemProp="name">{t('intro.srTitle')}</h1>
-            <img 
-              src={logoGif} 
-              alt={t('intro.logoAlt')}
-              className="logo-gif"
-            />
+          <img 
+            src={logoGif} 
+            alt={t('intro.logoAlt')}
+            className="logo-gif"
+            loading="lazy"
+          />
+
           </div>
           
           <p className="description-text" itemProp="description">
@@ -85,4 +88,4 @@ const Intro = () => {
   );
 };
 
-export default Intro;
+export default React.memo(Intro);
