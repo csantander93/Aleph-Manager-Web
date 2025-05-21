@@ -37,7 +37,6 @@ const Intro = () => {
             src={logoGif} 
             alt={t('intro.logoAlt')}
             className="logo-gif"
-            loading="lazy"
           />
 
           </div>
