@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import logo from '../../assets/LOGO ALEPH FIJO v02.webp';
+import logoPreload from '../../assets/LOGO ALEPH FIJO v02.webp?as=webp&width=200&quality=80'; // Versión optimizada
 import './Header.css';
 
 const Header = () => {
@@ -24,18 +25,31 @@ const Header = () => {
       });
     };
     
-    document.documentElement.classList.add('dark');
-    document.documentElement.style.setProperty('--bg-color', '#0A0A0A');
+    // Aplicar tema oscuro de manera más eficiente
+    if (!document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.style.setProperty('--bg-color', '#0A0A0A');
+    }
     
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Precarga las imágenes críticas para mobile
+    const preloadImages = () => {
+      const img = new Image();
+      img.src = logoPreload;
+    };
+
+    preloadImages();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const changeLanguage = async (lng) => {
     try {
       await i18n.changeLanguage(lng);
-      // Forzar re-renderizado de los componentes
-      window.location.reload();
+      // Mejor que reload: actualiza solo los componentes necesarios
+      window.dispatchEvent(new Event('languageChanged'));
     } catch (error) {
       console.error('Error changing language:', error);
     }
@@ -51,22 +65,32 @@ const Header = () => {
 
   return (
     <header className={`header ${isScrolled ? 'header-scrolled' : 'header-transparent'}`}>
+      {/* Preload para la imagen LCP - Móvil */}
+      <link 
+        rel="preload" 
+        href={logoPreload} 
+        as="image"
+        fetchpriority="high"
+        media="(max-width: 768px)"
+      />
+      
       <div className="header-container">
-        {/* Logo clickable */}
         <div className="flex items-center">
           <a href="#inicio" className="cursor-pointer" aria-label={t('header.ariaLabels.logo')}>
             <img 
-              src={logo} 
+              src={logoPreload}
               alt={t('header.logoAlt')} 
               className="header-logo"
-              loading="eager" // Esto fuerza una carga prioritaria
-              fetchpriority="high" // Indica alta prioridad
-
+              loading="eager"
+              fetchpriority="high"
+              width="200"
+              height="50"
+              decoding="sync"
             />
           </a>
         </div>
 
-        {/* Menú desktop */}
+        {/* Menú desktop - Oculto en mobile */}
         <nav className="nav-desktop" aria-label={t('header.ariaLabels.navigation')}>
           {menuItems.map((item) => (
             <a
@@ -84,26 +108,25 @@ const Header = () => {
             </a>
           ))}
           
-          {/* Botón de cambio de idioma */}
           <button 
             onClick={() => changeLanguage(i18n.language === 'es' ? 'en' : 'es')}
             className="language-switcher"
+            aria-label={t('header.ariaLabels.languageSwitcher')}
           >
             {i18n.language === 'es' ? 'EN' : 'ES'}
           </button>
         </nav>
 
-        {/* Contenedor para elementos móviles (idioma y menú) */}
+        {/* Contenedor para elementos móviles */}
         <div className="mobile-elements-container">
-          {/* Botón de cambio de idioma en móvil */}
           <button 
             onClick={() => changeLanguage(i18n.language === 'es' ? 'en' : 'es')}
             className="mobile-language-button"
+            aria-label={t('header.ariaLabels.languageSwitcher')}
           >
             {i18n.language === 'es' ? 'EN' : 'ES'}
           </button>
 
-          {/* Botón del menú hamburguesa animado */}
           <button
             aria-label={menuOpen ? t('header.ariaLabels.menuClose') : t('header.ariaLabels.menuToggle')}
             aria-expanded={menuOpen}
