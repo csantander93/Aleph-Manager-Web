@@ -1,37 +1,49 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useTranslation } from 'react-i18next';
-import logo from '../../assets/LOGO ALEPH FIJO v02.webp';
-import logoPreload from '../../assets/LOGO ALEPH FIJO v02.webp?as=webp&width=200&quality=80'; // Versión optimizada
+import logoPreload from '../../assets/LOGO ALEPH FIJO v02.webp?as=webp&width=200&quality=80';
 import './Header.css';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("#inicio");
+  const [activeSection, setActiveSection] = useState('');
   const { t, i18n } = useTranslation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-      
-      // Detectar sección activa
+  // Optimize scroll handler with useCallback
+  const handleScroll = useCallback(() => {
+    setIsScrolled(window.scrollY > 10);
+
+    // Only set active section if scrolling has started
+    if (window.scrollY > 10) {
       const sections = document.querySelectorAll('section');
+      let currentSection = '';
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - 200 && window.scrollY < sectionTop + sectionHeight - 200) {
-          setActiveSection(`#${section.id}`);
+        if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+          currentSection = `#${section.id}`;
         }
       });
-    };
-    
-    // Aplicar tema oscuro de manera más eficiente
+      setActiveSection(currentSection);
+    } else {
+      setActiveSection(''); // No section active when at the top
+    }
+  }, []);
+
+  // Handle click on nav items
+  const handleNavClick = (href) => {
+    setActiveSection(href);
+    setMenuOpen(false); // Close mobile menu on click
+  };
+
+  useEffect(() => {
+    // Apply dark theme
     if (!document.documentElement.classList.contains('dark')) {
       document.documentElement.classList.add('dark');
       document.documentElement.style.setProperty('--bg-color', '#0A0A0A');
     }
-    
-    // Precarga las imágenes críticas para mobile
+
+    // Preload images
     const preloadImages = () => {
       const img = new Image();
       img.src = logoPreload;
@@ -39,16 +51,15 @@ const Header = () => {
 
     preloadImages();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
 
   const changeLanguage = async (lng) => {
     try {
       await i18n.changeLanguage(lng);
-      // Mejor que reload: actualiza solo los componentes necesarios
       window.dispatchEvent(new Event('languageChanged'));
     } catch (error) {
       console.error('Error changing language:', error);
@@ -65,10 +76,9 @@ const Header = () => {
 
   return (
     <header className={`header ${isScrolled ? 'header-scrolled' : 'header-transparent'}`}>
-      {/* Preload para la imagen LCP - Móvil */}
-      <link 
-        rel="preload" 
-        href={logoPreload} 
+      <link
+        rel="preload"
+        href={logoPreload}
         as="image"
         fetchpriority="high"
         media="(max-width: 768px)"
@@ -77,9 +87,9 @@ const Header = () => {
       <div className="header-container">
         <div className="flex items-center">
           <a href="#inicio" className="cursor-pointer" aria-label={t('header.ariaLabels.logo')}>
-            <img 
+            <img
               src={logoPreload}
-              alt={t('header.logoAlt')} 
+              alt={t('header.logoAlt')}
               className="header-logo"
               loading="eager"
               fetchpriority="high"
@@ -90,25 +100,25 @@ const Header = () => {
           </a>
         </div>
 
-        {/* Menú desktop - Oculto en mobile */}
         <nav className="nav-desktop" aria-label={t('header.ariaLabels.navigation')}>
           {menuItems.map((item) => (
             <a
               key={item.key}
               href={item.href}
+              onClick={() => handleNavClick(item.href)}
               aria-current={activeSection === item.href ? "page" : undefined}
               className={`nav-item ${isScrolled ? 'nav-item-scrolled' : 'nav-item-transparent'} ${
-                activeSection === item.href ? 'text-cyan-300' : ''
+                activeSection === item.href ? 'active' : ''
               }`}
             >
               {item.name}
               <span className={`nav-underline ${
-                activeSection === item.href ? 'w-full' : ''
+                activeSection === item.href ? 'active' : ''
               }`}></span>
             </a>
           ))}
           
-          <button 
+          <button
             onClick={() => changeLanguage(i18n.language === 'es' ? 'en' : 'es')}
             className="language-switcher"
             aria-label={t('header.ariaLabels.languageSwitcher')}
@@ -117,9 +127,8 @@ const Header = () => {
           </button>
         </nav>
 
-        {/* Contenedor para elementos móviles */}
         <div className="mobile-elements-container">
-          <button 
+          <button
             onClick={() => changeLanguage(i18n.language === 'es' ? 'en' : 'es')}
             className="mobile-language-button"
             aria-label={t('header.ariaLabels.languageSwitcher')}
@@ -133,30 +142,30 @@ const Header = () => {
             onClick={() => setMenuOpen(!menuOpen)}
             className={`mobile-menu-button ${isScrolled ? 'mobile-menu-button-scrolled' : 'mobile-menu-button-transparent'}`}
           >
-            <svg 
-              className="mobile-menu-icon" 
-              viewBox="0 0 24 24" 
-              fill="none" 
+            <svg
+              className="mobile-menu-icon"
+              viewBox="0 0 24 24"
+              fill="none"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
             >
-              <path 
-                stroke="currentColor" 
-                strokeWidth="2" 
+              <path
+                stroke="currentColor"
+                strokeWidth="2"
                 strokeLinecap="round"
                 className={`hamburger-line top-line ${menuOpen ? 'open' : ''}`}
                 d="M4 6h16"
               />
-              <path 
-                stroke="currentColor" 
-                strokeWidth="2" 
+              <path
+                stroke="currentColor"
+                strokeWidth="2"
                 strokeLinecap="round"
                 className={`hamburger-line middle-line ${menuOpen ? 'open' : ''}`}
                 d="M4 12h16"
               />
-              <path 
-                stroke="currentColor" 
-                strokeWidth="2" 
+              <path
+                stroke="currentColor"
+                strokeWidth="2"
                 strokeLinecap="round"
                 className={`hamburger-line bottom-line ${menuOpen ? 'open' : ''}`}
                 d="M4 18h16"
@@ -166,7 +175,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Menú móvil desplegable */}
       {menuOpen && (
         <div className="mobile-menu" role="navigation">
           <div className="mobile-menu-container">
@@ -174,11 +182,11 @@ const Header = () => {
               <a
                 key={item.key}
                 href={item.href}
+                onClick={() => handleNavClick(item.href)}
                 aria-current={activeSection === item.href ? "page" : undefined}
                 className={`mobile-menu-item ${
-                  activeSection === item.href ? 'text-cyan-300' : ''
+                  activeSection === item.href ? 'active' : ''
                 }`}
-                onClick={() => setMenuOpen(false)}
               >
                 {item.name}
               </a>
