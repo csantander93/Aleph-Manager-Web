@@ -17,7 +17,7 @@ body {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 65.6px; /* Ajusta este valor según la altura de tu header */
+  scroll-padding-top: 65.5px; /* Ajusta este valor según la altura de tu header */
 }
 
 @keyframes float {

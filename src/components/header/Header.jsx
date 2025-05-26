@@ -30,10 +30,23 @@ const Header = () => {
     }
   }, []);
 
-  // Handle click on nav items
   const handleNavClick = (href) => {
     setActiveSection(href);
-    setMenuOpen(false); // Close mobile menu on click
+    setMenuOpen(false);
+    
+    // Espera un frame para asegurar que el estado se ha actualizado
+    requestAnimationFrame(() => {
+      const targetElement = document.querySelector(href);
+      if (targetElement) {
+        const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+        const targetPosition = targetElement.offsetTop - headerHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
   };
 
   useEffect(() => {
