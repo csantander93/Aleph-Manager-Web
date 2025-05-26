@@ -1,4 +1,4 @@
-  import { Suspense, lazy } from 'react';
+  import { Suspense, lazy, useEffect } from 'react';
   import { HelmetProvider } from 'react-helmet-async';
   import SectionWrapper from './components/section/SectionWrapper';
   import './i18n';
@@ -14,6 +14,23 @@
   const Footer = lazy(() => import('./components/footer/Footer'));
 
   function App() {
+
+    useEffect(() => {
+    // Deshabilitar el scroll restoration del navegador
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    // Asegurar que la página comience en el top al recargar
+    window.scrollTo(0, 0);
+
+    return () => {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'auto';
+      }
+    };
+  }, []);
+
     
     return (
       <HelmetProvider>
