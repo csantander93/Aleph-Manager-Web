@@ -6,7 +6,6 @@ const SectionWrapper = ({ children, id, className = '' }) => {
 const [ref, inView] = useInView({
   threshold: 0.1,
   triggerOnce: true,
-  rootMargin: '-50px 0px' // Añade un margen negativo para activar la animación antes
 });
 
   const variants = {
