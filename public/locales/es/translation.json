@@ -1,11 +1,11 @@
 {
   "header": {
     "menuItems": {
-      "home": "Inicio",
-      "solutions": "Soluciones de software",
-      "features": "Características",
-      "clients": "Clientes",
-      "contact": "Contáctanos"
+      "home": "INICIO",
+      "solutions": "SOLUCIONES DE SOFTWARE",
+      "features": "CARACTERÍSTICAS",
+      "clients": "CLIENTES",
+      "contact": "CONTÁCTANOS"
     },
     "ariaLabels": {
       "logo": "Ir al inicio",

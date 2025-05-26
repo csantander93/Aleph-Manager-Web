@@ -1,11 +1,11 @@
 {
   "header": {
     "menuItems": {
-      "home": "Home",
-      "solutions": "Software Solutions",
-      "features": "Features",
-      "clients": "Clients",
-      "contact": "Contact Us"
+      "home": "HOME",
+      "solutions": "SOFTWARE SOLUTIONS",
+      "features": "FEATURES",
+      "clients": "CLIENTS",
+      "contact": "CONTACT US"
     },
     "ariaLabels": {
       "logo": "Go to home",
