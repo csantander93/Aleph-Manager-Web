@@ -39,15 +39,6 @@ const SEO = ({ title, description, keywords, image, url }) => {
         media="(max-width: 768px)"
       />
       
-      {/* Precarga de fuentes - Corregido */}
-      <link
-        rel="preload"
-        href="/fonts/your-font.woff2"
-        as="font"
-        type="font/woff2"
-        crossOrigin="anonymous"
-      />
-      
       {/* Preconexión temprana para recursos externos */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
