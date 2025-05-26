@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import logo from '../../assets/LOGO ALEPH FIJO v02.webp';
-import logoPreload from '../../assets/LOGO ALEPH FIJO v02.webp?as=webp&width=200&quality=80';
+import logoPreload from '../../assets/LOGO ALEPH FIJO v02.webp?as=webp&width=200&quality=80'; // Versión optimizada
 import './Header.css';
 
 const Header = () => {
@@ -14,46 +14,42 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
       
-      const sections = document.querySelectorAll('section[id]');
-      let current = "#inicio";
-      const scrollPosition = window.scrollY + 200;
-
+      // Detectar sección activa
+      const sections = document.querySelectorAll('section');
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          current = `#${sectionId}`;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop - 200 && window.scrollY < sectionTop + sectionHeight - 200) {
+          setActiveSection(`#${section.id}`);
         }
       });
-
-      setActiveSection(current);
+    };
+    
+    // Aplicar tema oscuro de manera más eficiente
+    if (!document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.style.setProperty('--bg-color', '#0A0A0A');
+    }
+    
+    // Precarga las imágenes críticas para mobile
+    const preloadImages = () => {
+      const img = new Image();
+      img.src = logoPreload;
     };
 
-    // Debounce para mejor performance
-    const debouncedScroll = () => {
-      let ticking = false;
-      return () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            handleScroll();
-            ticking = false;
-          });
-          ticking = true;
-        }
-      };
+    preloadImages();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
     };
-
-    window.addEventListener('scroll', debouncedScroll());
-    handleScroll(); // Para detectar la sección inicial
-
-    return () => window.removeEventListener('scroll', debouncedScroll());
   }, []);
 
   const changeLanguage = async (lng) => {
     try {
       await i18n.changeLanguage(lng);
+      // Mejor que reload: actualiza solo los componentes necesarios
+      window.dispatchEvent(new Event('languageChanged'));
     } catch (error) {
       console.error('Error changing language:', error);
     }
@@ -69,6 +65,7 @@ const Header = () => {
 
   return (
     <header className={`header ${isScrolled ? 'header-scrolled' : 'header-transparent'}`}>
+      {/* Preload para la imagen LCP - Móvil */}
       <link 
         rel="preload" 
         href={logoPreload} 
@@ -93,18 +90,21 @@ const Header = () => {
           </a>
         </div>
 
+        {/* Menú desktop - Oculto en mobile */}
         <nav className="nav-desktop" aria-label={t('header.ariaLabels.navigation')}>
           {menuItems.map((item) => (
             <a
               key={item.key}
               href={item.href}
-              className={`nav-item ${isScrolled ? 'nav-item-scrolled' : 'nav-item-transparent'} ${
-                activeSection === item.href ? 'active' : ''
-              }`}
               aria-current={activeSection === item.href ? "page" : undefined}
+              className={`nav-item ${isScrolled ? 'nav-item-scrolled' : 'nav-item-transparent'} ${
+                activeSection === item.href ? 'text-cyan-300' : ''
+              }`}
             >
               {item.name}
-              <span className="nav-underline"></span>
+              <span className={`nav-underline ${
+                activeSection === item.href ? 'w-full' : ''
+              }`}></span>
             </a>
           ))}
           
@@ -117,6 +117,7 @@ const Header = () => {
           </button>
         </nav>
 
+        {/* Contenedor para elementos móviles */}
         <div className="mobile-elements-container">
           <button 
             onClick={() => changeLanguage(i18n.language === 'es' ? 'en' : 'es')}
@@ -132,7 +133,13 @@ const Header = () => {
             onClick={() => setMenuOpen(!menuOpen)}
             className={`mobile-menu-button ${isScrolled ? 'mobile-menu-button-scrolled' : 'mobile-menu-button-transparent'}`}
           >
-            <svg className="mobile-menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg 
+              className="mobile-menu-icon" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
               <path 
                 stroke="currentColor" 
                 strokeWidth="2" 
@@ -159,6 +166,7 @@ const Header = () => {
         </div>
       </div>
 
+      {/* Menú móvil desplegable */}
       {menuOpen && (
         <div className="mobile-menu" role="navigation">
           <div className="mobile-menu-container">
@@ -166,10 +174,10 @@ const Header = () => {
               <a
                 key={item.key}
                 href={item.href}
-                className={`mobile-menu-item ${
-                  activeSection === item.href ? 'active' : ''
-                }`}
                 aria-current={activeSection === item.href ? "page" : undefined}
+                className={`mobile-menu-item ${
+                  activeSection === item.href ? 'text-cyan-300' : ''
+                }`}
                 onClick={() => setMenuOpen(false)}
               >
                 {item.name}
