@@ -25,7 +25,7 @@
 .header-container {
   max-width: 1152px;
   margin: 0 auto;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1rem; /* Intermedio entre 0.5rem 0.8rem y 1rem 1.2rem */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,7 +34,7 @@
 
 /* Logo - Optimizado para LCP */
 .header-logo {
-  height: 2.5rem;
+  height: 2.5rem; /* Intermedio entre 2rem y 3rem */
   width: auto;
   opacity: 0.95;
   transition: opacity 0.2s ease;
@@ -48,29 +48,29 @@
 /* Menú desktop - Optimizado */
 .nav-desktop {
   display: none;
-  gap: 1.35rem;
+  gap: 1.35rem; /* Intermedio entre 1.2rem y 1.5rem */
 }
 
 /* Language switcher - Optimizado */
 .language-switcher {
   margin-left: 0.5rem;
   padding: 0.55rem 1.1rem;
-  font-size: 1rem;
+  font-size: 1rem; /* Intermedio entre 0.95rem y 1.1rem */
   font-family: 'Inter Tight', system-ui, -apple-system, sans-serif;
   font-weight: 500;
   color: inherit;
   background: none;
   border: none;
   cursor: pointer;
-  transition: opacity 0.3s ease, color 0.3s ease;
+  transition: opacity 0.3s ease;
   position: relative;
   opacity: 0.9;
-  will-change: opacity, color;
+  will-change: opacity;
 }
 
 .language-switcher:hover {
   opacity: 1;
-  color: var(--color-primary-medium, #22d3ee);
+  color: var(--color-primary-medium);
 }
 
 .language-switcher::after {
@@ -80,7 +80,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background-color: var(--color-primary-medium, #22d3ee);
+  background-color: var(--color-primary-medium);
   transition: width 0.3s ease;
 }
 
@@ -88,12 +88,92 @@
   width: 100%;
 }
 
+.language-switcher.active {
+  color: var(--color-primary-light);
+  opacity: 1;
+}
+
+.language-switcher.active::after {
+  width: 100%;
+  background-color: var(--color-primary-light);
+}
+
 /* Contenedor móvil - Optimizado */
 .mobile-elements-container {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.55rem; /* Intermedio entre 0.5rem y 0.6rem */
   contain: content;
+}
+
+/* ==================== */
+/* SECCIÓN ACTIVA - ESTILOS */
+/* ==================== */
+
+/* Estilo para items activos en desktop */
+.nav-item.active {
+  color: rgb(34, 211, 238) !important;
+  font-weight: 500;
+}
+
+.nav-item.active .nav-underline {
+  width: 100% !important;
+  background-color: rgb(34, 211, 238);
+  opacity: 1;
+}
+
+/* Estilo para items activos en mobile */
+.mobile-menu-item.active {
+  color: rgb(34, 211, 238) !important;
+  font-weight: 500;
+  position: relative;
+}
+
+.mobile-menu-item.active::after {
+  content: '';
+  position: absolute;
+  left: 0.7rem;
+  bottom: 0.5rem;
+  width: calc(100% - 1.4rem);
+  height: 1px;
+  background-color: rgb(34, 211, 238);
+}
+
+/* Mejoras para el scroll suave */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Ajustes para el subrayado */
+.nav-underline {
+  position: absolute;
+  left: 0.7rem;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: transparent;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-item:hover .nav-underline {
+  width: calc(100% - 1.4rem);
+  background-color: currentColor;
+}
+
+/* Asegurar que los colores sean consistentes */
+.nav-item-scrolled,
+.nav-item-transparent,
+.mobile-menu-button-scrolled,
+.mobile-menu-button-transparent,
+.mobile-language-button {
+  color: rgb(243, 244, 246);
+}
+
+/* Mejor contraste para items activos */
+.header-scrolled .nav-item.active {
+  color: rgb(34, 211, 238) !important;
 }
 
 @media (min-width: 768px) {
@@ -105,22 +185,22 @@
 /* Botón móvil - Optimizado */
 .mobile-language-button {
   padding: 0.45rem 0.9rem;
-  font-size: 1rem;
+  font-size: 1rem; /* Intermedio entre 0.95rem y 1.1rem */
   font-family: 'Inter Tight', system-ui, -apple-system, sans-serif;
   font-weight: 500;
   color: inherit;
   background: none;
   border: none;
   cursor: pointer;
-  transition: opacity 0.3s ease, color 0.3s ease;
+  transition: opacity 0.3s ease;
   position: relative;
   opacity: 0.9;
-  will-change: opacity, color;
+  will-change: opacity;
 }
 
 .mobile-language-button:hover {
   opacity: 1;
-  color: var(--color-primary-medium, #22d3ee);
+  color: var(--color-primary-medium);
 }
 
 .mobile-language-button::after {
@@ -130,7 +210,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background-color: var(--color-primary-medium, #22d3ee);
+  background-color: var(--color-primary-medium);
   transition: width 0.3s ease;
 }
 
@@ -148,15 +228,17 @@
 .nav-item {
   position: relative;
   padding: 0.45rem 0.7rem;
-  font-size: 0.875rem;
+  font-size: 0.875rem; /* Intermedio entre 0.8125rem y 0.95rem */
   font-weight: 500;
-  color: rgb(243, 244, 246);
   transition: color 0.2s ease;
   will-change: color;
 }
 
 .nav-item-scrolled,
-.nav-item-transparent {
+.nav-item-transparent,
+.mobile-menu-button-scrolled,
+.mobile-menu-button-transparent,
+.mobile-language-button {
   color: rgb(243, 244, 246);
 }
 
@@ -164,26 +246,18 @@
   color: white;
 }
 
-.nav-item.active {
-  color: var(--color-primary-light, #22d3ee);
-}
-
 .nav-underline {
   position: absolute;
   left: 0;
   bottom: -0.2rem;
   height: 0.1rem;
-  background-color: var(--color-primary-light, #22d3ee);
+  background-color: rgb(34, 211, 238);
   transition: width 0.3s ease;
   width: 0;
   backface-visibility: hidden;
 }
 
 .nav-item:hover .nav-underline {
-  width: 100%;
-}
-
-.nav-item.active .nav-underline {
   width: 100%;
 }
 
@@ -205,21 +279,24 @@
 }
 
 .mobile-menu-icon {
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.75rem; /* Intermedio entre 1.5rem y 2rem */
+  height: 1.75rem; /* Intermedio entre 1.5rem y 2rem */
   transition: transform 0.3s ease;
   transform: translateZ(0);
 }
 
 .hamburger-line {
   transform-origin: center;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: 
+    transform 0.3s ease, 
+    opacity 0.3s ease;
   stroke: currentColor;
   vector-effect: non-scaling-stroke;
 }
 
+/* Estado abierto - Optimizado */
 .hamburger-line.top-line.open {
-  transform: translateY(7px) rotate(45deg);
+  transform: translateY(7px) rotate(45deg); /* Ajustado para el nuevo tamaño */
 }
 
 .hamburger-line.middle-line.open {
@@ -227,16 +304,17 @@
 }
 
 .hamburger-line.bottom-line.open {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: translateY(-7px) rotate(-45deg); /* Ajustado para el nuevo tamaño */
 }
 
+/* Colores icono - Optimizado */
 .mobile-menu-button-scrolled .hamburger-line,
 .mobile-menu-button-transparent .hamburger-line {
   stroke: rgb(243, 244, 246);
 }
 
 .mobile-menu-button:hover .hamburger-line {
-  stroke: var(--color-primary-medium, #22d3ee);
+  stroke: var(--color-primary-medium);
 }
 
 /* Menú móvil - Optimizado */
@@ -253,7 +331,7 @@
   padding: 0.5rem 0.9rem;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.7rem; /* Intermedio entre 0.6rem y 0.8rem */
   contain: content;
 }
 
@@ -261,30 +339,15 @@
   display: block;
   padding: 0.7rem;
   border-radius: 0.3rem;
-  font-size: 0.875rem;
+  font-size: 0.875rem; /* Intermedio entre 0.8125rem y 0.95rem */
   color: rgb(243, 244, 246);
   transition: color 0.2s ease, background-color 0.2s ease;
   will-change: color, background-color;
-  position: relative;
 }
 
 .mobile-menu-item:hover {
   color: white;
   background-color: rgba(30, 58, 138, 0.2);
-}
-
-.mobile-menu-item.active {
-  color: var(--color-primary-light, #22d3ee);
-}
-
-.mobile-menu-item.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0.2rem;
-  left: 0.7rem;
-  width: calc(100% - 1.4rem);
-  height: 0.1rem;
-  background-color: var(--color-primary-light, #22d3ee);
 }
 
 /* Media queries optimizadas */
