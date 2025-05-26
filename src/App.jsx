@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import SectionWrapper from './components/section/SectionWrapper';
 import './i18n';
@@ -14,6 +14,11 @@ const ContactForm = lazy(() => import('./components/contact/ContactForm'));
 const Footer = lazy(() => import('./components/footer/Footer'));
 
 function App() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Desplaza al inicio de la página al cargar
+  }, []); // Se ejecuta solo una vez al montar el componente
+
   return (
     <HelmetProvider>
       <Suspense fallback={<div>Cargando...</div>}>
