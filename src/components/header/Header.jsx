@@ -6,47 +6,50 @@ import './Header.css';
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState('#inicio');
   const { t, i18n } = useTranslation();
 
-  // Optimize scroll handler with useCallback
-  const handleScroll = useCallback(() => {
-    setIsScrolled(window.scrollY > 10);
-
-    // Only set active section if scrolling has started
-    if (window.scrollY > 10) {
-      const sections = document.querySelectorAll('section');
-      let currentSection = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
-          currentSection = `#${section.id}`;
-        }
+  // Función para scroll suave
+  const smoothScroll = (href) => {
+    const element = document.querySelector(href);
+    if (element) {
+      const headerHeight = document.querySelector('.header').offsetHeight;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - headerHeight,
+        behavior: "smooth"
       });
-      setActiveSection(currentSection);
-    } else {
-      setActiveSection(''); // No section active when at the top
     }
+  };
+
+  // Efecto para detectar scroll y sección activa
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+      
+      const menuSectionIds = ["inicio", "soluciones", "caracteristicas", "clientes", "contacto"];
+      const sections = Array.from(document.querySelectorAll('section[id]'))
+        .filter(section => menuSectionIds.includes(section.id));
+      
+      const viewportMiddle = window.innerHeight / 2;
+      
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= viewportMiddle && rect.bottom >= viewportMiddle) {
+          setActiveSection(`#${section.id}`);
+          break;
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleNavClick = (href) => {
     setActiveSection(href);
     setMenuOpen(false);
-    
-    // Espera un frame para asegurar que el estado se ha actualizado
-    requestAnimationFrame(() => {
-      const targetElement = document.querySelector(href);
-      if (targetElement) {
-        const headerHeight = document.querySelector('header')?.offsetHeight || 80;
-        const targetPosition = targetElement.offsetTop - headerHeight;
-        
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-      }
-    });
+    smoothScroll(href);
   };
 
   useEffect(() => {
@@ -63,12 +66,7 @@ const Header = () => {
     };
 
     preloadImages();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [handleScroll]);
+  }, []);
 
   const changeLanguage = async (lng) => {
     try {
@@ -80,15 +78,40 @@ const Header = () => {
   };
 
   const menuItems = [
-    { name: t('header.menuItems.home'), href: "#inicio", key: "home" },
-    { name: t('header.menuItems.solutions'), href: "#soluciones", key: "solutions" },
-    { name: t('header.menuItems.features'), href: "#caracteristicas", key: "features" },
-    { name: t('header.menuItems.clients'), href: "#clientes", key: "clients" },
-    { name: t('header.menuItems.contact'), href: "#contacto", key: "contact" }
+    { 
+      name: t('header.menuItems.home'), 
+      href: "#inicio", 
+      key: "home",
+      ariaLabel: t('header.ariaLabels.home')
+    },
+    { 
+      name: t('header.menuItems.solutions'), 
+      href: "#soluciones", 
+      key: "solutions",
+      ariaLabel: t('header.ariaLabels.solutions')
+    },
+    { 
+      name: t('header.menuItems.features'), 
+      href: "#caracteristicas", 
+      key: "features",
+      ariaLabel: t('header.ariaLabels.features')
+    },
+    { 
+      name: t('header.menuItems.clients'), 
+      href: "#clientes", 
+      key: "clients",
+      ariaLabel: t('header.ariaLabels.clients')
+    },
+    { 
+      name: t('header.menuItems.contact'), 
+      href: "#contacto", 
+      key: "contact",
+      ariaLabel: t('header.ariaLabels.contact')
+    }
   ];
 
   return (
-    <header className={`header ${isScrolled ? 'header-scrolled' : 'header-transparent'}`}>
+    <header className={`header ${isScrolled ? 'header-scrolled' : 'header-transparent'}`} role="banner">
       <link
         rel="preload"
         href={logoPreload}
@@ -99,7 +122,16 @@ const Header = () => {
       
       <div className="header-container">
         <div className="flex items-center">
-          <a href="#inicio" className="cursor-pointer" aria-label={t('header.ariaLabels.logo')}>
+          <a 
+            href="#inicio" 
+            className="cursor-pointer" 
+            aria-label={t('header.ariaLabels.logo')}
+            onClick={(e) => {
+              e.preventDefault();
+              setActiveSection("#inicio");
+              smoothScroll("#inicio");
+            }}
+          >
             <img
               src={logoPreload}
               alt={t('header.logoAlt')}
@@ -118,11 +150,15 @@ const Header = () => {
             <a
               key={item.key}
               href={item.href}
-              onClick={() => handleNavClick(item.href)}
+              aria-label={item.ariaLabel}
               aria-current={activeSection === item.href ? "page" : undefined}
               className={`nav-item ${isScrolled ? 'nav-item-scrolled' : 'nav-item-transparent'} ${
                 activeSection === item.href ? 'active' : ''
               }`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick(item.href);
+              }}
             >
               {item.name}
               <span className={`nav-underline ${
@@ -195,13 +231,20 @@ const Header = () => {
               <a
                 key={item.key}
                 href={item.href}
-                onClick={() => handleNavClick(item.href)}
+                aria-label={item.ariaLabel}
                 aria-current={activeSection === item.href ? "page" : undefined}
                 className={`mobile-menu-item ${
                   activeSection === item.href ? 'active' : ''
                 }`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(item.href);
+                }}
               >
                 {item.name}
+                {activeSection === item.href && (
+                  <span className="mobile-active-indicator"></span>
+                )}
               </a>
             ))}
           </div>

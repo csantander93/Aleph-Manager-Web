@@ -3,9 +3,10 @@
   position: fixed;
   width: 100%;
   z-index: 50;
-  height: 66px; /* Fija una altura consistente */
+  height: 66px;
   transition: all 0.3s ease;
   will-change: transform;
+  font-family: 'Inter Tight', sans-serif;
 }
 
 .header-scrolled {
@@ -26,7 +27,7 @@
 .header-container {
   max-width: 1152px;
   margin: 0 auto;
-  padding: 0.75rem 1rem; /* Intermedio entre 0.5rem 0.8rem y 1rem 1.2rem */
+  padding: 0.75rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,7 +36,7 @@
 
 /* Logo - Optimizado para LCP */
 .header-logo {
-  height: 2.5rem; /* Intermedio entre 2rem y 3rem */
+  height: 2.5rem;
   width: auto;
   opacity: 0.95;
   transition: opacity 0.2s ease;
@@ -49,14 +50,71 @@
 /* Menú desktop - Optimizado */
 .nav-desktop {
   display: none;
-  gap: 1.35rem; /* Intermedio entre 1.2rem y 1.5rem */
+  gap: 1.35rem;
+}
+
+/* Items de navegación - Optimizado */
+.nav-item {
+    position: relative;
+    font-size: .85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #e6f0ff;
+    padding: .5rem .75rem;
+    transition: all .4s cubic-bezier(.22,1,.36,1);
+    letter-spacing: .5px;
+    text-transform: uppercase;
+
+}
+
+.nav-item-scrolled,
+.nav-item-transparent,
+.mobile-menu-button-scrolled,
+.mobile-menu-button-transparent,
+.mobile-language-button {
+  color: rgb(243, 244, 246);
+}
+
+.nav-item:hover {
+  color: white;
+}
+
+.nav-underline {
+  position: absolute;
+  left: 0;
+  bottom: -0.2rem;
+  height: 0.1rem;
+  background-color: rgb(34, 211, 238);
+  transition: width 0.3s ease;
+  width: 0;
+  backface-visibility: hidden;
+}
+
+.nav-item:hover .nav-underline,
+.nav-underline.active {
+  width: 100%;
+}
+
+/* Indicador de sección activa para móvil */
+.mobile-active-indicator {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 20px;
+  height: 2px;
+  background-color: rgb(34, 211, 238);
+}
+
+.mobile-menu-item {
+  position: relative;
+  padding-right: 24px;
 }
 
 /* Language switcher - Optimizado */
 .language-switcher {
   margin-left: 0.5rem;
   padding: 0.55rem 1.1rem;
-  font-size: 1rem; /* Intermedio entre 0.95rem y 1.1rem */
+  font-size: 0.9rem; /* Reduced from 1rem (~10%) */
   font-family: 'Inter Tight', system-ui, -apple-system, sans-serif;
   font-weight: 500;
   color: inherit;
@@ -103,7 +161,7 @@
 .mobile-elements-container {
   display: flex;
   align-items: center;
-  gap: 0.55rem; /* Intermedio entre 0.5rem y 0.6rem */
+  gap: 0.55rem;
   contain: content;
 }
 
@@ -116,7 +174,7 @@
 /* Botón móvil - Optimizado */
 .mobile-language-button {
   padding: 0.45rem 0.9rem;
-  font-size: 1rem; /* Intermedio entre 0.95rem y 1.1rem */
+  font-size: 0.9rem; /* Reduced from 1rem (~10%) */
   font-family: 'Inter Tight', system-ui, -apple-system, sans-serif;
   font-weight: 500;
   color: inherit;
@@ -155,43 +213,6 @@
   }
 }
 
-/* Items de navegación - Optimizado */
-.nav-item {
-  position: relative;
-  padding: 0.45rem 0.7rem;
-  font-size: 0.875rem; /* Intermedio entre 0.8125rem y 0.95rem */
-  font-weight: 500;
-  transition: color 0.2s ease;
-  will-change: color;
-}
-
-.nav-item-scrolled,
-.nav-item-transparent,
-.mobile-menu-button-scrolled,
-.mobile-menu-button-transparent,
-.mobile-language-button {
-  color: rgb(243, 244, 246);
-}
-
-.nav-item:hover {
-  color: white;
-}
-
-.nav-underline {
-  position: absolute;
-  left: 0;
-  bottom: -0.2rem;
-  height: 0.1rem;
-  background-color: rgb(34, 211, 238);
-  transition: width 0.3s ease;
-  width: 0;
-  backface-visibility: hidden;
-}
-
-.nav-item:hover .nav-underline {
-  width: 100%;
-}
-
 /* Menú hamburguesa - Optimizado */
 .mobile-menu-button {
   padding: 0.45rem;
@@ -210,8 +231,8 @@
 }
 
 .mobile-menu-icon {
-  width: 1.75rem; /* Intermedio entre 1.5rem y 2rem */
-  height: 1.75rem; /* Intermedio entre 1.5rem y 2rem */
+  width: 1.75rem;
+  height: 1.75rem;
   transition: transform 0.3s ease;
   transform: translateZ(0);
 }
@@ -227,7 +248,7 @@
 
 /* Estado abierto - Optimizado */
 .hamburger-line.top-line.open {
-  transform: translateY(7px) rotate(45deg); /* Ajustado para el nuevo tamaño */
+  transform: translateY(7px) rotate(45deg);
 }
 
 .hamburger-line.middle-line.open {
@@ -235,7 +256,7 @@
 }
 
 .hamburger-line.bottom-line.open {
-  transform: translateY(-7px) rotate(-45deg); /* Ajustado para el nuevo tamaño */
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* Colores icono - Optimizado */
@@ -250,10 +271,15 @@
 
 /* Menú móvil - Optimizado */
 .mobile-menu {
+  position: fixed;
+  top: 66px;
+  left: 0;
+  width: 100%;
   background-color: rgba(55, 65, 81, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transform: translateZ(0);
+  z-index: 49;
 }
 
 .mobile-menu-container {
@@ -262,7 +288,7 @@
   padding: 0.5rem 0.9rem;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem; /* Intermedio entre 0.6rem y 0.8rem */
+  gap: 0.7rem;
   contain: content;
 }
 
@@ -270,15 +296,20 @@
   display: block;
   padding: 0.7rem;
   border-radius: 0.3rem;
-  font-size: 0.875rem; /* Intermedio entre 0.8125rem y 0.95rem */
+  font-size: 0.79rem; /* Reduced from 0.875rem (~10%) */
   color: rgb(243, 244, 246);
   transition: color 0.2s ease, background-color 0.2s ease;
   will-change: color, background-color;
+  position: relative;
 }
 
 .mobile-menu-item:hover {
   color: white;
   background-color: rgba(30, 58, 138, 0.2);
+}
+
+.mobile-menu-item.active {
+  color: rgb(34, 211, 238);
 }
 
 /* Media queries optimizadas */
