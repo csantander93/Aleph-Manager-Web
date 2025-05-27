@@ -2,25 +2,33 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/src/assets/Favicon-Aleph-2020.ico" />
-
-    <!-- Preconnect para Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Lazy load del CSS de fuentes -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=TWK+Everett:wght@500&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="theme-color" content="#ffffff"> <!-- Color para navegadores móviles -->
+    
+    <link rel="icon" href="/src/assets/Favicon-Aleph-2020.ico" sizes="any">
+    
+    <!-- Precarga de recursos críticos -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=TWK+Everett:wght@500&display=swap" as="style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Meta básicos -->
     <title>Aleph Manager</title>
     <meta name="description" content="Soluciones de software para sistemas de gestión ISO, GRC, PLAFT, continuidad, seguridad y pérdida crediticia esperada.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Fallback para cuando JavaScript está deshabilitado -->
+    <noscript>
+      <style>
+        body { overflow: auto !important; }
+        /* Estilos para usuarios sin JS */
+      </style>
+    </noscript>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Carga diferida de fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=TWK+Everett:wght@500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   </body>
 </html>
