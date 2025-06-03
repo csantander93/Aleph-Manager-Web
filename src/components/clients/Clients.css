@@ -213,7 +213,7 @@
 }
 
 /* Responsive adjustments */
-/* Media Queries para móviles */
+/* Media Queries para móviles - Versión 60% más grande */
 /* Media Queries para móviles - Versión 60% más grande */
 @media (max-width: 768px) {
   .desktop-version {
@@ -237,12 +237,24 @@
     transform: scale(1.6); /* Escala total: 60% más grande */
     transform-origin: center;
     border-radius: 12px; /* Aumentado para proporción */
+    /* Desactivar hover y clicks */
+    pointer-events: none;
   }
   
   .client-logo {
     max-width: 100%;
     max-height: 100%; /* Ocupa todo el espacio disponible */
     opacity: 0.9; /* Mejor visibilidad */
+    /* Desactivar transformaciones en hover */
+    transform: none !important;
+    filter: none !important;
+  }
+  
+  /* Asegurarse de que no hay efectos hover */
+  .client-item:hover {
+    transform: scale(1.6) translateY(0) !important;
+    box-shadow: 0 3.2px 16px rgba(0, 0, 0, 0.1) !important;
+    background: var(--glass-bg) !important;
   }
   
   /* Ajustes para pantallas muy pequeñas (480px) */

@@ -172,7 +172,7 @@ const Header = () => {
             className="language-switcher"
             aria-label={t('header.ariaLabels.languageSwitcher')}
           >
-            {i18n.language === 'es' ? 'EN' : 'ES'}
+            {i18n.language === 'es' ? 'ES' : 'EN'}
           </button>
         </nav>
 
@@ -182,7 +182,7 @@ const Header = () => {
             className="mobile-language-button"
             aria-label={t('header.ariaLabels.languageSwitcher')}
           >
-            {i18n.language === 'es' ? 'EN' : 'ES'}
+            {i18n.language === 'es' ? 'ES' : 'EN'}
           </button>
 
           <button
