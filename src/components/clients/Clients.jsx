@@ -44,7 +44,7 @@ import bibank from '../../assets/img-clients/bibank.webp';
 import brubank from '../../assets/img-clients/brubank.webp';
 import cajadevalores from '../../assets/img-clients/cajadevalores.webp';
 import carrefour from '../../assets/img-clients/carrefour.webp';
-import coelsa from '../../assets/img-clients/coelsa.webp';
+import redlik from '../../assets/img-clients/redlink.webp';
 import coopeande from '../../assets/img-clients/coopeande.webp';
 import creditoregional from '../../assets/img-clients/creditoregional.webp';
 import galiciamas from '../../assets/img-clients/galiciamas.webp';
@@ -65,10 +65,10 @@ const clientImages = [
   bcosaenz, bcocorp, bcoind, bcopat, bcorioja, bcobica, bcodino, bcobacs, bcoentrerios, 
   bcosanjuan, bcosantacruz, bcosantafe, brubank, uilo, uala, bcodelsol, naranjax, bibank, 
   bcocorrientes, bancor, bcovalores, bcomunicipal, bcosantiago, bcoservtrans, bcoroela, bcopiano, 
-  bcotoyota, bcocomafi, coelsa, bcogalicia, bcohipotecario, cajadevalores, bcomariva, carrefour, 
+  bcotoyota, bcocomafi, bcogalicia, bcohipotecario, cajadevalores, bcomariva, carrefour, 
   bcoservfin, bcocoinag, reba, bcomeridian, bcocolumbia, bconacion, montemar, bcoicbc, gire, 
   panamericanenergy, bcosucredito, bcojulio, assistcard, creditoregional, balanz, galiciamas, 
-  bcomacro, interbank, sancorseguros
+  bcomacro, interbank, sancorseguros, redlik
 ];
 
 const clientNames = [
@@ -77,11 +77,11 @@ const clientNames = [
   "Banco San Juan", "Banco Santa Cruz", "Banco Santa Fe", "Brubank", "Uilo", "Ualá",
   "Banco del Sol", "Naranja X", "BIBANK", "Banco de Corrientes", "Bancor", "Banco de Valores",
   "Banco Municipal", "Banco Santiago del Estero", "Servicios de Transporte", "Banco Roela",
-  "Banco Piano", "Toyota Compañía Financiera", "Banco Comafi", "COELSA", "Banco Galicia",
+  "Banco Piano", "Toyota Compañía Financiera", "Banco Comafi", "Banco Galicia",
   "Banco Hipotecario", "Caja de Valores", "Banco Mariva", "Carrefour Servicios Financieros",
   "Banco Coinag", "Reba", "Banco Meridian", "Banco Columbia", "Banco Nación", "Montemar",
   "ICBC", "Gire", "Pan American Energy", "Credicoop Sucrédito", "Banco Julio", "Assist Card",
-  "Crédito Regional", "Balanz", "Galicia Más", "Banco Macro", "Interbank", "Sancor Seguros"
+  "Crédito Regional", "Balanz", "Galicia Más", "Banco Macro", "Interbank", "Sancor Seguros", "redlik"
 ];
 
 const Clients = () => {
