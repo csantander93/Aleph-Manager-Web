@@ -1,36 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.alephmanager.com/</loc>
-    <lastmod>2025-04-09</lastmod>
-    <priority>1.00</priority>
-  </url>
-  <url>
-    <loc>https://www.alephmanager.com/#inicio</loc>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://www.alephmanager.com/#sobre-nosotros</loc>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://www.alephmanager.com/#modulos</loc>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://www.alephmanager.com/#caracteristicas</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://www.alephmanager.com/#clientes</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://www.alephmanager.com/#premios</loc>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://www.alephmanager.com/#contacto</loc>
-    <priority>0.90</priority>
+    <loc>https://alephmanager.com/</loc>
+    <lastmod>2025-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
 </urlset>

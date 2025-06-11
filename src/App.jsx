@@ -40,7 +40,7 @@
             description="Soluciones de software para sistemas de gestión ISO, GRC, PLAFT, continuidad, seguridad y pérdida crediticia esperada."
             keywords="Aleph, software GRC, ISO, gestión de riesgos, cumplimiento, PLAFT, continuidad, seguridad"
             image="https://alephmanager.com/assets/aleph-about.webp"
-            url="https://www.alephmanager.com/"
+            url="https://alephmanager.com/"
           />
 
           <Header />

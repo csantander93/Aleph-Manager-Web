@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.alephmanager.com/sitemap.xml
+Sitemap: https://alephmanager.com/sitemap.xml
